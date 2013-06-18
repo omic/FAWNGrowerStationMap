@@ -1,0 +1,6695 @@
+
+@import "http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two";
+#map_wrapper {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+#map_wrapper #map {
+    bottom: 0;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+#map_wrapper #map_container {
+    bottom: 0;
+    left: 0;
+    margin: 37px 0 96px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 2;
+}
+#map_wrapper.timelord-collapsed #map_container {
+    margin-bottom: 41px;
+}
+#map_wrapper #map_timebar {
+    bottom: 0;
+    height: 96px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 3;
+}
+#map_wrapper.timelord-collapsed #map_timebar {
+    height: 41px;
+}
+#map_wrapper #map_header {
+    background: url("http://icons.wxug.com/i/wm/searchBarBG.png") repeat-x scroll 0 0 transparent;
+    border-bottom: 1px solid #666666;
+    height: 36px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+#map_wrapper #map_header H1 {
+    background: url("http://icons.wxug.com/i/wm/searchBarLogo.png") no-repeat scroll 0 7px transparent;
+    float: left;
+    font-size: 16px;
+    line-height: 36px;
+    margin: 1px 0 0 10px;
+    padding-left: 36px;
+}
+#map_wrapper #map_header H1 DIV {
+    display: block;
+}
+#map_wrapper #map_header H1 DIV.none {
+    display: none;
+}
+#map_wrapper #map_header H1:hover DIV {
+    display: none;
+}
+#map_wrapper #map_header H1:hover DIV.none {
+    display: block;
+}
+#map_wrapper #map_header .sepMin {
+    background: url("http://icons.wxug.com/i/wm/searchBarTicks.png") no-repeat scroll 0 0 transparent;
+    height: 36px;
+    width: 1px;
+}
+#map_wrapper #map_header .sepMed {
+    background: url("http://icons.wxug.com/i/wm/searchBarTicks.png") no-repeat scroll -1px 0 transparent;
+    height: 36px;
+    width: 1px;
+}
+#map_wrapper #map_header .sepMax {
+    background: url("http://icons.wxug.com/i/wm/searchBarTicks.png") no-repeat scroll -2px 0 transparent;
+    height: 36px;
+    width: 1px;
+}
+#map_wrapper #map_header #mapFavsBox {
+    margin-left: 10px;
+    padding-top: 6px;
+}
+#map_wrapper #map_header #mapFavorites {
+    font-size: 12px;
+    height: 23px;
+    line-height: 23px;
+    padding-left: 5px;
+    width: 100%;
+}
+#map_wrapper #map_header #mapSearch {
+    float: left;
+    margin-left: 10px;
+    padding-top: 6px;
+}
+#map_wrapper #map_header #mapSearch #mapSearchBox {
+    border-color: #A0A0A0 -moz-use-text-color #666666 #666666;
+    border-style: solid none solid solid;
+    border-width: 1px 0 1px 1px;
+    font-size: 12px;
+    height: 19px;
+    line-height: 19px;
+    padding-left: 5px;
+    width: 187px;
+}
+#map_wrapper #map_header #mapSearch #mapGoButton {
+    background: url("http://icons.wxug.com/i/wm/searchBarSubmit.png") no-repeat scroll 0 0 transparent;
+    border: 0 none;
+    display: block;
+    height: 23px;
+    padding: 0;
+    width: 29px;
+}
+#map_wrapper #map_header #linkBox {
+    float: right;
+    height: 36px;
+    position: relative;
+    width: 242px;
+}
+#map_wrapper #map_header #linkToThisPageButton {
+    background: url("http://icons.wxug.com/i/wm/searchBarButtons.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    float: left;
+    height: 36px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 110px;
+    z-index: 10;
+}
+#map_wrapper #map_header #linkToSettingsButton {
+    background: url("http://icons.wxug.com/i/wm/searchBarButtons.png") no-repeat scroll -110px 0 transparent;
+    display: block;
+    float: left;
+    height: 36px;
+    left: 109px;
+    position: absolute;
+    top: 0;
+    width: 92px;
+    z-index: 10;
+}
+#map_wrapper #map_header #linkToFullScreenButton {
+    background: url("http://icons.wxug.com/i/wm/searchBarButtons.png") no-repeat scroll -202px 0 transparent;
+    display: block;
+    float: left;
+    height: 36px;
+    left: 204px;
+    position: absolute;
+    top: 0;
+    width: 38px;
+    z-index: 10;
+}
+#map_wrapper #map_header #linkToThisPageButton:hover {
+    background-position: 0 -36px;
+    z-index: 11;
+}
+#map_wrapper #map_header #linkToSettingsButton:hover {
+    background-position: -110px -36px;
+    z-index: 11;
+}
+#map_wrapper #map_header #linkToFullScreenButton:hover {
+    background-position: -202px -36px;
+    z-index: 11;
+}
+#map_wrapper #map_header #linkToThisPageButton.linkActive {
+    background-position: 0 -72px;
+    z-index: 12;
+}
+#map_wrapper #map_header #linkToSettingsButton.linkActive {
+    background-position: -110px -72px;
+    z-index: 12;
+}
+#map_wrapper #map_header #linkToFullScreenButton.linkActive {
+    background-position: -202px -72px;
+    z-index: 12;
+}
+#map_wrapper #map_header #tlc {
+    float: left;
+    height: 36px;
+    line-height: 36px;
+    margin-left: 10px;
+}
+#map_wrapper #map_header #linkToSavePrefs {
+    background: url("http://icons.wxug.com/i/wm/savePrefs.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    float: left;
+    height: 36px;
+    left: 109px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 96px;
+    z-index: 10;
+}
+#map_wrapper #map_header #linkToSavePrefs:hover {
+    background-position: 0 -36px;
+    z-index: 11;
+}
+#map_wrapper #map_header #linkToSavePrefs.ajax-loading {
+    background-image: url("http://icons.wxug.com/graphics/wu2/ajax-loading.gif") !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+}
+.infoBox {
+    background-color: #FFFFFF;
+    border: 3px solid #000000;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0 0 5px #333333;
+    color: #333333;
+    width: 414px;
+    z-index: 2000;
+}
+.infoBox A {
+    text-decoration: none;
+}
+.infoBox BUTTON {
+    background: url("http://icons.wxug.com/i/wu/wuFormBG.png") repeat-x scroll 0 0 transparent;
+    border: 1px solid #999999;
+    border-radius: 3px 3px 3px 3px;
+    color: #333333;
+    font-size: 12px;
+    height: 21px;
+}
+.infoBox .infobox-pointer {
+    background: url("http://icons.wxug.com/i/wu/infoBoxPointer.png") no-repeat scroll 0 0 transparent;
+    height: 37px;
+    left: -12px;
+    position: absolute;
+    top: 4px;
+    width: 9px;
+}
+.infoBox .infobox-pointer-top {
+    background: url("http://icons.wxug.com/i/wu/infoBoxPointerTop.png") no-repeat scroll left center transparent;
+    height: 9px;
+    overflow: hidden;
+    position: absolute;
+    right: 3px;
+    top: -12px;
+    width: 20px;
+}
+.infoBox .infobox-pointer-bot {
+    background: url("http://icons.wxug.com/i/wu/infoBoxPointerBot.png") no-repeat scroll left center transparent;
+    bottom: -12px;
+    height: 9px;
+    overflow: hidden;
+    position: absolute;
+    right: 3px;
+    width: 20px;
+}
+.infoBox .infobox-title {
+    background: url("http://icons.wxug.com/i/wu/wmTitleBG.png") repeat-x scroll 0 0 transparent;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    color: #333333;
+    font-size: 14px;
+    font-weight: bold;
+    height: 33px;
+    line-height: 33px;
+    overflow: hidden;
+    padding-left: 10px;
+    white-space: nowrap;
+}
+.infoBox .ui-tabs .ui-tabs-nav {
+    background: url("http://icons.wxug.com/i/wu/wmTabsBG.png") repeat-x scroll 0 0 transparent;
+    height: 31px;
+    margin: 0;
+    padding: 4px 0 0;
+    position: relative;
+}
+.infoBox .ui-tabs .ui-tabs-nav .ui-state-default {
+    background-color: #E8E8E8;
+    border-color: #BFBFBF #BFBFBF #999999;
+    border-style: solid;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-width: 1px;
+    color: #213F9A;
+    display: block;
+    float: left;
+    height: 29px;
+    line-height: 29px;
+    margin-left: 3px;
+    padding: 0 10px;
+}
+.infoBox .ui-tabs .ui-tabs-nav .ui-tabs-selected {
+    background-color: #FFFFFF;
+    border-color: #999999 #999999 #FFFFFF;
+    border-style: solid;
+    border-width: 1px;
+    color: #333333;
+}
+.infoBox .ui-tabs .ui-tabs-nav .ui-tabs-selected a {
+    color: #333333;
+    font-weight: bold;
+}
+.infoBox .ui-tabs .ui-tabs-nav .ui-tabs-selected a:hover {
+    text-decoration: none;
+}
+.infoBox .ui-tabs .ui-tabs-hide {
+    display: none;
+}
+.infoBox #nowCond {
+    width: 190px;
+}
+.infoBox #nowCond #curIcon {
+    float: left;
+    height: 48px;
+    width: 48px;
+}
+.infoBox #nowCond #curIcon IMG {
+    background-color: #FFFFFF;
+    border: 1px solid #BEBEBE;
+    height: 46px;
+    width: 46px;
+}
+.infoBox #nowCond #curCond {
+    color: #333333;
+    float: left;
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: 10px;
+    width: 132px;
+}
+.infoBox #nowTemp {
+    width: 89px;
+}
+.infoBox #nowTemp #tempActual {
+    font-size: 24px;
+    font-weight: bold;
+}
+.infoBox #nowTemp #tempActual SPAN.tempUnit {
+    color: #666666;
+    font-weight: normal;
+}
+.infoBox #nowTemp #tempFeel {
+    color: #666666;
+    font-size: 11px;
+    margin-top: 1px;
+}
+
+.infoBox #nowRain {
+    width: 89px;
+
+}
+.infoBox #nowRain #rain {
+    font-size: 24px;
+    font-weight: bold;
+}
+.infoBox #nowRain #rain SPAN.rainUnit {
+    color: #666666;
+    font-weight: normal;
+}
+
+.infoBox #nowWind {
+    width: 89px;
+
+}
+.infoBox #nowWind #wind {
+    font-size: 24px;
+    font-weight: bold;
+}
+.infoBox #nowWind #wind SPAN.windUnit {
+    color: #666666;
+    font-weight: normal;
+}
+
+.infoBox #nowWind {
+    width: 63px;
+}
+.infoBox #nowWind #windCompassContainer {
+    height: 64px;
+    margin-top: 2px;
+    overflow: hidden;
+    width: 62px;
+}
+.infoBox #nowWind #windCompass {
+    background: url("http://icons.wxug.com/i/wu/windCompass64.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    height: 64px;
+    width: 62px;
+}
+.infoBox #nowWind #windCompassSpeed {
+    color: #333333;
+    display: block;
+    font-size: 11px;
+    font-weight: normal;
+    left: 9px;
+    position: relative;
+    text-align: center;
+    top: -41px;
+    width: 44px;
+    z-index: 100;
+}
+.infoBox #infoCamCal {
+    background: url("http://icons.wxug.com/i/wu/iconCAL.png") no-repeat scroll 0 0 transparent;
+    height: 22px;
+    line-height: 22px;
+    padding-left: 27px;
+}
+.infoBox #infoCamVid {
+    background: url("http://icons.wxug.com/i/wu/iconVID.png") no-repeat scroll 0 0 transparent;
+    height: 22px;
+    line-height: 22px;
+    margin-top: 3px;
+    padding-left: 27px;
+}
+.infoBox #infoCamNow {
+    background: url("http://icons.wxug.com/i/wu/iconPIC.png") no-repeat scroll 0 0 transparent;
+    height: 22px;
+    line-height: 22px;
+    margin-top: 3px;
+    padding-left: 27px;
+}
+.infoBox #infoCamPws {
+    background: url("http://icons.wxug.com/i/wu/iconPWS.png") no-repeat scroll 0 0 transparent;
+    height: 22px;
+    line-height: 22px;
+    margin-top: 3px;
+    padding-left: 27px;
+}
+#map_wrapper #icon_tray {
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    left: 0;
+    margin: 0 467px 0 10px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 231px;
+}
+#map_wrapper #icon_tray #icon_tray_content {
+    background: url("http://icons.wxug.com/i/wm/trayBG.png") repeat-x scroll 0 0 transparent;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    height: 32px;
+}
+#map_wrapper #icon_tray #icon_tray_content .layerIcon {
+    background-position: 0 0;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    display: block;
+    float: left;
+    height: 32px;
+    margin-left: 1px;
+    width: 32px;
+}
+#map_wrapper #icon_tray #icon_tray_content .layerIcon:first-child {
+    border: 0 none;
+}
+#map_wrapper #icon_tray #icon_tray_content .layerIcon:hover {
+    background-position: 0 -32px;
+}
+#map_wrapper #icon_tray #icon_tray_content .layerIcon.selected {
+    background-position: 0 -64px;
+}
+#map_wrapper #icon_tray #icon_tray_content .LayerWeatherStations_layerIcon {
+    background: url("http://icons.wxug.com/i/wm/trayWeatherStations.png") no-repeat scroll 0 0 transparent;
+}
+#map_wrapper #icon_tray #icon_tray_content .LayerRadarAnimGif_layerIcon {
+    background: url("http://icons.wxug.com/i/wm/trayRadar.png") no-repeat scroll 0 0 transparent;
+}
+#map_wrapper #icon_tray #icon_tray_content .LayerTornado_layerIcon {
+    background: url("http://icons.wxug.com/i/wm/trayTornado.png") no-repeat scroll 0 0 transparent;
+}
+#map_wrapper #icon_tray #icon_tray_content .LayerHurricane_layerIcon {
+    background: url("http://icons.wxug.com/i/wm/trayHurricane.png") no-repeat scroll 0 0 transparent;
+}
+#map_wrapper #icon_tray #icon_tray_content .LayerFire_layerIcon {
+    background: url("http://icons.wxug.com/i/wm/trayFire.png") no-repeat scroll 0 0 transparent;
+}
+#map_wrapper #icon_tray #icon_tray_content .LayerModelData_layerIcon {
+    background: url("http://icons.wxug.com/i/wm/trayModelData.png") no-repeat scroll 0 0 transparent;
+}
+#map_wrapper #icon_tray #icon_tray_content .LayerPhotos_layerIcon {
+    background: url("http://icons.wxug.com/i/wm/trayPhotos.png") no-repeat scroll 0 0 transparent;
+}
+.trayData {
+    background-color: #FFFFFF;
+    border: 3px solid #000000;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0 0 5px #333333;
+    color: #333333;
+    left: 10px;
+    position: absolute;
+    top: 42px;
+    width: 300px;
+    z-index: 5000;
+}
+.trayData .p5 {
+    background: url("http://icons.wxug.com/i/wu/tableHeaderBG.png") repeat-x scroll center top transparent;
+    border-bottom: 1px solid #BEBEBE;
+    border-left: 0 none !important;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    font-weight: bold;
+    height: 27px;
+    line-height: 27px;
+    padding: 0 10px;
+    text-align: left;
+    white-space: nowrap;
+}
+.trayData .pageNum {
+    background: url("http://icons.wxug.com/i/wu/tableHeaderBG.png") repeat-x scroll center top transparent;
+    border-bottom: 1px solid #BEBEBE;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-left: 0 none !important;
+    height: 27px;
+    line-height: 27px;
+    padding: 0 10px;
+    text-align: center;
+    white-space: nowrap;
+}
+.infobox-pointer-top-left {
+    background: url("http://icons.wxug.com/i/wu/infoBoxPointerTop.png") no-repeat scroll left center transparent;
+    height: 9px;
+    left: 12px;
+    overflow: hidden;
+    position: absolute;
+    top: -12px;
+    width: 20px;
+}
+#uvTabLabel {
+    display: none !important;
+}
+.tablescroll_head {
+    width: 100% !important;
+}
+.tablescroll_body {
+    width: 100% !important;
+}
+.tablescroll_foot {
+    width: 100% !important;
+}
+.contentTable {
+    font-size: 11px;
+    width: 100%;
+}
+.tablescroll_head THEAD TR TH {
+    background: url("//icons.wxug.com/i/wu/tableHeaderBG.png") repeat-x scroll center top transparent;
+    border-bottom: 1px solid #BEBEBE;
+    border-left: 1px solid #E0E0E0;
+    font-weight: bold;
+    height: 27px;
+    line-height: 27px;
+    padding: 0 10px;
+    text-align: left;
+    white-space: nowrap;
+}
+.tablescroll_head THEAD TR TH:first-child {
+    border-left: 0 none !important;
+    border-top-left-radius: 5px;
+}
+.tablescroll_head THEAD TR TH:last-child {
+    border-top-right-radius: 5px;
+}
+.tablescroll_head THEAD TR TH.taC {
+    text-align: center;
+}
+.tablescroll_body TBODY TR TD {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #E0E0E0;
+    border-left: 1px solid #E0E0E0;
+    padding: 7px 5px 7px 10px;
+}
+.tablescroll_body TBODY TR TD:first-child {
+    border-left: 0 none !important;
+}
+.tablescroll_body TBODY TR:hover TD {
+    background-color: #E2E8F3;
+}
+.tablescroll_body TBODY TR.nh:hover TD {
+    background-color: #FFFFFF;
+}
+.tablescroll_body TBODY TR.near TD {
+    padding: 3px 10px;
+}
+.tablescroll_body TBODY TR.nob TD {
+    border: 0 none;
+}
+.tablescroll_body TBODY TR.gbg TD {
+    background-color: #E0E0E0;
+}
+.tablescroll_body TBODY TR.gbg:hover TD {
+    background-color: #E0E0E0;
+}
+.tablescroll_foot TFOOT TR TD {
+    border-top: 1px solid #BEBEBE;
+    min-height: 27px;
+    padding: 7px 10px;
+    text-align: center;
+}
+.tablescroll_foot TFOOT TR TD.lightFooter {
+    background: url("//icons.wxug.com/i/wu/gradDownSmall.png") repeat-x scroll 0 0 #FFFFFF;
+}
+.tablescroll_foot TFOOT TR TD.darkFooter {
+    background: url("//icons.wxug.com/i/wu/nowBarBG.png") repeat-x scroll center top #EFEFEF;
+}
+.tablescroll_body TD.linkAway {
+    padding: 0 10px;
+}
+.tablescroll_body TD.linkAway A {
+    background: url("//icons.wxug.com/i/wu/websiteArrow.png") no-repeat scroll center center transparent;
+    display: block;
+    height: 27px;
+    width: 27px;
+}
+#map_wrapper #controls_container {
+    font-size: 11px;
+    position: absolute;
+    right: 337px;
+    top: 0;
+    width: 120px;
+}
+#map_wrapper.panel-collapsed #controls_container {
+    position: absolute;
+    right: 337px;
+    top: 0;
+}
+#map_wrapper #controls_container #types_button {
+    background: url("http://icons.wxug.com/i/wm/trayBG.png") repeat-x scroll 0 0 transparent;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    color: #FFFFFF;
+    display: block;
+    font-weight: bold;
+    height: 32px;
+    line-height: 32px;
+    min-width: 60px;
+    padding: 0 7px;
+    text-align: left;
+    text-decoration: none;
+}
+#map_wrapper #controls_container #types_button:hover {
+    background: none repeat scroll 0 0 #000000;
+    box-shadow: 0 0 3px #333333;
+    opacity: 1;
+}
+#map_wrapper #controls_container #types_button.buttonActive {
+    opacity: 0.6;
+}
+#map_wrapper #controls_container #types_panel {
+    background: url("http://icons.wxug.com/i/misc/transBlack.png") repeat scroll 0 0 transparent;
+    left: 0;
+    position: absolute;
+    top: 20px;
+    width: 100%;
+}
+#map_wrapper #controls_container #types_panel UL {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+#map_wrapper #controls_container #types_panel UL LI {
+    color: #FFFFFF;
+    cursor: pointer;
+    height: 21px;
+    line-height: 21px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0 0 0 10px;
+}
+#map_wrapper #controls_container #types_panel UL LI:hover {
+    background-color: #000000;
+}
+#map_wrapper #controls_container #types_panel UL LI.selected {
+    background-color: #000000;
+    font-weight: bold;
+}
+#map_wrapper #controls_container #types_panel #LayerTraffic {
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    color: #FFFFFF;
+    height: 25px;
+    line-height: 25px;
+    padding-left: 5px;
+}
+#map_wrapper #controls_container #types_panel #LayerTraffic:hover {
+    background-color: #000000;
+}
+#map_wrapper #controls_container #types_panel {
+    background: url("http://icons.wxug.com/i/misc/transBlack.png") repeat scroll 0 0 transparent;
+}
+#map_wrapper #controls_container:hover #types_panel {
+    background: url("http://icons.wxug.com/i/misc/transBlack.png") repeat scroll 0 0 transparent;
+}
+#map_wrapper #controls_container:hover #types_button {
+    background: none repeat scroll 0 0 #000000;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+#mapQuickJump {
+    left: 72px !important;
+}
+#mapQuickJump .mapQuickJumpDefault {
+    background: url("http://icons.wxug.com/i/wm/zoomBG.png") repeat scroll 0 0 transparent;
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: block;
+    font-size: 11px;
+    font-weight: bold;
+    height: 21px;
+    line-height: 21px;
+    opacity: 0.4;
+    padding: 0 7px 0 17px;
+    text-align: center;
+}
+#mapQuickJump .mapQuickJumpActive {
+    opacity: 0.6 !important;
+}
+#mapQuickJump .mapQuickJumpDefault:hover {
+    opacity: 0.8 !important;
+}
+#mapQuickJump .mapQuickJumpDefault:first-child {
+    margin-bottom: 4px;
+}
+#mapQuickJump .mapQuickJumpDefault:last-child {
+    margin-top: 3px;
+}
+#mapQuickJump.maptypeid_roadmap {
+    top: 262px !important;
+}
+#mapQuickJump.maptypeid_roadmap .mapQuickJumpDefault:first-child {
+    margin-bottom: 4px !important;
+}
+#mapQuickJump.maptypeid_roadmap .mapQuickJumpDefault:last-child {
+    margin-top: 3px !important;
+}
+#mapQuickJump.maptypeid_darkmap {
+    top: 254px !important;
+}
+#mapQuickJump.maptypeid_darkmap .mapQuickJumpDefault:first-child {
+    margin-bottom: 4px !important;
+}
+#mapQuickJump.maptypeid_darkmap .mapQuickJumpDefault:last-child {
+    margin-top: 3px !important;
+}
+#mapQuickJump.maptypeid_lightmap {
+    top: 254px !important;
+}
+#mapQuickJump.maptypeid_lightmap .mapQuickJumpDefault:first-child {
+    margin-bottom: 4px !important;
+}
+#mapQuickJump.maptypeid_lightmap .mapQuickJumpDefault:last-child {
+    margin-top: 3px !important;
+}
+#mapQuickJump.maptypeid_satellite {
+    top: 254px !important;
+}
+#mapQuickJump.maptypeid_satellite .mapQuickJumpDefault:first-child {
+    margin-bottom: 4px !important;
+}
+#mapQuickJump.maptypeid_satellite .mapQuickJumpDefault:last-child {
+    margin-top: 3px !important;
+}
+#mapQuickJump.maptypeid_hybrid {
+    top: 254px !important;
+}
+#mapQuickJump.maptypeid_hybrid .mapQuickJumpDefault:first-child {
+    margin-bottom: 4px !important;
+}
+#mapQuickJump.maptypeid_hybrid .mapQuickJumpDefault:last-child {
+    margin-top: 3px !important;
+}
+#mapQuickJump.maptypeid_terrain {
+    top: 215px !important;
+}
+#mapQuickJump.maptypeid_terrain .mapQuickJumpDefault:first-child {
+    margin-bottom: 4px !important;
+}
+#mapQuickJump.maptypeid_terrain .mapQuickJumpDefault:last-child {
+    margin-top: 3px !important;
+}
+#mapQuickJump.maptypeid_polarnavy_vector {
+    top: 215px !important;
+}
+#mapQuickJump.maptypeid_polarnavy_vector .mapQuickJumpDefault:first-child {
+    margin-bottom: 4px !important;
+}
+#mapQuickJump.maptypeid_polarnavy_vector .mapQuickJumpDefault:last-child {
+    margin-top: 3px !important;
+}
+#mapQuickJump.maptypeid_polarnavy_raster {
+    top: 215px !important;
+}
+#mapQuickJump.maptypeid_polarnavy_raster .mapQuickJumpDefault:first-child {
+    margin-bottom: 4px !important;
+}
+#mapQuickJump.maptypeid_polarnavy_raster .mapQuickJumpDefault:last-child {
+    margin-top: 3px !important;
+}
+#accordion {
+    background-color: #FFFFFF;
+}
+#accordion .ui-tabs .ui-tabs-nav {
+    background-color: #CCE5FD;
+    border-bottom: 1px solid #91B9E1;
+    border-top: 1px solid #91B9E1;
+    height: 24px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+#accordion .ui-tabs .ui-tabs-nav .ui-state-default {
+    border-right: 1px solid #91B9E1;
+    color: #04459C;
+    display: block;
+    float: left;
+    padding: 5px 8px;
+}
+#accordion .ui-tabs .ui-tabs-nav .ui-tabs-selected {
+    background-color: #91B9E1;
+    color: #FFFFFF;
+}
+#accordion .ui-tabs .ui-tabs-nav .ui-tabs-selected a {
+    color: #FFFFFF;
+    font-weight: bold;
+}
+#accordion .ui-tabs .ui-tabs-hide {
+    display: none;
+}
+#accordion .layerTitle:hover {
+    color: #333333;
+}
+#accordion .layerTitle.selected {
+    color: #333333;
+}
+#accordion .layerTitle.selected .optionCog {
+    background: url("http://icons.wxug.com/i/wm/layerButtons.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    height: 20px;
+    position: absolute;
+    right: 16px;
+    top: 4px;
+    width: 20px;
+    z-index: 5;
+}
+#accordion .layerTitle.selected .optionCog:hover {
+    background-position: 0 -20px;
+}
+#accordion .layerTitle.selected .optionCog.selected {
+    background-position: 0 -40px;
+}
+#accordion .layerTitle.accordion-header {
+    background: url("http://icons.wxug.com/i/wm/folderArrows.png") no-repeat scroll 296px 0 transparent;
+}
+#accordion .layerTitle.accordion-header:hover {
+    background-position: 296px -56px;
+}
+#accordion .layerTitle.selected.accordion-header {
+    background-position: 296px -28px;
+}
+#accordion .layerTitle.selected.accordion-header:hover {
+    background-position: 296px -56px;
+}
+#accordion .layerTitle.accordion-header-selected {
+    background: url("http://icons.wxug.com/i/wm/folderArrows.png") no-repeat scroll 296px -84px transparent;
+}
+#accordion .layerTitle.accordion-header-selected:hover {
+    background-position: 296px -140px;
+}
+#accordion .layerTitle.selected.accordion-header-selected {
+    background: url("http://icons.wxug.com/i/wm/folderArrows.png") no-repeat scroll 296px -112px transparent;
+}
+#accordion .layerTitle.selected.accordion-header-selected:hover {
+    background-position: 296px -140px;
+}
+#accordion .layerTitle .wuCheckbox {
+    left: 12px;
+    position: absolute;
+    top: 3px;
+}
+#accordion .layerTitle:hover .wuCheckbox {
+    background-position: 0 -24px;
+}
+#accordion .layerTitle.selected:hover .wuCheckbox {
+    background-position: 0 -48px;
+}
+#accordion .layerTitle INPUT {
+    left: 12px;
+    outline-style: none;
+    position: absolute;
+    top: 4px;
+}
+#accordion .layerTitle .layerName {
+    left: 43px;
+    position: absolute;
+}
+#accordion .accordion-content .layerTitle {
+    background: url("http://icons.wxug.com/i/wm/groupBG.png") repeat-x scroll center center #EDEDED;
+}
+#accordion .accordion-content .layerTitle:first-child {
+    background: url("http://icons.wxug.com/i/wm/groupBG.png") repeat-x scroll center top #EDEDED;
+}
+#accordion .accordion-content .layerTitle:last-child {
+    background: url("http://icons.wxug.com/i/wm/groupBG.png") repeat-x scroll center bottom #EDEDED;
+}
+#accordion .accordion-content .layerTitle .wuCheckbox {
+    left: 32px;
+    position: absolute;
+    top: 3px;
+}
+#accordion .accordion-content .layerTitle:hover .wuCheckbox {
+    background-position: 0 -24px;
+}
+#accordion .accordion-content .layerTitle.selected:hover .wuCheckbox {
+    background-position: 0 -48px;
+}
+#accordion .accordion-content .layerTitle INPUT {
+    display: none;
+}
+#accordion .accordion-content .layerTitle .layerName {
+    left: 63px;
+    position: absolute;
+}
+#accordion .wuCheckbox {
+    background: url("//icons.wxug.com/i/wu/wuCheckbox.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    height: 24px;
+    width: 24px;
+}
+#accordion .wuCheckbox:hover {
+    background-position: 0 -24px;
+}
+#accordion .selected .wuCheckbox {
+    background-position: 0 -48px;
+}
+#accordion .selected .wuCheckbox:hover {
+    background-position: 0 -48px;
+}
+.layerTitle .hasTimelord {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("http://icons.wxug.com/i/wu/iconClock.png");
+    background-origin: padding-box;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: 14px 14px;
+    float: right;
+    height: 14px;
+    position: absolute;
+    right: 45px;
+    top: 7px;
+    width: 14px;
+}
+.layerTitle {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #CCCCCC;
+    color: #666666;
+    cursor: pointer;
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    height: 28px;
+    line-height: 28px;
+    position: relative;
+    width: 100%;
+    z-index: 4;
+}
+.legendTitle {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #CCCCCC;
+    color: #666666;
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    height: 28px;
+    line-height: 28px;
+    position: relative;
+    width: 100%;
+    z-index: 4;
+}
+.legendTable {
+    font-size: 11px;
+    margin: 10px;
+    width: 100%;
+}
+.legendTable TR:first-child TD {
+    font-size: 12px;
+    padding-bottom: 10px;
+}
+.legendTable TR TD {
+    vertical-align: middle;
+}
+#LayerRoadTripPlanner_row_template {
+    display: none;
+}
+#LayerRoadTripPlanner_options TABLE TR TD:first-child {
+    padding-right: 7px;
+}
+#LayerRoadTripPlanner_options {
+    background: url("http://icons.wxug.com/i/wm/groupBG.png") repeat-x scroll center top transparent;
+    font-size: 11px;
+    padding-top: 10px;
+}
+#LayerRoadTripPlanner_options .LayerRoadTripPlanner_place {
+    border: 1px solid #A0A0A0;
+    height: 21px;
+    line-height: 21px;
+    padding: 0 0 0 5px;
+    width: 240px;
+}
+#LayerRoadTripPlanner_options .swapVert {
+    background: url("http://icons.wxug.com/i/wm/swap.png") no-repeat scroll 0 0 transparent;
+    height: 23px;
+    margin-bottom: 4px;
+    margin-top: 4px;
+    width: 23px;
+}
+#LayerRoadTripPlanner_options .LayerRoadTripPlanner_mode_driving .LayerRoadTripPlanner_letter {
+    background: url("http://icons.wxug.com/i/wm/travelBy.png") no-repeat scroll 0 0 transparent;
+    color: #999999;
+    font-size: 12px;
+    font-weight: bold;
+    height: 26px;
+    line-height: 26px;
+    padding-right: 6px;
+    text-align: right;
+    width: 34px;
+}
+#LayerRoadTripPlanner_options .LayerRoadTripPlanner_mode_bicycling .LayerRoadTripPlanner_letter {
+    background: url("http://icons.wxug.com/i/wm/travelBy.png") no-repeat scroll 0 -26px transparent;
+    color: #999999;
+    font-size: 12px;
+    font-weight: bold;
+    height: 26px;
+    line-height: 26px;
+    padding-right: 6px;
+    text-align: right;
+    width: 34px;
+}
+#LayerRoadTripPlanner_options .LayerRoadTripPlanner_date {
+    border: 1px solid #A0A0A0;
+    height: 21px;
+    line-height: 21px;
+    padding: 0 0 0 5px;
+    width: 130px;
+}
+#LayerRoadTripPlanner_displayArea .nodata {
+    display: none;
+}
+.LayerRoadTripPlanner_alternatives TD {
+    padding: 0 !important;
+}
+.LayerRoadTripPlanner_alternatives UL {
+    list-style-type: none;
+    margin: 10px 0;
+    padding: 0;
+}
+.LayerRoadTripPlanner_alternatives UL LI {
+    cursor: pointer;
+    list-style-type: none;
+    margin: 4px 14px;
+    overflow: hidden;
+    padding: 0 0 0 25px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.LayerRoadTripPlanner_alternatives UL LI {
+    background: url("http://icons.wxug.com/i/wu/wuRadio.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    height: 16px;
+    line-height: 16px;
+}
+.LayerRoadTripPlanner_alternatives UL LI:hover {
+    background-position: 0 -16px;
+}
+.LayerRoadTripPlanner_alternatives UL LI.selected {
+    background-position: 0 -32px;
+    cursor: default !important;
+}
+.LayerRoadTripPlanner_alternatives UL LI.selected:hover {
+    background-position: 0 -32px;
+}
+.LayerRoadTripPlanner_letter_generic {
+    background: url("http://icons.wxug.com/i/wm/travelBy.png") no-repeat scroll 0 0 transparent;
+    color: #999999;
+    font-size: 12px;
+    font-weight: bold;
+    height: 26px;
+    line-height: 26px;
+    padding-right: 6px;
+    text-align: right;
+    width: 34px;
+}
+TH .LayerRoadTripPlanner_letter {
+    background: url("http://icons.wxug.com/i/wm/travelBy.png") no-repeat scroll 0 0 transparent;
+    color: #999999;
+    font-size: 12px;
+    font-weight: bold;
+    height: 26px;
+    line-height: 26px;
+    margin: 4px 0 4px 6px;
+    padding-right: 6px;
+    text-align: right;
+    width: 34px;
+}
+#map_wrapper #map_panel {
+    border-left: 1px solid #999999;
+    border-right: 1px solid #999999;
+    bottom: 0;
+    margin: 0;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 326px;
+}
+#map_wrapper #map_panel #map_panel_header {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #CCCCCC;
+    height: 32px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    width: 326px;
+    z-index: 1;
+}
+#map_wrapper #map_panel #map_panel_header LI {
+    list-style-type: none;
+}
+#map_wrapper #map_panel #map_panel_body {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 37px;
+}
+#map_wrapper #map_panel #map_panel_content .ui-tabs-hide {
+    display: none;
+}
+#map_wrapper #map_panel #map_panel_header #doLayers {
+    background: url("http://icons.wxug.com/i/wm/layersHeader.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    height: 32px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 117px;
+}
+#map_wrapper #map_panel #map_panel_header #doRoad {
+    background: url("http://icons.wxug.com/i/wm/layersHeader.png") no-repeat scroll -117px 0 transparent;
+    display: block;
+    height: 32px;
+    left: 117px;
+    position: absolute;
+    top: 0;
+    width: 112px;
+}
+#map_wrapper #map_panel #map_panel_header #doEvents {
+    background: url("http://icons.wxug.com/i/wm/layersHeader.png") no-repeat scroll -229px 0 transparent;
+    display: block;
+    height: 32px;
+    left: 229px;
+    position: absolute;
+    top: 0;
+    width: 97px;
+}
+#map_wrapper #map_panel #map_panel_header #doLayers:hover {
+    background-position: 0 -32px;
+}
+#map_wrapper #map_panel #map_panel_header #doRoad:hover {
+    background-position: -117px -32px;
+}
+#map_wrapper #map_panel #map_panel_header #doEvents:hover {
+    background-position: -229px -32px;
+}
+#map_wrapper #map_panel #map_panel_header .ui-tabs-selected #doLayers {
+    background-position: 0 -64px;
+}
+#map_wrapper #map_panel #map_panel_header .ui-tabs-selected #doRoad {
+    background-position: -117px -64px;
+}
+#map_wrapper #map_panel #map_panel_header .ui-tabs-selected #doEvents {
+    background-position: -229px -64px;
+}
+#map_wrapper #map_panel #map_panel_header .ui-tabs-selected #doLayers:hover {
+    background-position: 0 -96px;
+}
+#map_wrapper #map_panel #map_panel_header .ui-tabs-selected #doRoad:hover {
+    background-position: -117px -96px;
+}
+#map_wrapper #map_panel #map_panel_header .ui-tabs-selected #doEvents:hover {
+    background-position: -229px -96px;
+}
+#map_wrapper #map_panel #map_panel_content {
+    bottom: 0;
+    height: auto;
+    left: 0;
+    margin: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+#map_wrapper #map_panel .showAd #map_panel_content {
+    bottom: 277px;
+    height: auto;
+    left: 0;
+    margin: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+#map_wrapper #map_panel .showAd #map_panel_footer {
+    background-color: #E6E6E6;
+    border-top: 1px solid #CCCCCC;
+    bottom: 0;
+    height: 276px;
+    margin-top: 100%;
+    overflow: hidden;
+    position: absolute;
+}
+#map_wrapper #map_panel .showAd #map_panel_footer .adBox {
+    margin: 13px 0 0 13px;
+}
+#map_wrapper #map_panel_content {
+    height: 100%;
+    overflow-y: auto;
+    position: relative;
+}
+#map_wrapper #map_panel_button {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: url("http://icons.wxug.com/i/wu/panelArrowLeft.gif") no-repeat scroll center center #FFFFFF;
+    border-bottom-left-radius: 8px;
+    border-color: #5E8BCE -moz-use-text-color #5E8BCE #5E8BCE;
+    border-image: none;
+    border-style: solid none solid solid;
+    border-top-left-radius: 8px;
+    border-width: 1px 0 1px 1px;
+    height: 14px;
+    left: -30px;
+    padding: 7px 0;
+    position: absolute;
+    text-align: center;
+    top: 255px;
+    width: 28px;
+}
+#map_wrapper #map_panel_button.expanded {
+    background-image: url("http://icons.wxug.com/i/wu/panelArrowRight.gif");
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+#map_wrapper #map_panel .adBox {
+    position: relative;
+    z-index: 3;
+}
+#map_wrapper.panel-collapsed #map_panel {
+    border: 0 none;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    right: 1px;
+}
+#map_wrapper.panel-collapsed #map_panel #map_panel_header {
+    border-bottom: 0 none;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+#map_wrapper.panel-collapsed #map_panel #map_panel_header #doLayers {
+    border-bottom-left-radius: 3px;
+}
+#map_wrapper.panel-collapsed #map_panel #map_panel_header #doEvents {
+    border-bottom-right-radius: 3px;
+}
+#map_wrapper.panel-collapsed #map_panel #map_panel_body {
+    display: none;
+}
+#map_wrapper #map_timebar #minBar {
+    background: url("http://icons.wxug.com/i/wm/minBarBG.png") repeat-x scroll 0 0 transparent;
+    border-bottom: 1px solid #878787;
+    border-top: 1px solid #999999;
+    height: 32px;
+}
+#map_wrapper #map_timebar #minBar #map_animate_play {
+    background: url("http://icons.wxug.com/i/wm/tlAnimate.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    height: 21px;
+    left: 10px;
+    position: absolute;
+    top: 7px;
+    width: 56px;
+}
+#map_wrapper #map_timebar #minBar #map_animate_play.selected {
+    background-position: 0 -21px;
+}
+#map_wrapper #map_timebar #minBar.labels #map_time_select {
+    background: url("http://icons.wxug.com/i/wm/tlPeriod.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    height: 32px;
+    left: 77px;
+    position: absolute;
+    top: 1px;
+    width: 132px;
+    z-index: 1;
+}
+#map_wrapper #map_timebar #minBar.labels #map_time_select.linkActive {
+    background-position: 0 -32px;
+    left: 77px;
+    z-index: 2;
+}
+#map_wrapper #map_timebar #minBar.labels #map_datepicker_inc {
+    background: url("http://icons.wxug.com/i/wm/tlPicker.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    height: 32px;
+    left: 208px;
+    position: absolute;
+    top: 1px;
+    width: 109px;
+    z-index: 1;
+}
+#map_wrapper #map_timebar #minBar.labels #map_datepicker_inc.linkActive {
+    background-position: 0 -32px;
+    z-index: 2;
+}
+#map_wrapper #map_timebar #minBar #map_display_now {
+    background: url("http://icons.wxug.com/i/wm/tlNow.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    height: 22px;
+    left: 327px;
+    position: absolute;
+    top: 6px;
+    width: 38px;
+}
+#map_wrapper #map_timebar #minBar #map_display_now.selected {
+    background-position: 0 -22px;
+}
+#map_wrapper #map_timebar #minBar #map_timebar_button {
+    background: url("http://icons.wxug.com/i/wm/tlCollapse.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    height: 32px;
+    position: absolute;
+    right: 0;
+    top: 1px;
+    width: 30px;
+}
+#map_wrapper #map_timebar #minBar #map_datepicker {
+    height: 32px;
+    left: 375px;
+    line-height: 32px;
+    position: absolute;
+    top: 1px;
+}
+#map_wrapper #map_timebar #minBar #map_datepicker #map_datepicker_pretty {
+    color: #333333;
+    float: left;
+    font-size: 13px;
+    font-weight: bold;
+    height: 32px;
+    line-height: 32px;
+    margin-right: 10px;
+    white-space: nowrap;
+}
+#map_wrapper #map_timebar #minBar #map_data_type {
+    float: left;
+    height: 32px;
+    line-height: 32px;
+}
+#map_wrapper #map_timebar #minBar #map_data_type SPAN {
+    border-radius: 3px 3px 3px 3px;
+    font-size: 11px;
+    font-weight: bold;
+    height: 16px;
+    line-height: 16px;
+    margin-top: 7px;
+    padding: 1px 5px;
+    text-align: center;
+}
+#map_wrapper.timelord-past #map_timebar #minBar #map_data_type .dataPast {
+    display: block;
+}
+#map_wrapper.timelord-past #map_timebar #minBar #map_data_type .dataCurrent {
+    display: none;
+}
+#map_wrapper.timelord-past #map_timebar #minBar #map_data_type .dataForecast {
+    display: none;
+}
+#map_wrapper.timelord-present #map_timebar #minBar #map_data_type .dataPast {
+    display: none;
+}
+#map_wrapper.timelord-present #map_timebar #minBar #map_data_type .dataCurrent {
+    display: block;
+}
+#map_wrapper.timelord-present #map_timebar #minBar #map_data_type .dataForecast {
+    display: none;
+}
+#map_wrapper.timelord-future #map_timebar #minBar #map_data_type .dataPast {
+    display: none;
+}
+#map_wrapper.timelord-future #map_timebar #minBar #map_data_type .dataCurrent {
+    display: none;
+}
+#map_wrapper.timelord-future #map_timebar #minBar #map_data_type .dataForecast {
+    display: block;
+}
+#map_wrapper.timelord-past #map_timebar #minBar #map_data_type SPAN {
+    background-color: #213F9A;
+    color: #FFFFFF;
+}
+#map_wrapper.timelord-present #map_timebar #minBar #map_data_type SPAN {
+    background-color: #389B06;
+    color: #FFFFFF;
+}
+#map_wrapper.timelord-future #map_timebar #minBar #map_data_type SPAN {
+    background-color: #FF5B00;
+    color: #FFFFFF;
+}
+#map_wrapper.timelord-collapsed #map_timebar #minBar #map_timebar_button {
+    background-position: 0 -32px;
+}
+#map_wrapper #map_timebar #minBar.nolabels #map_datepicker_inc {
+    background: url("http://icons.wxug.com/i/wm/tlIncrement.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    height: 32px;
+    left: 445px;
+    position: absolute;
+    top: 1px;
+    width: 36px;
+    z-index: 1;
+}
+#map_wrapper #map_timebar #minBar.nolabels #map_datepicker_inc.linkActive {
+    background-position: 0 -32px;
+    z-index: 2;
+}
+#map_wrapper #map_timebar #minBar.nolabels #map_time_select {
+    background: url("http://icons.wxug.com/i/wm/tlDate.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    height: 32px;
+    left: 480px;
+    position: absolute;
+    top: 1px;
+    width: 35px;
+    z-index: 1;
+}
+#map_wrapper #map_timebar #minBar.nolabels #map_time_select.linkActive {
+    background-position: 0 -32px;
+    left: 480px;
+    z-index: 2;
+}
+#map_wrapper #timePanel {
+    bottom: 100px;
+    font-size: 11px;
+    left: 12px;
+    position: absolute;
+    width: 380px;
+    z-index: 2000;
+}
+#map_wrapper #timePanel .pointDown {
+    background: url("http://icons.wxug.com/i/wm/pointDown.png") no-repeat scroll 0 0 transparent;
+    height: 9px;
+    margin-left: 125px;
+    width: 17px;
+}
+#map_wrapper #timePanel .contentData {
+    width: 360px !important;
+}
+#map_wrapper.timelord-collapsed #timePanel {
+    bottom: 44px;
+    left: 410px;
+    position: absolute;
+}
+#map_wrapper #timePanel #timePresets {
+    border-top: 1px solid #D9D9D9;
+    padding-bottom: 10px;
+    width: 360px;
+}
+#map_wrapper #timePanel #timeCustom {
+    border-top: 1px solid #D9D9D9;
+    padding-bottom: 10px;
+    width: 360px;
+}
+#map_wrapper #timePanel #timeCustom .borderLeft {
+    border-left: 1px solid #D9D9D9;
+}
+#map_wrapper #timePanel #timeCustom SELECT {
+    font-size: 10px;
+    margin-right: 5px;
+}
+#map_wrapper #timePanel #timeAction {
+    border-top: 1px solid #D9D9D9;
+    width: 360px;
+}
+#map_wrapper #map_timebar #minBar #map_cal_incrementors {
+    bottom: 100px;
+    left: 77px;
+    position: absolute;
+    width: 370px;
+}
+#map_wrapper #map_timebar #minBar #map_cal_incrementors #map_cal_inc_box {
+    background-color: #FFFFFF;
+    border: 3px solid #000000;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0 0 5px #333333;
+    color: #333333;
+    padding: 5px 10px;
+    position: relative;
+}
+#map_wrapper #map_timebar #minBar #map_cal_incrementors #map_inline_calendar {
+    float: left;
+    height: 234px;
+    position: relative;
+    width: 204px;
+}
+#map_wrapper #map_timebar #minBar #map_cal_incrementors #map_inline_calendar .ui-datepicker-inline {
+    display: none;
+    position: absolute;
+    top: 5px;
+}
+#map_wrapper #map_timebar #minBar #map_cal_incrementors #map_inline_calendar .ui-datepicker-inline A {
+    cursor: pointer;
+}
+#map_wrapper #map_timebar #minBar #map_cal_incrementors #map_inline_calendar .ui-datepicker-inline TR:last-child TD {
+    border-bottom: 0 none !important;
+}
+#map_wrapper #map_timebar #minBar #map_cal_incrementors #map_inline_calendar .ui-datepicker-inline TR:last-child TD:first-child {
+    border-bottom-left-radius: 5px;
+}
+#map_wrapper #map_timebar #minBar #map_cal_incrementors #map_inline_calendar .ui-datepicker-inline TR:last-child TD:last-child {
+    border-bottom-right-radius: 5px;
+}
+#map_wrapper #map_timebar #minBar #map_cal_incrementors #map_inline_calendar .ui-datepicker-inline .ui-datepicker-current-day {
+    background: none repeat scroll 0 0 #D9D9D9;
+}
+#map_wrapper #map_timebar #minBar #map_cal_incrementors #map_datepicker_date {
+    border: 0 none;
+    padding: 0;
+    visibility: hidden;
+    width: 0;
+}
+#map_wrapper #map_timebar #minBar #map_cal_incrementors #map_datepicker_time {
+    border: 0 none;
+    padding: 0;
+    visibility: hidden;
+    width: 0;
+}
+#map_wrapper #map_timebar #minBar #map_cal_incrementors #map_cal_nav {
+    float: right;
+    margin-top: 5px;
+    width: 130px;
+}
+#map_wrapper #map_timebar #minBar #map_cal_incrementors #map_cal_nav TR TD {
+    border-top: 1px solid #CCCCCC;
+    padding: 5px;
+}
+#map_wrapper #map_timebar #minBar #map_cal_incrementors #map_cal_nav TR:first-child TD {
+    border: 0 none !important;
+}
+#map_wrapper #map_timebar #minBar #map_cal_incrementors #map_cal_nav TR TD.nobr DIV {
+    height: 20px;
+    width: 47px;
+}
+#map_wrapper #map_timebar #minBar #map_cal_incrementors .calLeft {
+    background: url("http://icons.wxug.com/i/wm/tlIncrementArrows.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    float: right;
+    height: 20px;
+    overflow: hidden;
+    width: 24px;
+}
+#map_wrapper #map_timebar #minBar #map_cal_incrementors .calRight {
+    background: url("http://icons.wxug.com/i/wm/tlIncrementArrows.png") no-repeat scroll -24px 0 transparent;
+    display: block;
+    float: right;
+    height: 20px;
+    overflow: hidden;
+    width: 23px;
+}
+#map_wrapper #map_timebar #minBar #map_cal_incrementors .pointDown {
+    background: url("http://icons.wxug.com/i/wm/pointDown.png") no-repeat scroll center bottom transparent;
+    height: 9px;
+}
+#map_wrapper.timelord-collapsed #map_timebar #minBar #map_cal_incrementors {
+    bottom: 44px;
+}
+#map_wrapper.timelord-collapsed #map_timebar #displayRange {
+    cursor: pointer;
+    height: 6px;
+    overflow: hidden;
+    position: relative;
+}
+#map_wrapper #map_timebar #displayRange {
+    cursor: pointer;
+    height: 21px;
+    overflow: hidden;
+    position: relative;
+}
+#map_wrapper #map_timebar #displayRange .timelineContent {
+    background: url("http://icons.wxug.com/i/wm/tlAnimateBG.png") repeat-x scroll 0 0 transparent;
+    height: 21px;
+}
+#map_wrapper #map_timebar #displayRange .timelineContent .dataPast {
+    background: url("http://icons.wxug.com/i/wm/tlAnimateBG.png") repeat-x scroll 0 -21px transparent;
+    float: left;
+    height: 21px;
+    width: 60%;
+}
+#map_wrapper #map_timebar #displayRange .timelineContent .dataForecast {
+    background: url("http://icons.wxug.com/i/wm/tlAnimateBG.png") repeat-x scroll 0 -42px transparent;
+    float: left;
+    height: 21px;
+    width: 40%;
+}
+#map_wrapper #map_timebar .timelineScrub {
+    cursor: move;
+    height: 21px;
+    left: 60%;
+    position: absolute;
+    top: 0;
+    width: 1px;
+}
+#map_wrapper #map_timebar .timelineScrub .timelineScrubBg {
+    background: url("http://icons.wxug.com/i/wm/tlScrub.png") no-repeat scroll 0 0 transparent;
+    height: 100%;
+    left: -6px;
+    position: absolute;
+    top: 0;
+    width: 13px;
+}
+#map_wrapper.timelord-past #map_timebar .timelineScrub .timelineScrubBg {
+    background-position: 0 0;
+}
+#map_wrapper.timelord-present #map_timebar .timelineScrub .timelineScrubBg {
+    background-position: 0 -21px;
+}
+#map_wrapper.timelord-future #map_timebar .timelineScrub .timelineScrubBg {
+    background-position: 0 -42px;
+}
+#map_wrapper #map_timebar #displayRange .timelineTicks {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    width: 100%;
+}
+#map_wrapper #map_timebar #displayRange .timelineTicks .tickMajor {
+    background: url("http://icons.wxug.com/i/wm/rangeTick.png") no-repeat scroll left top transparent;
+    color: #666666;
+    font-size: 9px;
+    height: 21px;
+    left: 0;
+    line-height: 10px;
+    position: absolute;
+    top: 0;
+}
+#map_wrapper #map_timebar #displayRange .timelineTicks .tickMajor .tickLabel {
+    padding-left: 2px;
+}
+#map_wrapper #map_timebar #displayRange .timelineTicks .tickMajor .tickMinor {
+    border-left: 1px solid #BEBEBE;
+    bottom: 0;
+    color: #999999;
+    font-size: 9px;
+    height: 10px;
+    left: 0;
+    line-height: 10px;
+    padding-left: 1px;
+    position: absolute;
+    width: 5px;
+}
+#map_wrapper.timelord-collapsed #map_timebar .timelineTicks {
+    display: none;
+}
+#map_wrapper #map_timebar #masterTimeline .timelineContent {
+    background: url("http://icons.wxug.com/i/wm/tlTimelineBG.png") repeat-x scroll 0 0 transparent;
+    border-bottom: 1px solid #4D4D4D;
+    border-top: 1px solid #4D4D4D;
+    display: block;
+    height: 21px;
+    margin: 0 19px;
+    overflow: hidden;
+    position: relative;
+}
+#map_wrapper #map_timebar #masterTimeline .timelineContent .timelineTicks {
+    height: 100%;
+    position: relative;
+    right: 0;
+}
+#map_wrapper #map_timebar #masterTimeline .timelineContent .timelineTicks {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+#map_wrapper #map_timebar #masterTimeline .timelineContent .timelineTicks .tickMajor {
+    color: #FFFFFF;
+    font-size: 9px;
+    height: 21px;
+    left: 0;
+    line-height: 10px;
+    position: absolute;
+    top: 0;
+}
+#map_wrapper #map_timebar #masterTimeline .timelineContent .timelineTicks .tickLabel {
+    padding-left: 2px;
+}
+#map_wrapper #map_timebar #masterTimeline .timelineContent .timelineTicks .tickMinor {
+    background: url("http://icons.wxug.com/i/wm/tlMacroDivide.png") no-repeat scroll left bottom transparent;
+    bottom: 0;
+    color: #FFFFFF;
+    font-size: 9px;
+    height: 10px;
+    left: 0;
+    line-height: 10px;
+    padding-left: 1px;
+    position: absolute;
+    width: 5px;
+}
+#map_wrapper #map_timebar #masterTimeline .timelineContent .dataPast {
+    background: url("http://icons.wxug.com/i/wm/tlTimelineBG.png") repeat-x scroll 0 -21px transparent;
+    display: block;
+    float: left;
+    height: 21px;
+}
+#map_wrapper #map_timebar #masterTimeline .timelineContent .dataForecast {
+    background: url("http://icons.wxug.com/i/wm/tlTimelineBG.png") repeat-x scroll 0 -42px transparent;
+    display: block;
+    float: left;
+    height: 21px;
+}
+#map_wrapper #map_timebar #masterTimeline .timeline_arrow_right {
+    background: url("http://icons.wxug.com/i/wm/timelineArrows.png") no-repeat scroll -19px 0 transparent;
+    bottom: 18px;
+    display: block;
+    height: 23px;
+    position: absolute;
+    right: 10px;
+    width: 19px;
+}
+#map_wrapper #map_timebar #masterTimeline .timeline_arrow_right:hover {
+    background-position: -19px -23px;
+}
+#map_wrapper #map_timebar #masterTimeline .timeline_arrow_left {
+    background: url("http://icons.wxug.com/i/wm/timelineArrows.png") no-repeat scroll 0 0 transparent;
+    bottom: 18px;
+    display: block;
+    height: 23px;
+    left: 10px;
+    position: absolute;
+    width: 19px;
+}
+#map_wrapper #map_timebar #masterTimeline .timeline_arrow_left:hover {
+    background-position: 0 -23px;
+}
+#map_wrapper #map_timebar #masterTimeline .timelineViewport {
+    background: url("http://icons.wxug.com/i/wm/tlViewportBG.png") repeat-x scroll 0 0 transparent;
+    bottom: 0;
+    cursor: move;
+    display: block;
+    height: 21px;
+    left: 0;
+    position: absolute;
+    width: 180px;
+}
+#map_wrapper #map_timebar #masterTimeline .timelineViewport .ui-resizable-w {
+    background: url("http://icons.wxug.com/i/wm/tlGrips.png") no-repeat scroll 0 0 transparent;
+    bottom: 0;
+    cursor: w-resize;
+    height: 21px;
+    left: -15px;
+    position: absolute;
+    width: 15px;
+}
+#map_wrapper #map_timebar #masterTimeline .timelineViewport .ui-resizable-e {
+    background: url("http://icons.wxug.com/i/wm/tlGrips.png") no-repeat scroll -15px 0 transparent;
+    bottom: 0;
+    cursor: e-resize;
+    height: 21px;
+    position: absolute;
+    right: -15px;
+    width: 15px;
+}
+#map_wrapper #map_timebar #masterTimeline .timelineViewportContainment {
+    bottom: 0;
+    display: block;
+    height: 21px;
+    left: 13px;
+    position: absolute;
+    right: 13px;
+}
+#map_wrapper #map_timebar #macroTime {
+    background: url("http://icons.wxug.com/i/wm/tlMacroBG.png") repeat-x scroll 0 0 transparent;
+    height: 41px;
+    padding: 0 10px;
+}
+#map_wrapper #map_timebar #macroTime #macroTick {
+    background: url("http://icons.wxug.com/i/wm/tlMacroTick.png") no-repeat scroll 0 0 transparent;
+    bottom: 0;
+    height: 18px;
+    left: 10px;
+    position: absolute;
+    width: 1px;
+}
+#map_wrapper #map_timebar #macroTime #scaleTime {
+    background: url("http://icons.wxug.com/i/wm/tlScaleBG.png") no-repeat scroll 0 0 transparent;
+    bottom: 0;
+    height: 18px;
+    line-height: 18px;
+    position: absolute;
+    right: 10px;
+    width: 198px;
+}
+#map_wrapper #map_timebar #macroTime #scaleTime #scaleSlider {
+    bottom: 0;
+    height: 18px;
+    position: absolute;
+    right: 36px;
+    width: 149px;
+}
+#map_wrapper #map_timebar #macroTime #scaleTime #scaleSlider .ui-slider-handle {
+    background: url("http://icons.wxug.com/i/wm/tlScaleKnob.png") no-repeat scroll 0 0 transparent;
+    bottom: 1px;
+    cursor: pointer;
+    height: 15px;
+    position: absolute;
+    right: 130px;
+    width: 11px;
+}
+#map_wrapper #map_timebar #macroTime #scaleTime #scalePlus {
+    bottom: 0;
+    cursor: pointer;
+    display: block;
+    height: 18px;
+    position: absolute;
+    right: 23px;
+    width: 8px;
+}
+#map_wrapper #map_timebar #macroTime #scaleTime #scaleMinus {
+    bottom: 0;
+    cursor: pointer;
+    display: block;
+    height: 18px;
+    position: absolute;
+    right: 191px;
+    width: 8px;
+}
+#map_wrapper.timelord-collapsed #macroTime {
+    display: none;
+}
+#tutorial {
+    background: url("http://icons.wxug.com/i/misc/transBlack.png") repeat scroll 0 0 transparent;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 300;
+}
+#tutorial .tutBox {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #2F52AA;
+    box-shadow: 4px 4px 5px rgba(50, 50, 50, 0.75);
+    overflow: visible;
+    padding: 10px;
+    position: absolute;
+    text-align: center;
+}
+#tutorial .tutBox P, #tutorial .tutBox h2 {
+    font-family: 'Shadows Into Light Two',cursive;
+}
+#tutorial .tutBox P {
+    color: #333333;
+    font-size: 22px;
+    line-height: 26px;
+    margin: 0;
+    padding: 0;
+}
+#tutorial .tutBox P SPAN {
+    color: #EE831A;
+}
+#tutorial .arrow {
+    background-repeat: no-repeat;
+    position: absolute;
+}
+#tutorial #tut_newWM {
+    left: 50%;
+    margin-left: -170px;
+    margin-top: -100px;
+    padding: 0;
+    top: 50%;
+    width: 340px;
+}
+#tutorial #tut_newWM p {
+    margin: 5px 10px 10px;
+}
+#tutorial #tut_newWM div {
+    background: linear-gradient(to bottom, #E2E2E2 0px, #EFEFEF 4px, #EFEFEF 100%) repeat scroll 0 0 transparent;
+    border-radius: 0 0 5px 5px;
+    padding-bottom: 25px;
+    padding-top: 25px;
+}
+#tutorial #tut_newWM h2 {
+    background-image: url("http://icons.wxug.com/i/wm/tutorial/newMap.gif");
+    color: #004A81;
+    font-size: 30px;
+    font-weight: 400;
+    height: 47px;
+    margin: 20px auto 0;
+    text-indent: -9999px;
+    width: 280px;
+}
+#tutorial #tut_extraData {
+    left: 20px;
+    top: 75px;
+    width: 100px;
+}
+#tutorial #tut_extraData .arrow {
+    background-image: url("http://icons.wxug.com/i/wm/tutorial/arrow_ExtraData.png");
+    height: 56px;
+    left: -10px;
+    top: -25px;
+    width: 31px;
+}
+#tutorial #tut_moreMaps {
+    right: 433px;
+    top: 118px;
+    width: 165px;
+}
+#tutorial #tut_moreMaps .arrow {
+    background-image: url("http://icons.wxug.com/i/wm/tutorial/arrow_MoreMaps.png");
+    height: 65px;
+    right: -25px;
+    top: -55px;
+    width: 38px;
+}
+#tutorial #tut_roadTrip {
+    right: 220px;
+    top: 135px;
+    width: 174px;
+}
+#tutorial #tut_roadTrip .arrow {
+    background-image: url("http://icons.wxug.com/i/wm/tutorial/arrow_RoadTrip.png");
+    height: 96px;
+    right: -37px;
+    top: -76px;
+    width: 69px;
+}
+#tutorial #tut_legends {
+    right: 25px;
+    top: 105px;
+    width: 152px;
+}
+#tutorial #tut_legends .arrow {
+    background-image: url("http://icons.wxug.com/i/wm/tutorial/arrow_Legends.png");
+    height: 57px;
+    right: 8px;
+    top: -45px;
+    width: 55px;
+}
+#tutorial #tut_animationMoved {
+    bottom: 130px;
+    left: 44px;
+    width: 230px;
+}
+#tutorial #tut_animationMoved .arrow {
+    background-image: url("http://icons.wxug.com/i/wm/tutorial/arrow_AnimationMoved.png");
+    bottom: -36px;
+    height: 57px;
+    left: -42px;
+    width: 55px;
+}
+#tutorial #tut_historicalData {
+    bottom: 140px;
+    left: 315px;
+    width: 180px;
+}
+#tutorial #tut_historicalData .arrow {
+    background-image: url("http://icons.wxug.com/i/wm/tutorial/arrow_historicalData.png");
+    bottom: -60px;
+    height: 83px;
+    left: -65px;
+    width: 93px;
+}
+#tutorial #tut_animationPeriod {
+    bottom: 105px;
+    left: 68%;
+    width: 160px;
+}
+#tutorial #tut_animationPeriod .arrow {
+    background-image: url("http://icons.wxug.com/i/wm/tutorial/arrow_AnimationPeriod.png");
+    bottom: -98px;
+    height: 105px;
+    left: -25px;
+    width: 140px;
+}
+.wuForm LABEL.radio {
+    height: 16px;
+    line-height: 16px;
+    margin-bottom: 5px;
+    position: relative;
+}
+.wuForm LABEL.radio INPUT {
+    border: 0 none;
+    height: 1px;
+    left: 1px;
+    outline-style: none;
+    position: absolute;
+    top: 0;
+    width: 1px;
+}
+.wuForm LABEL.radio .wuRadio {
+    background: url("//icons.wxug.com/i/wu/wuRadio.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    height: 16px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 17px;
+}
+.wuForm LABEL.radio .wuRadio:hover {
+    background-position: 0 -16px;
+}
+.wuForm LABEL.radio.selected .wuRadio {
+    background-position: 0 -32px;
+}
+.wuForm LABEL.radio.selected .wuRadio:hover {
+    background-position: 0 -32px;
+}
+.wuForm LABEL.radio .fieldName {
+    left: 20px;
+    position: absolute;
+    top: 0;
+}
+.wuForm LABEL.radio:hover .wuRadio {
+    background-position: 0 -16px;
+}
+.wuForm LABEL.radio.selected:hover .wuRadio {
+    background-position: 0 -32px;
+}
+.wuForm LABEL.radio .fieldName {
+    left: 20px;
+    position: absolute;
+    white-space: nowrap;
+}
+.wuForm LABEL.check {
+    height: 24px;
+    line-height: 24px;
+    position: relative;
+}
+.wuForm LABEL.check .wuCheck {
+    left: 0;
+    position: absolute;
+    top: 0;
+}
+.wuForm LABEL.check:hover .wuCheck {
+    background-position: 0 -24px;
+}
+.wuForm LABEL.check.selected:hover .wuCheck {
+    background-position: 0 -48px;
+}
+.wuForm LABEL.check .fieldName {
+    left: 31px;
+    position: absolute;
+    top: 0;
+    white-space: nowrap;
+}
+.wuForm BUTTON {
+    background: url("//icons.wxug.com/i/wu/wuFormBG.png") repeat-x scroll 0 0 transparent;
+    border: 1px solid #999999;
+    border-radius: 3px 3px 3px 3px;
+    color: #333333;
+    cursor: pointer;
+    font-size: 11px;
+    height: 23px;
+}
+.wuForm BUTTON.selected {
+    background: url("//icons.wxug.com/i/wu/wuFormActiveBG.png") repeat-x scroll 0 0 transparent;
+    border: 1px solid #666666;
+    color: #666666;
+}
+.wuForm BUTTON.disabled {
+    cursor: default;
+    opacity: 0.5;
+}
+.wuForm .wuDate {
+    white-space: nowrap;
+}
+.wuForm .wuDate INPUT {
+    border-bottom: 1px solid #A0A0A0;
+    border-top: 1px solid #A0A0A0;
+    float: right;
+    height: 21px;
+    line-height: 21px;
+    padding: 0 0 0 5px;
+}
+.wuForm .wuDate A {
+    background: url("//icons.wxug.com/i/wu/wuFormCal.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    float: right;
+    height: 23px;
+    width: 21px;
+}
+.wuForm .wuDate A.selected {
+    background-position: 0 -23px;
+}
+.wuForm .wuDrop {
+    font-size: 11px;
+    height: 23px;
+    line-height: 21px;
+    position: relative;
+}
+.wuForm .wuDrop .wuDropSelected {
+    background: url("//icons.wxug.com/i/wu/wuFormBG.png") repeat-x scroll right top transparent;
+    border: 1px solid #999999;
+    border-radius: 3px 3px 3px 3px;
+    color: #333333;
+    display: block;
+    height: 21px;
+    line-height: 21px;
+    padding: 0 21px 0 4px;
+}
+.wuForm .wuDrop .wuDropSelected:hover {
+    text-decoration: none;
+}
+.wuForm .wuDrop .wuDropList {
+    border: 1px solid #A0A0A0;
+    left: 0;
+    position: absolute;
+    top: 21px;
+    width: 100%;
+}
+.wuForm .wuDrop .wuDropList A {
+    background-color: #F8F8F8;
+    color: #333333;
+    display: block;
+    height: 21px;
+    line-height: 21px;
+    padding-left: 4px;
+}
+.wuForm .wuDrop .wuDropList A:hover {
+    background-color: #ECECEC;
+    text-decoration: none;
+}
+#ui-datepicker-div {
+    border: 3px solid #000000;
+    display: none;
+}
+#ui-datepicker-div TR:last-child TD {
+    border-bottom: 0 none !important;
+}
+#ui-datepicker-div TR:last-child TD:first-child {
+    border-bottom-left-radius: 5px;
+}
+#ui-datepicker-div TR:last-child TD:last-child {
+    border-bottom-right-radius: 5px;
+}
+#ui-datepicker-div .ui-datepicker-current-day {
+    background: none repeat scroll 0 0 #D9D9D9;
+}
+.ToolPanelClose {
+    background: url("http://icons.wxug.com/i/wxmap/close.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    height: 24px;
+    position: absolute;
+    right: -12px;
+    top: -12px;
+    width: 24px;
+}
+#accordion .layerTitle SMALL {
+    display: none;
+}
+.ui-slider {
+    position: relative;
+}
+.ui-slider .ui-slider-handle {
+    background: url("http://icons.wxug.com/i/wu/sliderKnob.png") no-repeat scroll center center transparent;
+    cursor: pointer;
+    height: 14px;
+    margin-left: -7px;
+    position: absolute;
+    width: 14px;
+}
+.timelord-warning {
+    color: #999999 !important;
+}
+#linkPanel {
+    position: absolute;
+    right: 0;
+    top: 10px;
+    z-index: 10;
+}
+#sharePanel {
+    color: #555555;
+    font-size: 11px;
+    position: absolute;
+    right: 148px;
+    top: 50px;
+    width: 350px;
+    z-index: 2000;
+}
+#settingsPanel {
+    color: #555555;
+    font-size: 11px;
+    position: absolute;
+    right: 48px;
+    top: 50px;
+    width: 350px;
+    z-index: 2000;
+}
+.infoBox .panelTitle {
+    color: #333333;
+    font-size: 12px;
+}
+.infoBox .groupTitle {
+    color: #555555;
+    font-size: 10px;
+    padding: 7px 0 10px;
+}
+.groupFooter {
+    background: url("http://icons.wxug.com/i/wm/groupBG.png") repeat-x scroll center bottom transparent;
+}
+.ajax-loading {
+    background-image: url("http://icons.wxug.com/graphics/wu2/ajax-loading.gif") !important;
+    background-position: right center !important;
+    background-repeat: no-repeat !important;
+}
+.slider_bg {
+    background: url("http://icons.wxug.com/i/wu/sliderBG.gif") no-repeat scroll left center #FFFFFF;
+    height: 14px;
+    width: 150px;
+}
+.slider_knob {
+    background: url("http://icons.wxug.com/i/wu/sliderKnob.png") no-repeat scroll center center transparent;
+    cursor: pointer;
+    height: 14px;
+    width: 14px;
+}
+.selectorBox {
+    background-color: #F5F5F5;
+    border-top: 1px solid #CCCCCC;
+    padding: 5px 0;
+}
+.selectorBox TABLE TR TD.endOption {
+    padding-right: 15px;
+}
+.selectorBox TABLE TR TD A {
+    color: #213F9A;
+}
+.mapBalloon {
+    font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;
+    font-size: 11px;
+    width: 380px;
+}
+.mapBalloon .mapStationInfo {
+    background-color: #F5F5F5;
+    border: 1px solid #CCCCCC;
+    margin: 10px 0 5px;
+    padding: 5px;
+    width: 150px;
+}
+.mapBalloon .mapStationInfo A {
+    color: #0000FF;
+}
+.stormBalloon .stormTable TD {
+    border-bottom: 1px solid #EFEFEF;
+    color: #333333;
+    font-size: 11px;
+    padding: 2px;
+}
+.cleanTable TD {
+    border-bottom: 1px solid #EFEFEF;
+    color: #333333;
+    font-size: 11px;
+    padding: 2px;
+    vertical-align: top;
+}
+.hotelBalloon {
+    min-height: 150px;
+    width: 350px;
+}
+.hotelBalloon .imagePane {
+    float: left;
+    min-height: 150px;
+    text-align: center;
+    width: 120px;
+}
+.hotelBalloon .imagePane IMG {
+    border: 1px solid #000000;
+    margin-top: 10px;
+}
+.hotelBalloon .textPane {
+    font-size: 14px;
+    margin-top: 10px;
+}
+.hotelBalloon .textPane .hotelDirections {
+    margin-top: 10px;
+    text-transform: capitalize;
+}
+#LayerPhotos_options SELECT {
+    margin-right: 5px;
+}
+#optionsTable .subG {
+    background-color: #EEEEEE;
+    border-bottom: 2px groove #CCCCCC;
+    border-left: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
+}
+#optionsTable .subG A {
+    border-bottom: 1px dotted #213F9A;
+    color: #213F9A;
+    text-decoration: none;
+}
+#optionsTable .subW A {
+    border-bottom: 1px dotted #FFFFFF;
+    color: #000000;
+    font-weight: bold;
+    text-decoration: none;
+}
+#optionsTable .subW {
+    background: url("http://icons.wxug.com/graphics/wu2/options_indicator.gif") no-repeat scroll right center #FFFFFF;
+}
+#LayerWeatherStations_ShowHidePWS {
+    cursor: pointer;
+}
+HR {
+    height: 1px;
+    line-height: 1px;
+    margin: 0 auto;
+    width: 288px;
+}
+#tabTable {
+    margin: 0 5px;
+    max-width: 288px;
+}
+#tabTable .active {
+    background-color: #496CD8;
+    border-left: 1px solid #666666;
+    border-right: 1px solid #333333;
+    border-top: 1px solid #666666;
+    color: #FFFFFF;
+    font-weight: bold;
+    padding: 2px 10px;
+}
+#tabTable .active A {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+#tabTable .inactive {
+    padding: 2px 10px;
+}
+#tabTable .inactive SPAN {
+    border-bottom: 1px solid #0000FF;
+    color: #0000FF;
+    cursor: pointer;
+}
+#tabTable .inactive A {
+    color: #213F9A;
+}
+.LayerHurricane_box {
+    border-bottom: 1px solid #CCCCCC;
+    clear: both;
+    margin-bottom: 5px;
+    padding: 3px 0;
+}
+.LayerHurricane_box INPUT {
+    float: left;
+}
+.LayerHurricane_box A {
+    display: block;
+    margin-left: 15px;
+}
+.LayerHurricane_box A IMG {
+    margin: 2px 3px;
+}
+.LayerRadarAnimGif_box {
+    border-bottom: 1px solid #CCCCCC;
+    clear: both;
+    margin-bottom: 5px;
+    padding: 3px 0;
+}
+.LayerRadarAnimGif_box A {
+    display: block;
+    margin-left: 1px;
+}
+.LayerRadarAnimGif_box A IMG {
+    margin: 0 5px 0 2px;
+}
+.LayerPhotos_box {
+    border-bottom: 1px solid #CCCCCC;
+    clear: both;
+    padding: 5px 0;
+}
+.LayerPhotos_box A {
+    display: block;
+    margin-left: 1px;
+    text-decoration: none;
+}
+.LayerPhotos_box A IMG {
+    margin: 0 5px 0 2px;
+}
+.LayerPhotos_box A SPAN.b {
+    white-space: nowrap;
+}
+.LayerPhotos_box A SPAN.grey {
+    color: #666666;
+}
+.LayerModelData_maptitle {
+    background-color: #FFFFFF;
+    border: 1px solid #000000;
+    color: black;
+    font-family: Arial,sans-serif;
+    font-size: 11px;
+    height: 12px;
+    padding: 1px 3px;
+    text-align: center;
+    width: 11em;
+}
+.LayerNDFD_maptitle {
+    background-color: #FFFFFF;
+    border: 1px solid #000000;
+    color: black;
+    font-family: Arial,sans-serif;
+    font-size: 11px;
+    height: 12px;
+    padding: 1px;
+    text-align: center;
+    width: 11.5em;
+}
+.LayerRecords_maptitle {
+    background-color: #FFFFFF;
+    border: 1px solid #000000;
+    color: black;
+    font-family: Arial,sans-serif;
+    font-size: 11px;
+    height: 12px;
+    padding: 1px 3px;
+    text-align: center;
+    width: 10.5em;
+}
+#LayerModelData_displayArea2 {
+    display: none;
+}
+.wundermapTabs {
+    display: none;
+}
+.balloonInfo {
+    margin: 0 0 10px;
+    min-height: 200px;
+    overflow: hidden;
+    width: 275px;
+}
+.balloonInfo .picArrow {
+    background-color: #F5F5F5;
+    border: 1px solid #CCCCCC;
+    color: #172C6C;
+    font-size: 20px;
+    padding: 2px;
+    text-decoration: none;
+}
+.balloonInfo .subG {
+    margin-top: 2px;
+}
+UL.tornadolist {
+    list-style: none outside none;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+UL.tornadolist LI {
+    background-color: #FFFFFF;
+    border-bottom: 1px dotted #CCCCCC;
+    cursor: pointer;
+    list-style: none outside none;
+    margin: 0;
+    padding: 4px;
+}
+UL.tornadolist LI:hover {
+    background-color: #F5F5F5;
+}
+UL.tornadolist LI .type {
+    color: #555555;
+}
+UL.tornadolist LI.pictures {
+    background: url("http://icons.wxug.com/graphics/wu2/photo-icon.png") no-repeat scroll right top transparent;
+}
+UL LI.HOTEL {
+    list-style-image: url("http://icons.wxug.com/graphics/fodors/hotels-12.png");
+}
+UL LI.NIGHT {
+    list-style-image: url("http://icons.wxug.com/graphics/fodors/nightlife-12.png");
+}
+UL LI.REST {
+    list-style-image: url("http://icons.wxug.com/graphics/fodors/restaurants-12.png");
+}
+UL LI.SHOP {
+    list-style-image: url("http://icons.wxug.com/graphics/fodors/shopping-12.png");
+}
+UL LI.SIGHT {
+    list-style-image: url("http://icons.wxug.com/graphics/fodors/sights-12.png");
+}
+.navTable {
+    margin-top: 5px;
+    width: 100%;
+}
+.navTable TR TD {
+    text-align: center;
+    white-space: nowrap;
+    width: 50%;
+}
+INPUT.error {
+    border: 1px solid #FF0000;
+    color: #FF0000;
+}
+.contentBox A.red {
+    color: #FF0000;
+}
+#mapAdmin_viewPrefsFrame {
+    background-color: #FFFFFF;
+    border: 1px solid #172C6C;
+    height: 350px;
+    width: 280px;
+}
+.google_note {
+    color: #999999;
+}
+.google_impnote {
+    color: #C00000;
+}
+.adSponsor {
+    color: #666666;
+    float: left;
+    height: 31px;
+    margin: 2px 10px 0;
+    overflow: hidden;
+}
+.adSponsor IMG {
+    margin-left: 5px;
+}
+.adSponsor .adminStuff {
+    display: none;
+}
+.adCreative {
+    margin: 0;
+    padding: 0;
+}
+.unit300x250 {
+    margin: 0;
+    padding: 0;
+}
+.dividerLeft {
+    border-left: 1px solid #FFFFFF;
+    height: 30px;
+}
+.dividerRight {
+    border-right: 1px solid #CCCCCC;
+    height: 30px;
+}
+.pl10 {
+    padding-left: 10px;
+}
+.pr10 {
+    padding-right: 10px;
+}
+.tinyIcon {
+    font-size: 11px;
+    height: 15px;
+    line-height: 15px;
+}
+.mapPlay, .mapStop {
+    cursor: pointer;
+    display: block;
+    font-size: 11px;
+    height: 15px;
+    line-height: 15px;
+    padding-left: 25px;
+}
+.mapPlay.none, .mapStop.none {
+    display: none;
+}
+.mapPlay {
+    background: url("http://icons.wxug.com/i/wu/radarAnimate.png") no-repeat scroll 0 0 transparent;
+}
+.mapStop {
+    background: url("http://icons.wxug.com/i/wu/radarAnimate.png") no-repeat scroll 0 -16px transparent;
+}
+.nodata {
+    color: #999999;
+    font-style: italic;
+    padding: 5px 8px;
+}
+.contentTable TR {
+    max-width: 300px;
+}
+.contentTable TD {
+    word-wrap: break-word;
+}
+TD.sortH {
+    background: url("http://icons.wxug.com/i/wu/tableHeaderBG.png") repeat-x scroll center top transparent;
+    border-bottom: 1px solid #BEBEBE;
+    border-left: 1px solid #E0E0E0;
+    border-top: 1px solid #E0E0E0;
+    font-weight: bold;
+    height: 27px;
+    line-height: 27px;
+    padding: 0 10px;
+    text-align: left;
+    white-space: nowrap;
+}
+.controlsHead {
+    border-bottom: 1px solid #DDDDDD;
+    color: #AAAAAA;
+    font-style: italic;
+    font-weight: normal;
+    margin: auto 0;
+    padding: 0 0 3px;
+}
+.optionDiv {
+    color: #333333;
+    font-size: 11px;
+    left: 0;
+    margin: 7px 9px 0 10px;
+    padding: 10px;
+    right: 0;
+    top: 0;
+    width: auto !important;
+    z-index: 999;
+}
+.optionDiv TABLE TR TD {
+    text-align: left;
+    vertical-align: middle;
+}
+.optionDiv TABLE TR TD.vaT {
+    vertical-align: top;
+}
+.sliderValue {
+    color: #808080;
+    text-align: right;
+}
+.sliderValueL {
+    color: #808080;
+    text-align: left;
+}
+.LayerModelData_thumbContainer {
+    padding: 10px;
+}
+.LayerModelData_thumbContainer IMG {
+    background: url("http://icons.wxug.com/graphics/wu2/ajax-loading.gif") no-repeat scroll center center transparent !important;
+    cursor: pointer;
+}
+#LayerModelData_displayArea IMG.ajax-loading, #LayerModelData_displayArea2 IMG.ajax-loading {
+    background-color: #FFFFFF;
+    background-position: center center !important;
+}
+INPUT.calendar {
+    background: url("http://icons.wxug.com/graphics/cal_icon.gif") no-repeat scroll right top #FFFFFF;
+    border: 0 none;
+    cursor: pointer;
+    height: 18px;
+    padding: 2px 25px 0 0;
+    text-align: right;
+    vertical-align: bottom;
+    width: 100px;
+}
+INPUT.LayerDirections_place {
+    margin-bottom: 2px;
+    width: 203px;
+}
+
+
+HTML {
+    font-size: 12px;
+}
+BODY {
+    background-color: #FFFFFF;
+    color: #333333;
+    font-family: sans-serif;
+    font-size: 12px;
+    margin: 0;
+}
+A {
+    outline-style: none;
+    text-decoration: none;
+}
+A {
+    color: #213F9A;
+}
+A:visited {
+    color: #46219A;
+}
+A:hover {
+    text-decoration: underline;
+}
+DFN A:hover {
+    text-decoration: none;
+}
+H1 {
+    clear: both;
+    font-size: 21px;
+    margin: 0;
+    padding: 0;
+}
+IMG, TABLE, IFRAME, FIELDSET {
+    border: 0 none;
+}
+DFN {
+    border-bottom: 1px dotted #333333;
+    cursor: help;
+    font-style: normal;
+}
+FORM {
+    margin: 0;
+    padding: 0;
+}
+#alan {
+    bottom: 1px;
+    display: block;
+    height: 100px;
+    position: absolute;
+    right: -100px;
+    width: 100px;
+}
+.ul {
+    text-decoration: underline;
+}
+.du {
+    border-bottom: 1px dotted #333333;
+    color: #333333;
+    cursor: help;
+    text-decoration: none;
+}
+.du:hover {
+    text-decoration: none;
+}
+.br3 {
+    border-radius: 3px 3px 3px 3px;
+}
+.br5 {
+    border-radius: 5px 5px 5px 5px;
+}
+.br10 {
+    border-radius: 10px 10px 10px 10px;
+}
+.brTop10 {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.brTop3 {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+.brTop5 {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.brBot3 {
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+.brBot5 {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.brBot10 {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.brRight3 {
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+}
+.brLeft3 {
+    border-bottom-left-radius: 3px;
+    border-top-left-radius: 3px;
+}
+.brRight5 {
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.brLeft5 {
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+.brTopRight5 {
+    border-top-right-radius: 5px;
+}
+.brTopLeft3 {
+    border-top-left-radius: 3px;
+}
+.brTopLeft5 {
+    border-top-left-radius: 5px;
+}
+.bs225x333 {
+    box-shadow: 2px 2px 5px #333333;
+}
+.bs005xCCC {
+    box-shadow: 0 0 5px #CCCCCC;
+}
+.bs005x333 {
+    box-shadow: 0 0 5px #333333;
+}
+.bs0010x333 {
+    box-shadow: 0 0 10px #333333;
+}
+.bsDrop {
+    box-shadow: 0 4px 8px -5px #CCCCCC;
+}
+.scroll496 {
+    height: 496px;
+    overflow-y: scroll;
+}
+.scroll500 {
+    height: 500px;
+    overflow-y: scroll;
+}
+.dataSource {
+    color: #666666;
+    font-size: 10px;
+    height: 24px;
+    line-height: 24px;
+}
+.stopover {
+    overflow: hidden;
+}
+.closeButton {
+    background: url("//icons.wxug.com/i/wxmap/close.png") no-repeat scroll right center transparent;
+    color: #000000;
+    display: block;
+    float: right;
+    font-size: 14px;
+    font-weight: bold;
+    height: 24px;
+    line-height: 24px;
+    position: absolute;
+    right: -14px;
+    text-decoration: none;
+    top: -14px;
+    width: 24px;
+}
+.rfToggleOff {
+    background: url("//icons.wxug.com/i/wu/toggleOnOff.gif") no-repeat scroll 0 -15px transparent;
+    display: block;
+    height: 15px;
+    overflow: hidden;
+    width: 41px;
+}
+.rfToggleOn {
+    background: url("//icons.wxug.com/i/wu/toggleOnOff.gif") no-repeat scroll 0 0 transparent;
+    display: block;
+    height: 15px;
+    overflow: hidden;
+    width: 41px;
+}
+.rfToggleOffBlue {
+    background: url("//icons.wxug.com/i/wu/onOffBlue.png") no-repeat scroll 0 -15px transparent;
+    display: block;
+    height: 15px;
+    overflow: hidden;
+    width: 41px;
+}
+.rfToggleOnBlue {
+    background: url("//icons.wxug.com/i/wu/onOffBlue.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    height: 15px;
+    overflow: hidden;
+    width: 41px;
+}
+.rfToggleNWS {
+    background: url("//icons.wxug.com/i/wu/toggleBest.png") no-repeat scroll 0 -15px transparent;
+    display: block;
+    height: 15px;
+    overflow: hidden;
+    width: 154px;
+}
+.rfToggleBest {
+    background: url("//icons.wxug.com/i/wu/toggleBest.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    height: 15px;
+    overflow: hidden;
+    width: 154px;
+}
+.liNums {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.liNums LI {
+    background: url("//icons.wxug.com/i/wu/liNums.png") no-repeat scroll 0 0 transparent;
+    height: 15px;
+    line-height: 15px;
+    list-style-type: none;
+    margin: 12px 0 0;
+    padding: 0 0 0 22px;
+    white-space: nowrap;
+}
+.liNums LI A {
+    display: block;
+    height: 15px;
+    line-height: 15px;
+    white-space: nowrap;
+}
+.liNums LI.liNum1 {
+    background-position: 0 0;
+}
+.liNums LI.liNum2 {
+    background-position: 0 -15px;
+}
+.liNums LI.liNum3 {
+    background-position: 0 -30px;
+}
+.liNums LI.liNum4 {
+    background-position: 0 -45px;
+}
+.liNums LI.liNum5 {
+    background-position: 0 -60px;
+}
+.liNums LI.liNum6 {
+    background-position: 0 -75px;
+}
+.liNums LI.liNum7 {
+    background-position: 0 -90px;
+}
+.liNums LI.liNum8 {
+    background-position: 0 -105px;
+}
+.liNums LI.liNum9 {
+    background-position: 0 -120px;
+}
+.liNums LI.liNum10 {
+    background-position: 0 -135px;
+}
+.borderBox {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #BEBEBE;
+    border-left: 1px solid #BEBEBE;
+    border-right: 1px solid #BEBEBE;
+    color: #333333;
+    margin-bottom: 12px;
+    overflow: hidden;
+}
+.boxTitle {
+    font-weight: bold;
+    height: 27px;
+    line-height: 27px;
+    padding-left: 10px;
+}
+.boxFooter {
+    background: url("//icons.wxug.com/i/wu/nowBarBG.png") repeat-x scroll center top #EFEFEF;
+    border-top: 1px solid #BEBEBE;
+    font-size: 11px;
+    height: 26px;
+    line-height: 26px;
+    padding: 0 10px;
+}
+a.newWin:after {
+    content: url("//icons.wxug.com/i/wu/newWin.png");
+    padding-left: 5px;
+}
+.tooltip {
+    background-color: #000000;
+    border: 2px solid #FFFFFF;
+    color: #FFFFFF;
+    font-size: 11px;
+    padding: 7px 10px;
+    width: 200px;
+    z-index: 1000;
+}
+.tooltip A {
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+.tooltip .ttPoint {
+    background: url("//icons.wxug.com/i/wu/tooltipPoint.png") no-repeat scroll 0 0 transparent;
+    bottom: -16px;
+    height: 16px;
+    position: absolute;
+    width: 18px;
+}
+#wrongLoc, #whatThis {
+    border-bottom: 1px dotted #333333;
+    cursor: help;
+    font-size: 11px;
+    font-style: normal;
+}
+#wrongLoc:hover, #whatThis:hover {
+    text-decoration: none;
+}
+.switcher .swTitle {
+    color: #333333;
+    margin-top: 8px;
+}
+.switcher .swImage {
+    margin: 6px;
+}
+.switcher .swImage .toggleOff {
+    background: url("//icons.wxug.com/i/wu/toggleOnOff.gif") no-repeat scroll 0 -15px transparent;
+    display: block;
+    height: 15px;
+    overflow: hidden;
+    width: 41px;
+}
+.switcher .swImage .toggleOn {
+    background: url("//icons.wxug.com/i/wu/toggleOnOff.gif") no-repeat scroll 0 0 transparent;
+    display: block;
+    height: 15px;
+    overflow: hidden;
+    width: 41px;
+}
+.tabSelect {
+    background: url("//icons.wxug.com/i/wu/condTabsBG.png") repeat-x scroll 0 0 transparent;
+    border-top: 1px solid #BEBEBE;
+    height: 41px;
+}
+.tabSelectSkin {
+    border: 0 none;
+    height: 41px;
+}
+.tabSelect .contentTabs, .tabSelectSkin .contentTabs {
+    float: left;
+    height: 30px;
+    margin-top: 11px;
+    overflow: hidden;
+    padding: 0 10px;
+}
+.contentTabActive {
+    background-color: #FFFFFF;
+    border-left: 1px solid #BEBEBE;
+    border-right: 1px solid #BEBEBE;
+    border-top: 1px solid #BEBEBE;
+    color: #333333;
+    display: block;
+    float: left;
+    font-weight: bold;
+    height: 29px;
+    line-height: 29px;
+    margin-right: 3px;
+    padding: 0 10px;
+    text-decoration: none;
+}
+.contentTabActive:hover {
+    text-decoration: none;
+}
+.contentTabActive SPAN {
+    font-weight: normal;
+}
+.contentTab {
+    background-color: #E8E8E8;
+    border-left: 1px solid #BEBEBE;
+    border-right: 1px solid #BEBEBE;
+    border-top: 1px solid #BEBEBE;
+    color: #213F9A;
+    display: block;
+    float: left;
+    height: 29px;
+    line-height: 29px;
+    margin-right: 3px;
+    padding: 0 10px;
+}
+.contentTab:hover {
+    background-color: #FFFFFF;
+}
+.contentTab:visited {
+    color: #213F9A;
+}
+.contentTabActive:visited {
+    color: #333333;
+}
+.contentData {
+    border-top: 1px solid #BEBEBE;
+    padding: 10px;
+}
+.contentFooter {
+    background: url("//icons.wxug.com/i/wu/nowBarBG.png") repeat-x scroll center top #EFEFEF;
+    border-top: 1px solid #BEBEBE;
+    font-size: 11px;
+}
+.contentFooterPad {
+    background: url("//icons.wxug.com/i/wu/nowBarBG.png") repeat-x scroll center top #EFEFEF;
+    border-top: 1px solid #999999;
+    font-size: 11px;
+    height: 33px;
+    line-height: 33px;
+    overflow: hidden;
+    padding: 0 10px;
+    white-space: nowrap;
+}
+.contentFooter .cfTitle {
+    border-bottom: 1px solid #BEBEBE;
+    height: 26px;
+    line-height: 26px;
+    padding: 0 10px;
+}
+.contentFooter IMG {
+    vertical-align: middle;
+}
+.contentFooterPad SPAN, .contentFooter SPAN {
+    font-weight: bold;
+}
+.titleTH {
+    background: url("//icons.wxug.com/i/wu/tableHeaderBG.png") repeat-x scroll center top transparent;
+    font-size: 11px;
+    height: 27px;
+    line-height: 27px;
+    padding: 0 10px;
+    text-align: left;
+    white-space: nowrap;
+}
+.contentTable {
+    font-size: 11px;
+    width: 100%;
+}
+.contentTable THEAD TR TH {
+    background: url("//icons.wxug.com/i/wu/tableHeaderBG.png") repeat-x scroll center top transparent;
+    border-bottom: 1px solid #BEBEBE;
+    border-left: 1px solid #E0E0E0;
+    font-weight: bold;
+    height: 27px;
+    line-height: 27px;
+    padding: 0 10px;
+    text-align: left;
+    white-space: nowrap;
+}
+.contentTable THEAD TR TH:first-child {
+    border-left: 0 none !important;
+    border-top-left-radius: 5px;
+}
+.contentTable THEAD TR TH:last-child {
+    border-top-right-radius: 5px;
+}
+.contentTable THEAD TR TH.taC {
+    text-align: center;
+}
+.contentTable TBODY TR TD {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #E0E0E0;
+    border-left: 1px solid #E0E0E0;
+    padding: 7px 5px 7px 10px;
+}
+.contentTable TBODY TR TD:first-child {
+    border-left: 0 none !important;
+}
+.contentTable TBODY TR:hover TD {
+    background-color: #E2E8F3;
+}
+.contentTable TBODY TR.nh:hover TD {
+    background-color: #FFFFFF;
+}
+.contentTable TBODY TR.near TD {
+    padding: 3px 10px;
+}
+.contentTable TBODY TR.nob TD {
+    border: 0 none;
+}
+.contentTable TBODY TR.gbg TD {
+    background-color: #E0E0E0;
+}
+.contentTable TBODY TR.gbg:hover TD {
+    background-color: #E0E0E0;
+}
+.contentTable TFOOT TR TD {
+    border-top: 1px solid #BEBEBE;
+    min-height: 27px;
+    padding: 7px 10px;
+    text-align: center;
+}
+.contentTable TFOOT TR TD.lightFooter {
+    background: url("//icons.wxug.com/i/wu/gradDownSmall.png") repeat-x scroll 0 0 #FFFFFF;
+}
+.contentTable TFOOT TR TD.darkFooter {
+    background: url("//icons.wxug.com/i/wu/nowBarBG.png") repeat-x scroll center top #EFEFEF;
+}
+.contentTable TD.linkAway {
+    padding: 0 10px;
+}
+.contentTable TD.linkAway A {
+    background: url("//icons.wxug.com/i/wu/websiteArrow.png") no-repeat scroll center center transparent;
+    display: block;
+    height: 27px;
+    width: 27px;
+}
+.dataTables_wrapper {
+    background: url("//icons.wxug.com/i/wu/gradDownSmall.png") repeat-x scroll 0 0 transparent;
+    border-bottom: 1px solid #BEBEBE;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-left: 1px solid #BEBEBE;
+    border-right: 1px solid #BEBEBE;
+}
+.dataTables_wrapper .dataTables_length {
+    float: left;
+    height: 29px;
+    line-height: 29px;
+    padding: 3px 10px;
+}
+.dataTables_wrapper .dataTables_filter {
+    float: right;
+    height: 29px;
+    line-height: 29px;
+    padding: 3px 10px;
+}
+.dataTables_wrapper .dataTables_scroll {
+    clear: both;
+}
+.dataTables_wrapper .dataTables_info {
+    float: left;
+    height: 29px;
+    line-height: 29px;
+    padding: 3px 10px;
+}
+.dataTables_wrapper .dataTables_paginate {
+    float: right;
+    height: 29px;
+    line-height: 29px;
+    padding: 3px 10px;
+}
+.paging_full_numbers {
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    height: 22px;
+    line-height: 22px;
+}
+.paging_full_numbers a:active {
+    outline: medium none;
+}
+.paging_full_numbers a:hover {
+    text-decoration: none;
+}
+.paging_full_numbers a.paginate_button, .paging_full_numbers a.paginate_active {
+    border: 1px solid #BEBEBE;
+    border-radius: 3px 3px 3px 3px;
+    color: #333333 !important;
+    cursor: pointer;
+    margin: 0 3px;
+    padding: 2px 5px;
+}
+.paging_full_numbers a.paginate_button {
+    background-color: #EFEFEF;
+}
+.paging_full_numbers a.paginate_button:hover {
+    background-color: #CCCCCC;
+    text-decoration: none !important;
+}
+.paging_full_numbers a.paginate_active {
+    background-color: #213F9A;
+    border: 1px solid #E2E8F3 !important;
+    color: #FFFFFF !important;
+    font-weight: bold;
+}
+.dataTables_wrapper TABLE {
+    border-left: 0 none;
+    border-right: 0 none;
+}
+.infoTable {
+    font-size: 11px;
+    width: 100%;
+}
+.infoTable TD {
+    padding: 7px 10px;
+}
+.infoTable TD SPAN {
+    color: #333333;
+}
+.nonList {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.nonList LI {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.grt {
+    background: url("//icons.wxug.com/i/wu/gradDownBG.png") repeat-x scroll center top transparent;
+}
+.dtr {
+    background: url("//icons.wxug.com/i/wu/tickDownSmall.png") no-repeat scroll right top transparent;
+}
+.dtl {
+    background: url("//icons.wxug.com/i/wu/tickDownSmall.png") no-repeat scroll left top transparent;
+}
+.cm204 {
+    width: 202px;
+}
+.cm216 {
+    width: 214px;
+}
+.cm300 {
+    width: 298px;
+}
+.cm312 {
+    width: 310px;
+}
+.cm320 {
+    width: 318px;
+}
+.cm336 {
+    width: 334px;
+}
+.cm420 {
+    width: 418px;
+}
+.cm636 {
+    width: 634px;
+}
+.h162 {
+    height: 162px;
+}
+.h238 {
+    height: 238px;
+}
+.h252 {
+    height: 252px;
+}
+.h215 {
+    height: 215px;
+}
+.contentMod {
+    background-color: #FFFFFF;
+    border: 1px solid #BEBEBE;
+}
+.contentMod .cmTitle {
+    background: url("//icons.wxug.com/i/wu/cmTitleBG.png") repeat-x scroll 0 0 transparent;
+    border-bottom: 1px solid #BEBEBE;
+    color: #A55816;
+    font-size: 14px;
+    font-weight: bold;
+    height: 32px;
+    line-height: 32px;
+    padding-left: 10px;
+}
+.contentMod .cmTitle .cmToggleDown {
+    background: url("//icons.wxug.com/i/wu/titleBarIconsClose.png") no-repeat scroll 0 -66px transparent;
+    display: block;
+    float: right;
+    height: 32px;
+    width: 33px;
+}
+.contentMod .cmTitle .cmToggleDown:hover {
+    background-position: 0 -99px;
+}
+.contentMod .cmTitle .cmToggleUp {
+    background: url("//icons.wxug.com/i/wu/titleBarIconsClose.png") no-repeat scroll 0 -132px transparent;
+    display: block;
+    float: right;
+    height: 32px;
+    width: 33px;
+}
+.contentMod .cmTitle .cmToggleUp:hover {
+    background-position: 0 -165px;
+}
+.contentMod .cmTabs {
+    background: url("//icons.wxug.com/i/wu/cmTabsBG.png") repeat-x scroll 0 0 transparent;
+    border-bottom: 1px solid #DFDFDF;
+    height: 30px;
+    padding: 10px 10px 0;
+}
+.contentMod .cmTabs .cmTabActive {
+    background-color: #FFFFFF;
+    border-left: 1px solid #BEBEBE;
+    border-right: 1px solid #BEBEBE;
+    border-top: 1px solid #BEBEBE;
+    color: #333333;
+    display: block;
+    float: left;
+    font-weight: bold;
+    height: 29px;
+    line-height: 29px;
+    margin-right: 3px;
+    padding: 0 10px;
+    text-decoration: none;
+}
+.contentMod .cmTabs .cmTab {
+    background-color: #E8E8E8;
+    border-left: 1px solid #BEBEBE;
+    border-right: 1px solid #BEBEBE;
+    border-top: 1px solid #BEBEBE;
+    display: block;
+    float: left;
+    height: 29px;
+    line-height: 29px;
+    margin-right: 3px;
+    padding: 0 10px;
+}
+.contentMod .cmTabs .cmTab:hover {
+    background-color: #FFFFFF;
+}
+.contentMod .cmData {
+    font-size: 11px;
+    padding: 7px 10px;
+}
+.contentMod .cmList {
+    font-size: 11px;
+}
+.contentMod .cmList .cmItem {
+    border-bottom: 1px solid #DFDFDF;
+    clear: both;
+    padding: 7px 10px;
+}
+.contentMod .cmList .cmItem .cmValue {
+    float: right;
+}
+.contentMod .cmImage IMG {
+    width: 100%;
+}
+.contentMod .cmTable {
+    background: url("//icons.wxug.com/i/wu/tableHeaderBG.png") repeat-x scroll center top transparent;
+    font-size: 11px;
+    width: 100%;
+}
+.contentMod .cmTable THEAD TR TH {
+    border-bottom: 1px solid #BEBEBE;
+    border-left: 1px solid #BEBEBE;
+    font-weight: bold;
+    height: 27px;
+    line-height: 27px;
+    padding: 0 10px;
+    text-align: left;
+    white-space: nowrap;
+}
+.contentMod .cmTable THEAD TR TH:first-child {
+    border-left: 0 none !important;
+}
+.contentMod .cmTable THEAD TR TH.taC {
+    text-align: center;
+}
+.contentMod .cmTable TBODY TR TD {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #E0E0E0;
+    border-left: 1px solid #E0E0E0;
+    overflow: hidden;
+    padding: 7px 10px;
+}
+.contentMod .cmTable TBODY TR TD:first-child {
+    border-left: 0 none !important;
+}
+.contentMod .cmTable TBODY TR TD.cmList {
+    background-color: #FFFFFF;
+    border-bottom: 0 none;
+    padding: 0;
+}
+.contentMod .cmTable TBODY TR.nob TD {
+    border: 0 none;
+}
+.contentMod .cmTable TFOOT TR TD {
+    height: 27px;
+    line-height: 27px;
+}
+.contentMod .cmSource {
+    color: #666666;
+    font-size: 10px;
+    height: 24px;
+    line-height: 24px;
+    padding: 0 10px;
+}
+.contentMod .cmFWIX {
+    background: url("//icons.wxug.com/i/misc/logo_fwix.gif") no-repeat scroll right center transparent;
+}
+.contentMod .cmFooter {
+    background: url("//icons.wxug.com/i/wu/cmFooterBG.png") repeat-x scroll center top transparent;
+    border-top: 1px solid #BEBEBE;
+    font-size: 11px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+}
+.contentMod .cmFooterList {
+    background: url("//icons.wxug.com/i/wu/cmFooterBG.png") repeat-x scroll center top #F6F6F6;
+    border-top: 1px solid #BEBEBE;
+    font-size: 11px;
+}
+.contentMod .cmFooterList UL {
+    list-style-type: none;
+    margin: 0;
+    padding: 7px 10px;
+}
+.contentMod .cmFooterList UL LI {
+    line-height: 15px;
+    margin: 0;
+}
+.contentMod .dateSelector {
+    margin: 6px 0 2px;
+}
+.contentMod .dropSelect {
+    margin: 6px 0;
+    width: 75%;
+}
+.contentMod .cmInput {
+    width: 75%;
+}
+.contentMod .blogCopy {
+    font-size: 12px;
+}
+.contentMod .blogCopy #blogTitle {
+    font-size: 12px;
+}
+.contentMod .blogCopy #blogDate {
+    color: #666666;
+}
+.contentMod .blogCopy #blogPhoto {
+    border: 1px solid #333333;
+    float: left;
+    margin: 12px 12px 12px 0;
+}
+.contentMod #tripForm {
+    font-size: 12px;
+}
+.ui-autocomplete {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #BEBEBE;
+    border-left: 1px solid #BEBEBE;
+    border-right: 1px solid #BEBEBE;
+    cursor: default;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    z-index: 300 !important;
+}
+.ui-autocomplete-loading {
+    background: url("//icons.wxug.com/i/loading-coda-small.gif") no-repeat scroll right center #FFFFFF !important;
+}
+.ui-autocomplete-term {
+    font-weight: bold;
+}
+.ui-autocomplete-group {
+    background-color: #EFEFEF;
+    border-radius: 3px 3px 3px 3px;
+    clear: both;
+    color: #666666;
+    font-size: 11px;
+    font-weight: normal;
+    margin: 6px 6px 0;
+    padding: 5px;
+    text-transform: capitalize;
+}
+.ui-autocomplete .ui-menu-item {
+    list-style-type: none;
+    margin: 0 6px;
+}
+.ui-autocomplete .ui-menu-item A {
+    border-radius: 3px 3px 3px 3px;
+    display: block;
+    font-size: 12px;
+    padding: 5px;
+}
+.ui-autocomplete .ui-menu-item A.ui-state-hover {
+    background-color: #E2E8F3;
+}
+.tablesorter TH {
+    cursor: pointer;
+}
+.switch336 {
+    float: right;
+    padding-bottom: 10px;
+    width: 336px;
+}
+.switch336 .miniFeature300 {
+    margin: 12px;
+    text-align: center;
+}
+.switch336 .adBox {
+    background-color: #FFFFFF;
+    border: 1px solid #D5D5D5;
+    margin-bottom: 12px;
+    width: 334px;
+}
+.switch336 .adBox .adCreative {
+    text-align: center;
+}
+.switch336 .adBox .unit300x250 {
+    margin: 16px;
+}
+.switch300 {
+    float: right;
+    overflow: hidden;
+    padding-bottom: 10px;
+    width: 300px;
+}
+.primeContent636 {
+    float: left;
+    overflow: hidden;
+    width: 636px;
+}
+.primeContent672 {
+    float: left;
+    overflow: hidden;
+    width: 672px;
+}
+.primeContent812 {
+    float: left;
+    overflow: hidden;
+    width: 812px;
+}
+.primeHeader {
+    background: url("//icons.wxug.com/i/wu/gradDownSmall.png") repeat-x scroll 0 0 transparent;
+    height: 29px;
+    line-height: 29px;
+    padding: 0 10px;
+}
+.primeHeader .primeLink {
+    background: url("//icons.wxug.com/i/wu/iconViewCal.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    float: right;
+    font-size: 11px;
+    height: 17px;
+    line-height: 17px;
+    margin-top: 6px;
+    padding-left: 22px;
+}
+.primeHeader .printMe {
+    background: url("//icons.wxug.com/i/wu/iconPrint.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    float: right;
+    font-size: 11px;
+    height: 17px;
+    line-height: 17px;
+    margin-top: 6px;
+    padding-left: 21px;
+}
+.primeHeader .viewArchive {
+    background: url("//icons.wxug.com/i/wu/iconViewArchive.png") no-repeat scroll 0 0 transparent;
+    display: none;
+    float: right;
+    font-size: 11px;
+    height: 17px;
+    line-height: 17px;
+    margin-top: 6px;
+    padding-left: 23px;
+}
+.primeHeader .setAlerts {
+    background: url("//icons.wxug.com/i/wu/iconMobileEmail.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    float: right;
+    font-size: 11px;
+    height: 19px;
+    line-height: 19px;
+    margin-top: 6px;
+    padding-left: 29px;
+}
+.primeHeader .linkPage {
+    background: url("//icons.wxug.com/i/wu/iconLink.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    float: right;
+    font-size: 11px;
+    height: 17px;
+    line-height: 17px;
+    margin-top: 6px;
+    padding-left: 23px;
+}
+.primeHeader .slideShow {
+    background: url("//icons.wxug.com/i/wu/iconSlideshow.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    float: right;
+    font-size: 11px;
+    height: 19px;
+    line-height: 19px;
+    margin-top: 6px;
+    padding-left: 23px;
+}
+.primeHeader .readTerms {
+    background: url("//icons.wxug.com/i/wu/iconDocument.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    float: right;
+    font-size: 11px;
+    height: 19px;
+    line-height: 19px;
+    margin-top: 6px;
+    padding-left: 23px;
+}
+.primeHeader .myBlog {
+    background: url("//icons.wxug.com/i/wu/iconDocument.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    float: right;
+    font-size: 11px;
+    height: 19px;
+    line-height: 19px;
+    margin-top: 6px;
+    padding-left: 23px;
+}
+.primeHeader .readDoc {
+    background: url("//icons.wxug.com/i/wu/iconDocument.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    float: right;
+    font-size: 11px;
+    height: 19px;
+    line-height: 19px;
+    margin-top: 6px;
+    padding-left: 23px;
+}
+.primeHeader .savePrefs {
+    background: url("//icons.wxug.com/i/wu/iconSave.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    float: right;
+    font-size: 11px;
+    height: 19px;
+    line-height: 19px;
+    margin-top: 6px;
+    padding-left: 23px;
+}
+.iconsText {
+    border-top: 1px solid #BEBEBE;
+    color: #333333;
+    font-size: 11px;
+    padding: 10px;
+}
+.iconSelection {
+    background: url("//icons.wxug.com/i/wu/iconSelectBG.png") no-repeat scroll 0 0 transparent;
+    border-top: 1px solid #BEBEBE;
+    height: 129px;
+    overflow: hidden;
+    width: 324px;
+}
+.iconSelection A {
+    background-color: #FFFFFF;
+    display: block;
+    float: left;
+    height: 64px;
+    margin-bottom: 1px;
+    width: 64px;
+}
+.iconSelection A IMG {
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    height: 44px;
+    margin: 9px;
+    width: 44px;
+}
+.iconSelection A.iconR {
+    margin-left: 1px;
+}
+.iconSelection A.iconSelected {
+    background-color: #E3EAF5;
+}
+.iconSelection A.iconSelected IMG {
+    border: 1px solid #21409A;
+}
+.iconSelection A:hover {
+    background-color: #E3EAF5;
+}
+.iconSelection A:hover IMG {
+    box-shadow: 0 0 5px #333333;
+}
+.iconSwitchBig {
+    border: 1px solid #BEBEBE;
+    display: block;
+    height: 46px;
+    width: 46px;
+}
+.iconSwitchBig IMG {
+    background-color: #FFFFFF;
+    height: 46px;
+    width: 46px;
+}
+.iconSwitchBig:hover {
+    box-shadow: 0 0 5px #333333;
+}
+.iconSwitchMed {
+    border: 1px solid #BEBEBE;
+    display: block;
+    height: 30px;
+    width: 30px;
+}
+.iconSwitchMed IMG {
+    background-color: #FFFFFF;
+    height: 30px;
+    width: 30px;
+}
+.iconSwitchMed:hover {
+    box-shadow: 0 0 5px #333333;
+}
+.iconSwitchSmall {
+    border: 1px solid #BEBEBE;
+    display: block;
+    height: 22px;
+    width: 22px;
+}
+.iconSwitchSmall IMG {
+    background-color: #FFFFFF;
+    height: 22px;
+    width: 22px;
+}
+.iconSwitchSmall:hover {
+    box-shadow: 0 0 5px #333333;
+}
+.iconSwitchPop {
+    background-color: #FFFFFF;
+    border: 1px solid #BEBEBE;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 0 10px #333333;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 324px;
+    z-index: 200;
+}
+.titleIcons {
+    background: url("//icons.wxug.com/i/wu/titleBarIcons.png") repeat-x scroll 0 0 transparent;
+    color: #A55816;
+    font-size: 14px;
+    font-weight: bold;
+    height: 32px;
+    line-height: 32px;
+    padding-left: 10px;
+}
+.titleIcons A {
+    background: url("//icons.wxug.com/i/wu/titleBarIconsClose.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    float: right;
+    height: 32px;
+    width: 33px;
+}
+.titleIcons A:hover {
+    background-position: 0 -33px;
+}
+.titleFooter {
+    background: url("//icons.wxug.com/i/wu/titleFooterBG.png") repeat-x scroll 0 0 transparent;
+    border-top: 1px solid #BEBEBE;
+    clear: both;
+    font-size: 11px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+}
+.titleSubtle {
+    color: #666666;
+    font-size: 11px;
+    font-weight: normal;
+}
+.titleSubtleBG {
+    background-color: #EFEFEF;
+    clear: both;
+    color: #666666;
+    font-size: 11px;
+    font-weight: normal;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+.titleSubtleBig {
+    background-color: #EFEFEF;
+    clear: both;
+    color: #666666;
+    font-size: 12px;
+    font-weight: normal;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+.titleThin {
+    background: url("//icons.wxug.com/i/wu/titleThinBar.png") repeat-x scroll 0 0 transparent;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+    height: 24px;
+    line-height: 24px;
+    margin: 0;
+    padding-left: 10px;
+}
+.titleThin A.titleThinShow {
+    background: url("//icons.wxug.com/i/wu/titleThinArrows.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    float: right;
+    height: 24px;
+    width: 27px;
+}
+.titleThin A.titleThinShow:hover {
+    background-position: 0 -50px;
+}
+.titleThin A.titleThinHide {
+    background: url("//icons.wxug.com/i/wu/titleThinArrows.png") no-repeat scroll 0 -25px transparent;
+    display: block;
+    float: right;
+    height: 24px;
+    width: 27px;
+}
+.titleThin A.titleThinHide:hover {
+    background-position: 0 -75px;
+}
+.titleThin A {
+    color: #FFFFFF;
+}
+.titleThick {
+    background: url("//icons.wxug.com/i/wu/titleThickBar.png") repeat-x scroll 0 0 transparent;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: bold;
+    height: 44px;
+    line-height: 44px;
+    margin: 12px 0;
+    padding-left: 10px;
+}
+.titleThick A.titleThickShow {
+    background: url("//icons.wxug.com/i/wu/titleThickArrows.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    float: right;
+    height: 44px;
+    width: 44px;
+}
+.titleThick A.titleThickShow:hover {
+    background-position: 0 -90px;
+}
+.titleThick A.titleThickHide {
+    background: url("//icons.wxug.com/i/wu/titleThickArrows.png") no-repeat scroll 0 -45px transparent;
+    display: block;
+    float: right;
+    height: 44px;
+    width: 44px;
+}
+.titleThick A.titleThickHide:hover {
+    background-position: 0 -135px;
+}
+.titleAction {
+    background: url("//icons.wxug.com/i/wu/titleThickBar.png") repeat-x scroll 0 0 transparent;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: bold;
+    height: 44px;
+    line-height: 44px;
+    padding-left: 10px;
+}
+.titleTable {
+    background: url("//icons.wxug.com/i/wu/tableHeaderBG.png") repeat-x scroll center top transparent;
+    border-bottom: 1px solid #BEBEBE;
+    border-left: 1px solid #E0E0E0;
+    font-weight: bold;
+    height: 27px;
+    line-height: 27px;
+    padding: 0 10px;
+    text-align: left;
+    white-space: nowrap;
+}
+.titlePromo {
+    border-left: 1px solid #3959A8;
+    color: #FFFFFF;
+    display: block;
+    float: right;
+    font-size: 11px;
+    font-weight: normal;
+    height: 44px;
+    line-height: 44px;
+    padding: 0 13px;
+    width: 130px;
+}
+.titlePromo:hover {
+    background: url("//icons.wxug.com/i/wu/titlePromoBG.png") repeat-x scroll 0 0 transparent;
+    text-decoration: none;
+}
+.titlePromo:visited {
+    color: #FFFFFF;
+}
+.titlePromo #promoFB {
+    background: url("//icons.wxug.com/i/wu/promoFB.png") no-repeat scroll left center transparent;
+    display: block;
+    height: 44px;
+    line-height: 44px;
+    padding-left: 26px;
+}
+.titlePromo #promoTW {
+    background: url("//icons.wxug.com/i/wu/promoTW.png") no-repeat scroll left center transparent;
+    display: block;
+    height: 44px;
+    line-height: 44px;
+    padding-left: 26px;
+}
+.alertBox {
+    background-color: #FCF9DC;
+    border: 1px solid #CCC8A3;
+    margin: 12px 0;
+    padding: 5px 10px 5px 7px;
+}
+.alertBox .alertItems {
+    background: url("//icons.wxug.com/i/wu/alertTriOrange.png") no-repeat scroll 0 0 transparent;
+    color: #333333;
+    line-height: 18px;
+    min-height: 18px;
+    padding-left: 25px;
+}
+.alertBox .alertItems SPAN {
+    font-weight: bold;
+}
+.alertBox .alertItems SPAN.nobr {
+    font-weight: normal;
+    white-space: nowrap;
+}
+.alertBox .alertItems .dismiss {
+    color: #E5661A;
+}
+#AdminBar {
+    background-color: #A52E16;
+    border-bottom: 1px solid #CCCCCC;
+    color: #FFFFFF;
+}
+#AdminBar TR TD {
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 11px;
+}
+#AdminBar .b {
+    padding-left: 10px;
+}
+#AdminBar A {
+    color: #DDDDDD;
+}
+#AdminBar A SPAN {
+    color: #FFFFFF;
+    font-weight: bold;
+}
+#AdminBar A:hover {
+    color: #FFFF00;
+}
+#AssistBar {
+    background-color: #9A2157;
+    border-bottom: 1px solid #CCCCCC;
+    color: #FFFFFF;
+}
+#AssistBar TR TD {
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 11px;
+}
+#AssistBar .b {
+    padding-left: 10px;
+}
+#AssistBar A {
+    color: #DDDDDD;
+}
+#AssistBar A SPAN {
+    color: #FFFFFF;
+    font-weight: bold;
+}
+#AssistBar A:hover {
+    color: #FFFF00;
+}
+#popup-header {
+    background: url("//icons.wxug.com/i/wu/titleThickBar.png") repeat-x scroll 0 0 transparent;
+    height: 44px;
+    padding: 10px 20px 9px;
+}
+#popup-header-logo {
+    background-image: url("//icons.wxug.com/i/api/logo.png");
+    height: 25px;
+    margin: 0;
+    text-indent: -9999px;
+    width: 267px;
+}
+#popup-header-logo a {
+    display: block;
+}
+.headerOff {
+    background: url("//icons.wxug.com/i/wu/headerBG.png") repeat-x scroll 0 0 transparent;
+    height: 164px;
+}
+.headerOff #optionBar {
+    color: #6E6E6E;
+}
+.headerOff #optionBar A {
+    color: #6E6E6E;
+}
+.headerOver {
+    background: url("//icons.wxug.com/i/wu/headerBG.png") repeat-x scroll 0 -165px transparent;
+    height: 164px;
+}
+.headerOver #optionBar {
+    color: #333333;
+}
+.headerOver #optionBar A {
+    color: #213F9A;
+}
+#pageHeader #headerContent {
+    margin: 0 auto;
+    text-align: left;
+    width: 1008px;
+}
+#pageHeader #headerContent #optionBar {
+    font-size: 11px;
+    height: 28px;
+    line-height: 28px;
+    white-space: nowrap;
+    width: 1008px;
+}
+#optionBar {
+    height: 28px;
+    overflow: hidden;
+}
+#optionBar #wuSites {
+    float: left;
+    overflow: hidden;
+}
+#optionBar #wuSites A {
+    background: url("//icons.wxug.com/i/wu/optionBarGrad.png") no-repeat scroll right top transparent;
+    display: block;
+    float: left;
+    height: 28px;
+    line-height: 28px;
+    padding: 0 10px;
+}
+#optionBar #wuSites A:hover {
+    background: none repeat scroll 0 0 #BBBFCF;
+    border-left: 1px solid #BEBEBE;
+    border-right: 1px solid #BEBEBE;
+    margin-left: -1px;
+    padding: 0 9px 0 10px;
+}
+#optionBar #wuSites SPAN {
+    background: url("//icons.wxug.com/i/wu/optionBarGrad.png") no-repeat scroll right top transparent;
+    display: block;
+    float: left;
+    height: 28px;
+    line-height: 28px;
+    padding: 0 10px;
+}
+#optionBar #unitPrefs {
+    float: right;
+    height: 28px;
+    overflow: hidden;
+}
+#optionBar #unitPrefs #cfToggle {
+    margin: 6px 10px 0;
+}
+#optionBar #unitPrefs .cfToggleF {
+    background: url("//icons.wxug.com/i/wu/toggleUnits.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    height: 15px;
+    overflow: hidden;
+    width: 41px;
+}
+#optionBar #unitPrefs .cfToggleC {
+    background: url("//icons.wxug.com/i/wu/toggleUnits.png") no-repeat scroll 0 -16px transparent;
+    display: block;
+    height: 15px;
+    overflow: hidden;
+    width: 41px;
+}
+#optionBar #wuLinks {
+    height: 28px;
+}
+#optionBar #wuLinks A {
+    background: url("//icons.wxug.com/i/wu/optionBarGrad.png") no-repeat scroll right top transparent;
+    display: block;
+    float: right;
+    height: 28px;
+    line-height: 28px;
+    overflow: hidden;
+    padding: 0 10px;
+}
+#optionBar #wuLinks A:hover {
+    background: none repeat scroll 0 0 #BBBFCF;
+    border-left: 1px solid #BEBEBE;
+    border-right: 1px solid #BEBEBE;
+    margin-left: -1px;
+    padding: 0 9px 0 10px;
+}
+#optionBar #wuLinks #wuMailGot {
+    color: #A52E16;
+    font-weight: bold;
+}
+#optionBar #wuLinks SPAN {
+    background: url("//icons.wxug.com/i/wu/optionBarGrad.png") no-repeat scroll right top transparent;
+    display: block;
+    float: right;
+    height: 28px;
+    line-height: 28px;
+}
+.headerOff #headerContent #optionBar #wuLinks #userID {
+    background: url("//icons.wxug.com/i/wu/headIconBG.png") no-repeat scroll -10px 0 transparent;
+    padding-left: 18px;
+}
+.headerOver #headerContent #optionBar #wuLinks #userID {
+    background: url("//icons.wxug.com/i/wu/headIconBG.png") no-repeat scroll -10px -29px transparent;
+    padding-left: 18px;
+}
+#quickMenuDropdown {
+    background-color: #E0E0E0;
+    border-left: 1px solid #BEBEBE;
+    border-right: 1px solid #BEBEBE;
+    border-top: 1px solid #BEBEBE;
+}
+#quickMenuDropdown UL {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+#quickMenuDropdown UL LI {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+#quickMenuDropdown UL LI A {
+    border-bottom: 1px solid #BEBEBE;
+    display: block;
+    font-size: 11px;
+    padding: 7px 10px;
+    text-align: left;
+}
+#quickMenuDropdown UL LI A:hover {
+    background-color: #BBBFCF;
+}
+#pageHeader #logo {
+    background: url("//icons.wxug.com/i/wu/logoBG.png") no-repeat scroll right top transparent;
+    clear: both;
+    float: left;
+    height: 135px;
+    margin-top: 1px;
+    width: 169px;
+}
+#pageHeader #logo IMG {
+    margin: 26px 0 0 26px;
+}
+#navContent {
+    float: left;
+    height: 135px;
+    margin-top: 1px;
+    width: 839px;
+}
+#favoritesBar {
+    border-bottom: 1px solid #DDDDDD;
+    height: 28px;
+    padding-left: 10px;
+    position: relative;
+    width: 829px;
+}
+#favoritesBar .favoritesTitle {
+    background: url("//icons.wxug.com/i/wu/favBarStar.png") no-repeat scroll left center transparent;
+    border-right: 1px solid #DDDDDD;
+    display: block;
+    float: left;
+    font-size: 11px;
+    height: 28px;
+    line-height: 28px;
+    padding-left: 16px;
+    padding-right: 10px;
+}
+#favoritesBar .favoritesScrollButtons {
+    background: url("//icons.wxug.com/i/wu/favBarRightBG.png") no-repeat scroll 0 0 transparent;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 69px;
+    z-index: 300 !important;
+}
+#favoritesBar .favoritesScrollButtons A {
+    display: block;
+    float: right;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    text-decoration: none;
+    width: 26px;
+}
+#favoritesBar .favoritesScrollButtons A.disabled {
+    color: #CDCDCD;
+}
+#favoritesBar .favoritesScrollButtons A:hover {
+    text-decoration: none;
+}
+#favoritesBar .favoritesScrollContainer {
+    font-size: 11px;
+    height: 28px;
+    margin-right: 58px;
+    overflow: hidden;
+    position: relative;
+}
+#favoritesBar .favoritesScrollContainer TABLE {
+}
+#favoritesBar .favoritesScrollContainer A {
+    background: url("//icons.wxug.com/i/wu/tickDownSmall.png") no-repeat scroll right top transparent;
+    clear: both;
+    color: #333333;
+    display: block;
+    height: 28px;
+    line-height: 28px;
+    padding: 0 6px;
+}
+#favoritesBar .favoritesScrollContainer A:hover {
+    background-color: #EBEEF6;
+    background-image: none;
+    border-color: #DDDDDD;
+    border-style: solid;
+    border-width: 0 1px;
+    color: #213F9A;
+    margin-left: -1px;
+    padding-right: 5px;
+    text-decoration: none;
+}
+#favoritesBar .favoritesScrollContainer A:hover .favTemp {
+    color: #333333;
+}
+#favoritesBar .favoritesScrollContainer A .condIcon {
+    border: 0 none;
+    height: 22px;
+    margin-bottom: 3px;
+    vertical-align: middle;
+    width: 22px;
+}
+#favoritesBar .favoritesScrollContainer .noFavs {
+    color: #6E6E6E;
+    font-size: 11px;
+    height: 28px;
+    line-height: 28px;
+    padding: 0 10px;
+}
+#favoritesBar .favoritesScrollContainer .warnBG {
+    background-color: #FCF9DC;
+}
+#favoritesBar .favoritesScrollContainer .warnIcon {
+    height: 12px;
+    margin-bottom: 4px;
+    vertical-align: middle;
+    width: 14px;
+}
+#welcome {
+    font-size: 18px;
+    font-weight: bold;
+    height: 45px;
+    margin-top: 30px;
+    padding-left: 10px;
+    width: 829px;
+}
+#welcomeBack {
+    font-size: 18px;
+    font-weight: bold;
+    height: 60px;
+    margin-top: 15px;
+    padding-left: 10px;
+    width: 829px;
+}
+#searchBox {
+    height: 65px;
+    margin-top: 10px;
+    padding-left: 10px;
+    width: 829px;
+}
+#searchBox #wuSearch {
+    border-color: #BEBEBE -moz-use-text-color #BEBEBE #BEBEBE;
+    border-style: solid none solid solid;
+    border-width: 1px 0 1px 1px;
+    font-size: 14px;
+    height: 20px;
+    line-height: 20px;
+    padding-left: 5px;
+    width: 403px;
+}
+#searchBox #searchSubmit {
+    background: url("//icons.wxug.com/i/wu/searchButtonBG.png") repeat-x scroll 0 0 transparent;
+    border: 0 none;
+    color: #FFFFFF;
+    display: block;
+    font-weight: bold;
+    height: 24px;
+    line-height: 24px;
+    padding: 0 10px;
+}
+#searchBox #searchSubmit:hover {
+    text-decoration: none;
+}
+#recentCities {
+    color: #888989 !important;
+    font-size: 11px !important;
+    font-weight: normal !important;
+    margin-top: 10px;
+}
+#featureMenu {
+    height: 31px;
+    margin-left: 10px;
+    overflow: hidden;
+    width: 829px;
+}
+#featureMenu .featureGroup {
+    float: left;
+    margin-right: 3px;
+}
+#featureMenu .featureGroup .groupTitle {
+    background: url("//icons.wxug.com/i/wu/tabInactiveBG.png") repeat-x scroll 0 0 transparent;
+    color: #FFFFFF;
+    display: block;
+    float: left;
+    font-weight: bold;
+    height: 31px;
+    line-height: 31px;
+    padding: 0 10px;
+    white-space: nowrap;
+}
+#featureMenu .featureGroup .groupTitle SPAN {
+    background: url("//icons.wxug.com/i/wu/tabArrowOff.png") no-repeat scroll right center transparent;
+    padding-right: 14px;
+}
+#featureMenu .featureGroup .groupTitle:hover {
+    background: none repeat scroll 0 0 #EBEEF6;
+    border-left: 1px solid #BEBEBE;
+    border-right: 1px solid #BEBEBE;
+    border-top: 1px solid #BEBEBE;
+    color: #213F9A;
+    display: block;
+    height: 31px;
+    line-height: 31px;
+    padding: 0 8px 0 10px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+#featureMenu .featureGroup .groupTitle:hover SPAN {
+    background: url("//icons.wxug.com/i/wu/tabArrowOver.png") no-repeat scroll right center transparent;
+    padding-right: 14px;
+}
+#featureMenu .activeGroup .groupTitle {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-left: 1px solid #BEBEBE;
+    border-right: 1px solid #BEBEBE;
+    border-top: 1px solid #BEBEBE;
+    color: #213F9A;
+    display: block;
+    height: 31px;
+    line-height: 31px;
+    padding: 0 8px 0 10px;
+    white-space: nowrap;
+}
+#featureMenu .activeGroup .groupTitle SPAN {
+    background: url("//icons.wxug.com/i/wu/tabArrowOn.png") no-repeat scroll right center transparent;
+    padding-right: 14px;
+}
+#featureMenu .featureGroup .fullList {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #BEBEBE;
+    border-left: 1px solid #BEBEBE;
+    border-right: 1px solid #BEBEBE;
+    clear: both;
+    display: block;
+    margin-top: 30px;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 118px;
+}
+#featureMenu .featureGroup .fullList UL {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+#featureMenu .featureGroup .fullList UL LI {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+#featureMenu .featureGroup .fullList UL LI A {
+    border-top: 1px solid #DBDADA;
+    color: #213F9A;
+    display: block;
+    font-size: 11px;
+    height: 28px;
+    line-height: 28px;
+    padding: 0 10px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+#featureMenu .featureGroup .fullList UL LI A:hover {
+    background-color: #EBEEF6;
+    color: #213F9A;
+}
+#featureMenu .featureGroup .g1 {
+    min-width: 116px;
+}
+#featureMenu .featureGroup .g2 {
+    min-width: 114px;
+}
+#featureMenu .featureGroup .g3 {
+    min-width: 124px;
+}
+#featureMenu .featureGroup .g4 {
+    min-width: 123px;
+}
+#featureMenu .featureGroup .g5 {
+    min-width: 67px;
+}
+#featureMenu .featureGroup .g6 {
+    min-width: 137px;
+}
+#featureMenu .featureGroup .g7 {
+    min-width: 96px;
+}
+#featureMenu .featureGroup .menuHide {
+    display: none;
+}
+#featureMenu .featureGroup .menuShow {
+    display: block;
+    left: auto;
+    position: absolute;
+    z-index: 2147483647 !important;
+}
+#wuPageSkin {
+    background-color: #FFFFFF;
+    clear: both;
+    overflow: hidden;
+    padding: 0 10px;
+    text-align: left;
+    width: 984px;
+}
+#wuPageSkinVideo {
+    background-color: #000000;
+    clear: both;
+    overflow: hidden;
+    padding: 0 10px;
+    text-align: left;
+    width: 984px;
+}
+#wuPage984 {
+    clear: both;
+    overflow: hidden;
+    text-align: left;
+    width: 984px;
+}
+#wuPage984 #innerContent {
+    margin-top: 20px;
+    text-align: left;
+}
+#hpSearch {
+    margin: 12px 0 0;
+    width: 636px;
+}
+#hpSearch #title {
+    background: url("//icons.wxug.com/i/wu/titleThickBar.png") repeat-x scroll 0 0 transparent;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: bold;
+    height: 44px;
+    line-height: 44px;
+    padding-left: 10px;
+}
+#hpSearch #searchArea {
+    background: url("//icons.wxug.com/i/wu/nowBarBG.png") repeat-x scroll center top #EFEFEF;
+    border-color: #BEBEBE #2E52AB;
+    border-style: solid;
+    border-width: 1px;
+}
+#hpSearch #searchFields {
+    color: #333333;
+    padding: 12px 0;
+}
+#hpSearch #searchFields TABLE {
+    margin-left: 60px;
+}
+#hpSearch #searchFields TR TD {
+    font-size: 11px;
+    padding: 2px 6px;
+}
+#hpSearch #searchFields TR:first-child TD {
+    font-size: 14px;
+}
+#hpSearch #searchFields TR TD SPAN {
+    color: #666666;
+    font-size: 10px;
+    font-weight: normal;
+}
+#hpSearch #searchFields TR TD SPAN A {
+    color: #666666;
+    text-decoration: none;
+}
+#hpSearch #searchFields #wuSearch {
+    border: 1px solid #3B4DA9;
+    font-size: 14px;
+    height: 29px;
+    padding-left: 12px;
+    width: 300px;
+}
+#hpSearch #searchFields #searchSubmit {
+    background: url("//icons.wxug.com/i/w/wu3_SubmitBg.png") repeat-x scroll 0 0 transparent;
+    border: 1px solid #3B4DA9;
+    color: #FFFFFF;
+    font-size: 14px;
+    height: 31px;
+    width: 72px;
+}
+#hpSearch #geoBox {
+    border-bottom: 1px solid #2E52AB;
+    border-left: 1px solid #2E52AB;
+    border-right: 1px solid #2E52AB;
+    padding: 24px 24px 0;
+}
+#hpSearch #geoBox #geoData.local {
+    background-color: #F1F1F1;
+    border: 3px solid #FFFFFF;
+    color: #666666;
+}
+#hpSearch #geoBox #geoData TABLE.full {
+    border-top: 3px solid #FFFFFF;
+}
+#hpSearch #geoBox #geoData #condTable {
+    font-size: 13px;
+}
+#hpSearch #geoBox #geoData #condTable TR TD:first-child DIV {
+    text-align: right;
+    width: 130px;
+}
+#hpSearch #geoBox #geoData #condTable DIV.textData {
+    margin-top: 5px;
+}
+#hpSearch #geoBox #geoData #condTable A.moreData {
+    display: block;
+    font-size: 11px;
+    line-height: 15px;
+    text-align: center;
+    width: 120px;
+}
+#hpSearch #geoBox #geoData #locTable {
+    font-size: 11px;
+    margin: 5px;
+}
+#hpSearch #geoBox #geoData #pwsTable {
+    font-size: 11px;
+    margin: 5px;
+}
+#hpSearch #geoBox #geoData .pt {
+    padding-top: 3px;
+}
+#hpSearch #geoBox #geoData .pb {
+    padding-bottom: 3px;
+}
+#hpSearch #geoBox #geoData .div {
+    color: #CCCCCC;
+}
+#hpSearch #geoBox #geoData #bigStory {
+    border-bottom: 3px solid #FFFFFF;
+    font-size: 12px;
+}
+#hpSearch #geoBox #geoData #bigStory #bigTitle {
+    color: #A52E16;
+    font-size: 14px;
+    font-weight: bold;
+}
+#hpSearch #geoBox #geoData #bigStory #bigDismiss {
+    display: none;
+    float: right;
+}
+#hpSearch #geoBox #geoData #bigStory #bigImage IMG {
+    height: 60px;
+}
+#hpSearch #geoBox #picCred {
+    display: block;
+    font-size: 10px;
+    height: 26px;
+    line-height: 26px;
+    margin: 12px 0;
+    width: 26px;
+}
+#hpSearch #geoBox #picCred #creditIcon {
+    background: url("//icons.wxug.com/i/wu/creditI.png") no-repeat scroll 6px 6px transparent;
+    display: block;
+    height: 26px;
+    width: 26px;
+}
+#hpSearch #geoBox #picCred #creditText {
+    display: none;
+}
+#hpSearch #geoBox #picCred:hover {
+    background: url("//icons.wxug.com/i/wu/creditBG.png") repeat-x scroll 0 0 transparent;
+    display: block;
+    font-size: 10px;
+    height: 26px;
+    line-height: 26px;
+    text-decoration: none;
+    width: 190px;
+}
+#hpSearch #geoBox #picCred:hover #creditIcon {
+    display: none;
+}
+#hpSearch #geoBox #picCred:hover #creditText {
+    background: url("//icons.wxug.com/i/wu/creditI.png") no-repeat scroll 6px 6px transparent;
+    display: block;
+    padding-left: 26px;
+}
+#hpSearch #geoBox #picCred:hover #creditText SPAN {
+    color: #333333;
+}
+#preFooter {
+    clear: both;
+    height: 48px;
+}
+#footer {
+    background: url("//icons.wxug.com/i/w/wu3_FooterSepBg.gif") repeat-x scroll center top #F7F7F7;
+    clear: both;
+    width: 100%;
+}
+#footer #footerContents {
+    margin: 0 auto;
+    overflow: hidden;
+    width: 1008px;
+}
+#footer A {
+    color: #333399;
+}
+#footer #subNav {
+    overflow: hidden;
+    width: 1008px;
+}
+#footer #subNav UL {
+    float: left;
+    list-style-type: none;
+    margin: 12px 0 12px 12px;
+    overflow: hidden;
+    padding: 0;
+    width: 130px;
+}
+#footer #subNav UL.rb {
+    background: url("//icons.wxug.com/i/w/wu3_SubnavBg.png") no-repeat scroll right top transparent;
+}
+#footer #subNav UL LI {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+#footer #subNav UL LI A {
+    font-size: 12px;
+    line-height: 16px;
+}
+#footer #goodies {
+    background: url("//icons.wxug.com/i/w/wu3_FooterSepBg.gif") repeat-x scroll 0 0 #F7F7F7;
+    clear: both;
+    color: #333333;
+}
+#footer #goodies UL {
+    list-style-type: none;
+    margin: 20px 0 0;
+    padding: 0;
+}
+#footer #goodies UL LI {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+#footer #goodies #actions {
+    float: left;
+    height: 180px;
+    width: 432px;
+}
+#footer #goodies #actions A {
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    display: block;
+    float: left;
+    font-size: 14px;
+    font-weight: bold;
+    height: 46px;
+    margin: 12px 0 0 12px;
+    width: 190px;
+}
+#footer #goodies #actions A IMG {
+    margin-right: 5px;
+}
+#footer #goodies #service {
+    float: left;
+    height: 180px;
+    padding: 12px;
+    width: 260px;
+}
+#footer #goodies #adsales {
+    float: left;
+    height: 180px;
+    padding: 12px;
+    width: 260px;
+}
+#footer #signoff {
+    background-color: #F7F7F7;
+    border-top: 1px solid #D5D5D5;
+    clear: both;
+    font-size: 11px;
+}
+#footer #signoff TABLE {
+    width: 984px;
+}
+#footer #signoff #copyright {
+    color: #999999;
+    padding: 4px 0 12px 12px;
+}
+#footer #signoff #moreInfo {
+    padding: 4px 12px 12px 0;
+    text-align: right;
+}
+#photostrip {
+    height: 252px;
+    overflow: hidden;
+    position: relative;
+    width: 202px;
+}
+#photostrip .wrapper {
+    height: 150px;
+    overflow: hidden;
+    width: 202px;
+}
+#photostrip .wrapper .inner {
+    height: 150px;
+    overflow: hidden;
+    width: 4000px;
+}
+#photostrip .wrapper .inner .elt {
+    float: left;
+    height: 150px;
+    overflow: hidden;
+    width: 202px;
+}
+#photostrip .wrapper .inner .elt IMG.fitHeight {
+    height: 150px;
+}
+#photostrip .wrapper .inner .elt IMG.fitWidth {
+    width: 202px;
+}
+#photostrip .prev {
+    left: 0;
+    position: absolute;
+    top: 0;
+}
+#photostrip .next {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+#photostrip .photoData {
+    border-top: 1px solid #BEBEBE;
+}
+#photostrip .photoData .dots {
+    font-size: 20px;
+    text-align: center;
+}
+#photostrip .photoData .dots SPAN.active {
+    color: #6475BA;
+}
+#photostrip .photoData .dots SPAN.inactive {
+    color: #D5D5D5;
+}
+#photostrip .photoBy {
+    background: url("//icons.wxug.com/i/wu/userIconW.png") no-repeat scroll 0 0 transparent;
+    font-size: 10px;
+    height: 14px;
+    line-height: 14px;
+    margin: 0 12px;
+    padding-left: 20px;
+}
+#photostrip .photoNum {
+    font-size: 12px;
+    font-weight: bold;
+    margin: 17px 12px 0;
+}
+#photostrip .photoUp {
+    background: url("//icons.wxug.com/i/wu/uploadIcon.png") no-repeat scroll 0 0 transparent;
+    font-size: 12px;
+    height: 14px;
+    line-height: 14px;
+    margin: 6px 12px 0;
+    padding-left: 20px;
+}
+#photoTower {
+    border: 1px solid #999999;
+    height: 120px;
+    overflow: hidden;
+    position: relative;
+    width: 334px;
+}
+#photoTower #photoImage {
+    height: 100px;
+    overflow: hidden;
+    width: 334px;
+}
+#photoTower #photoImage IMG {
+    width: 334px;
+}
+#photoTower #photoLinks {
+    background-color: #F7F7F7;
+    border-top: 1px solid #BEBEBE;
+    bottom: 0;
+    color: #666666;
+    font-size: 11px;
+    height: 20px;
+    left: 0;
+    line-height: 20px;
+    padding-left: 3px;
+    position: absolute;
+    width: 100%;
+}
+#weatherSummary #talkingHead {
+    border: 1px solid #333333;
+    display: block;
+    height: 107px;
+    width: 80px;
+}
+#weatherSummary #short_discussion {
+    height: 120px;
+    overflow: hidden;
+}
+#cBar {
+}
+#cBar A {
+}
+.timelord-warning {
+    color: #999999;
+    text-decoration: line-through;
+}
+.genTable {
+    font-size: 11px;
+    width: 100%;
+}
+.genTable TH {
+    font-weight: normal;
+    padding: 5px;
+}
+.genTable TD {
+    padding: 5px;
+}
+.aqIndex {
+    background: url("//icons.wxug.com/i/wu/airQualityMeter.png") no-repeat scroll 0 0 transparent;
+    height: 8px;
+    margin-top: 2px;
+    width: 34px;
+}
+.aq1 {
+    background-position: 0 0;
+}
+.aq2 {
+    background-position: 0 -9px;
+}
+.aq3 {
+    background-position: 0 -18px;
+}
+.aq4 {
+    background-position: 0 -27px;
+}
+.aq5 {
+    background-position: 0 -36px;
+}
+.aq6 {
+    background-position: 0 -45px;
+}
+#historyTable {
+    font-size: 11px;
+    width: 100%;
+}
+#historyTable TH {
+    font-weight: normal;
+    padding: 5px;
+}
+#historyTable TD {
+    padding: 5px;
+}
+#historyTable .typeBG {
+    background-color: #EFEFEF;
+    color: #666666;
+    font-size: 11px;
+    font-weight: normal;
+    padding: 5px;
+}
+#moonTable {
+    width: 100%;
+}
+#moonTable #phaseSummary {
+    font-size: 11px;
+    padding: 10px;
+}
+#moonTable .phaseText {
+    background: url("//icons.wxug.com/i/wu/gradDownBG.png") repeat-x scroll center top #FFFFFF;
+    padding: 7px 10px;
+    vertical-align: top;
+    width: 20%;
+}
+#moonTable .phaseText .phaseDay {
+    color: #666666;
+    font-size: 10px;
+}
+#moonTable .phaseText .phaseName {
+    font-size: 10px;
+    margin-top: 7px;
+}
+#moonTable .phaseIcon {
+    padding-bottom: 7px;
+    text-align: center;
+    width: 20%;
+}
+#moonTable .phaseIcon DIV {
+    background-image: url("//icons.wxug.com/i/wu/moonPhases.png");
+    background-repeat: no-repeat;
+    height: 25px;
+    margin: 0 auto;
+    width: 25px;
+}
+#moonTable .moonNorth .moon0 {
+    background-position: 0 0;
+}
+#moonTable .moonNorth .moon1 {
+    background-position: -25px 0;
+}
+#moonTable .moonNorth .moon2 {
+    background-position: -50px 0;
+}
+#moonTable .moonNorth .moon3 {
+    background-position: -75px 0;
+}
+#moonTable .moonNorth .moon4 {
+    background-position: -100px 0;
+}
+#moonTable .moonNorth .moon5 {
+    background-position: -125px 0;
+}
+#moonTable .moonNorth .moon6 {
+    background-position: -150px 0;
+}
+#moonTable .moonNorth .moon7 {
+    background-position: -175px 0;
+}
+#moonTable .moonNorth .moon8 {
+    background-position: -200px 0;
+}
+#moonTable .moonNorth .moon9 {
+    background-position: -225px 0;
+}
+#moonTable .moonNorth .moon10 {
+    background-position: -250px 0;
+}
+#moonTable .moonNorth .moon11 {
+    background-position: -275px 0;
+}
+#moonTable .moonNorth .moon12 {
+    background-position: -300px 0;
+}
+#moonTable .moonNorth .moon13 {
+    background-position: -325px 0;
+}
+#moonTable .moonNorth .moon14 {
+    background-position: -350px 0;
+}
+#moonTable .moonNorth .moon15 {
+    background-position: -375px 0;
+}
+#moonTable .moonNorth .moon16 {
+    background-position: -400px 0;
+}
+#moonTable .moonNorth .moon17 {
+    background-position: -425px 0;
+}
+#moonTable .moonNorth .moon18 {
+    background-position: -450px 0;
+}
+#moonTable .moonNorth .moon19 {
+    background-position: -475px 0;
+}
+#moonTable .moonNorth .moon20 {
+    background-position: -500px 0;
+}
+#moonTable .moonNorth .moon21 {
+    background-position: -525px 0;
+}
+#moonTable .moonNorth .moon22 {
+    background-position: -550px 0;
+}
+#moonTable .moonNorth .moon23 {
+    background-position: -575px 0;
+}
+#moonTable .moonNorth .moon24 {
+    background-position: -600px 0;
+}
+#moonTable .moonNorth .moon25 {
+    background-position: -625px 0;
+}
+#moonTable .moonNorth .moon26 {
+    background-position: -650px 0;
+}
+#moonTable .moonNorth .moon27 {
+    background-position: -675px 0;
+}
+#moonTable .moonNorth .moon28 {
+    background-position: -700px 0;
+}
+#moonTable .moonNorth .moon29 {
+    background-position: -725px 0;
+}
+#moonTable .moonNorth .moon30 {
+    background-position: -750px 0;
+}
+#moonTable .moonSouth .moon0 {
+    background-position: 0 -25px;
+}
+#moonTable .moonSouth .moon1 {
+    background-position: -25px -25px;
+}
+#moonTable .moonSouth .moon2 {
+    background-position: -50px -25px;
+}
+#moonTable .moonSouth .moon3 {
+    background-position: -75px -25px;
+}
+#moonTable .moonSouth .moon4 {
+    background-position: -100px -25px;
+}
+#moonTable .moonSouth .moon5 {
+    background-position: -125px -25px;
+}
+#moonTable .moonSouth .moon6 {
+    background-position: -150px -25px;
+}
+#moonTable .moonSouth .moon7 {
+    background-position: -175px -25px;
+}
+#moonTable .moonSouth .moon8 {
+    background-position: -200px -25px;
+}
+#moonTable .moonSouth .moon9 {
+    background-position: -225px -25px;
+}
+#moonTable .moonSouth .moon10 {
+    background-position: -250px -25px;
+}
+#moonTable .moonSouth .moon11 {
+    background-position: -275px -25px;
+}
+#moonTable .moonSouth .moon12 {
+    background-position: -300px -25px;
+}
+#moonTable .moonSouth .moon13 {
+    background-position: -325px -25px;
+}
+#moonTable .moonSouth .moon14 {
+    background-position: -350px -25px;
+}
+#moonTable .moonSouth .moon15 {
+    background-position: -375px -25px;
+}
+#moonTable .moonSouth .moon16 {
+    background-position: -400px -25px;
+}
+#moonTable .moonSouth .moon17 {
+    background-position: -425px -25px;
+}
+#moonTable .moonSouth .moon18 {
+    background-position: -450px -25px;
+}
+#moonTable .moonSouth .moon19 {
+    background-position: -475px -25px;
+}
+#moonTable .moonSouth .moon20 {
+    background-position: -500px -25px;
+}
+#moonTable .moonSouth .moon21 {
+    background-position: -525px -25px;
+}
+#moonTable .moonSouth .moon22 {
+    background-position: -550px -25px;
+}
+#moonTable .moonSouth .moon23 {
+    background-position: -575px -25px;
+}
+#moonTable .moonSouth .moon24 {
+    background-position: -600px -25px;
+}
+#moonTable .moonSouth .moon25 {
+    background-position: -625px -25px;
+}
+#moonTable .moonSouth .moon26 {
+    background-position: -650px -25px;
+}
+#moonTable .moonSouth .moon27 {
+    background-position: -675px -25px;
+}
+#moonTable .moonSouth .moon28 {
+    background-position: -700px -25px;
+}
+#moonTable .moonSouth .moon29 {
+    background-position: -725px -25px;
+}
+#moonTable .moonSouth .moon30 {
+    background-position: -750px -25px;
+}
+#severeKey TABLE {
+    float: left;
+    margin: 2px 0 2px 5px;
+    width: 196px;
+}
+#severeKey TABLE TD.keyIcon {
+    width: 15px;
+}
+#severeKey TABLE TD.keyText {
+    color: #666666;
+    font-size: 12px;
+    padding-left: 6px;
+    width: 170px;
+}
+#severeKey TABLE.active TD.keyText DFN {
+    color: #333333;
+    font-weight: bold;
+    text-decoration: none;
+}
+#editFavs #log {
+    color: #FF0000;
+    height: 18px;
+    line-height: 18px;
+    margin: 10px 0;
+    text-align: center;
+    width: 100%;
+}
+#editFavs #searchAjaxLoading {
+    width: 250px;
+}
+#editFavs .ajax-loading {
+    background: url("//icons.wxug.com/graphics/wu2/ajax-loading.gif") no-repeat scroll right center transparent;
+}
+#editFavs .addButton {
+    color: #0000FF;
+    cursor: pointer;
+    text-decoration: underline;
+}
+#editFavs .deleteButton {
+    background: url("//icons.wxug.com/graphics/wu2/favsBarRemove.png") no-repeat scroll 0 0 transparent;
+    cursor: pointer;
+    float: right;
+    height: 18px;
+    margin-right: 5px;
+    width: 60px;
+}
+#editFavs #favoritesSearchForm {
+    margin: 10px;
+}
+#editFavs #favoritesSearchResults {
+    margin: 0 10px 10px;
+}
+#editFavs #favoritesSearchResults UL {
+    margin: 10px 0 0;
+}
+#editFavs #favoritesSearchResults UL LI {
+    border-bottom: 1px dotted #CCCCCC;
+    list-style-type: none;
+    margin: 0;
+}
+#editFavs #favoritesSearchResults UL LI DIV {
+    background-color: #FFFFFF;
+}
+#editFavs #favoritesSearchResults UL LI DIV A {
+    display: block;
+    padding: 3px 0;
+    width: 100%;
+}
+#editFavs #favoritesSearchResults UL LI DIV.addButton {
+    background: url("//icons.wxug.com/graphics/wu2/favsBarSave.png") no-repeat scroll right center transparent;
+}
+#editFavs #favoritesSearchResults UL LI DIV.addButton:hover {
+    background: url("//icons.wxug.com/graphics/wu2/favsBarSaveOver.png") no-repeat scroll right center #F5F5F5;
+}
+#editFavs #favorites-list {
+    border-top: 1px solid #EEEEEE;
+    margin: 10px 0 0;
+    padding: 0;
+}
+#editFavs #favorites-list LI {
+    background: url("//icons.wxug.com/graphics/wu2/favsBar.png") no-repeat scroll left top transparent;
+    border-bottom: 1px solid #999999;
+    border-left: 1px solid #EEEEEE;
+    border-right: 1px solid #999999;
+    clear: both;
+    height: 36px;
+    list-style-type: none;
+    margin: 0;
+    min-height: 36px;
+    padding: 0;
+}
+#editFavs #favorites-list LI .drag-handle {
+    display: block;
+    float: left;
+    min-height: 36px;
+    width: 100%;
+}
+#editFavs #favorites-list LI .drag-handle A {
+    cursor: move !important;
+    text-decoration: none;
+}
+#editFavs #favorites-list LI .drag-handle A:hover {
+    text-decoration: underline;
+}
+#editFavs #favorites-list LI .drag-handle .favCity {
+    color: #172C6C;
+    font-weight: bold;
+    line-height: 20px;
+    padding-left: 36px;
+}
+#editFavs #favorites-list LI .drag-handle .favConds {
+    padding-left: 36px;
+}
+#editFavs #favorites-list LI .drag-handle .favUpdated {
+    border: 0 solid #0000FF;
+    float: right;
+}
+#editFavs .favMove {
+    background: url("//icons.wxug.com/graphics/wu2/favsBarMove.png") no-repeat scroll left center transparent !important;
+}
+#editFavs .favCursorMove {
+    cursor: move;
+}
+#page {
+    height: 600px;
+    position: relative;
+    width: 100%;
+    z-index: 0;
+}
+#map {
+    height: 100%;
+    position: relative;
+    z-index: 0;
+}
+#gMapSide {
+    border: 1px solid #CCCCCC;
+    height: 330px;
+    margin-top: 5px;
+    overflow: hidden;
+    width: 290px;
+}
+#dlList {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+#dlList LI {
+    border-bottom: 1px solid #CCCCCC;
+    clear: both;
+    list-style-type: none;
+    min-height: 100px;
+    padding: 5px;
+}
+#dlList LI .dlIcon {
+    float: left;
+    margin: 5px;
+}
+.mapPlay, .mapStop {
+    display: block;
+    font-size: 11px;
+    height: 15px;
+    line-height: 15px;
+    padding-left: 25px;
+}
+.mapPlay {
+    background: url("//icons.wxug.com/i/wu/radarAnimate.png") no-repeat scroll 0 0 transparent;
+}
+.mapStop {
+    background: url("//icons.wxug.com/i/wu/radarAnimate.png") no-repeat scroll 0 -16px transparent;
+}
+.viscategory {
+    background: url("//icons.wxug.com/i/wu/xBG.png") no-repeat scroll right center #3E67B1;
+    border: 1px solid #213F9A;
+    border-radius: 3px 3px 3px 3px;
+    color: #FFFFFF;
+    line-height: 25px;
+    padding: 3px 20px 3px 3px;
+    white-space: nowrap;
+}
+.catCall {
+    line-height: 30px;
+    margin-top: 20px;
+}
+.catIndex {
+    line-height: 30px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+#socialBar #postWeather {
+    margin: 4px 4px 0 6px;
+    white-space: nowrap;
+}
+#socialBar TD {
+    vertical-align: middle;
+}
+#socialBar TD.full {
+    padding-left: 5px;
+}
+#searchDates #dateBegin, #searchDates #dateEnd {
+    background-color: #FFFFFF;
+    height: 20px;
+    position: relative;
+}
+#searchDates #dateBegin INPUT.grey, #searchDates #dateEnd INPUT.grey {
+    color: #999999;
+    cursor: default;
+}
+#tripSearch #searchDates #dateBegin INPUT, #tripSearch #searchDates #dateEnd INPUT {
+    background-color: #FFFFFF;
+    border: 0 none;
+    color: #213F9A;
+    cursor: pointer;
+    height: 18px;
+    margin-right: 28px;
+    text-align: right;
+    width: 120px;
+}
+#trip_panel_0 #searchDates #dateBegin INPUT, #trip_panel_0 #searchDates #dateEnd INPUT {
+    background-color: #FFFFFF;
+    border: 0 none;
+    color: #213F9A;
+    cursor: pointer;
+    font-size: 10px;
+    height: 18px;
+    text-align: left;
+    width: 75px;
+}
+#trip_panel_0 #destSearch {
+    width: 168px;
+}
+#trip_panel_0 #destActivity {
+    width: 168px;
+}
+.ui-datepicker-trigger {
+    background: url("//icons.wxug.com/i/wu/calIcons.png") no-repeat scroll 0 -18px transparent;
+    border: 0 none;
+    cursor: pointer;
+    display: inline;
+    height: 18px;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 1px;
+    width: 18px;
+}
+.calIconGrey {
+    background: url("//icons.wxug.com/i/wu/calIcons.png") no-repeat scroll 0 0 transparent;
+    border: 0 none;
+    cursor: default;
+    display: inline;
+    height: 18px;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 1px;
+    width: 18px;
+}
+.calIconBlack {
+    background: url("//icons.wxug.com/i/wu/calIcons.png") no-repeat scroll 0 -18px transparent;
+    border: 0 none;
+    cursor: pointer;
+    display: inline;
+    height: 18px;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 1px;
+    width: 18px;
+}
+.ui-datepicker {
+    background-color: #FFFFFF;
+    border: 1px solid #BEBEBE;
+    border-radius: 5px 5px 5px 5px;
+    width: 202px;
+}
+.ui-datepicker .ui-state-disabled {
+    color: #999999;
+}
+.ui-datepicker .ui-datepicker-header {
+    background: url("//icons.wxug.com/i/wu/cmTitleBG.png") repeat-x scroll 0 0 transparent;
+    border-bottom: 1px solid #BEBEBE;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    height: 32px;
+    line-height: 32px;
+}
+.ui-datepicker .ui-datepicker-header .ui-datepicker-prev {
+    float: left;
+    font-size: 11px;
+    margin-left: 10px;
+}
+.ui-datepicker .ui-datepicker-header .ui-datepicker-next {
+    float: right;
+    font-size: 11px;
+    margin-right: 10px;
+}
+.ui-datepicker .ui-datepicker-header .ui-datepicker-title {
+    color: #A55816;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+.ui-datepicker TABLE {
+    background: url("//icons.wxug.com/i/wu/tableHeaderBG.png") repeat-x scroll center top transparent;
+    border-collapse: collapse;
+    border-spacing: 0;
+    clear: both;
+    font-size: 10px;
+    font-weight: bold;
+    width: 100%;
+}
+.ui-datepicker TABLE THEAD TR TH {
+    border-bottom: 1px solid #BEBEBE;
+    border-left: 1px solid #BEBEBE;
+    font-weight: bold;
+    height: 27px;
+    line-height: 27px;
+    padding: 0;
+    text-align: center;
+    white-space: nowrap;
+}
+.ui-datepicker TABLE THEAD TR TH:first-child {
+    border-left: 0 none !important;
+}
+.ui-datepicker TABLE THEAD TR TH.taC {
+    text-align: center;
+}
+.ui-datepicker TABLE THEAD TR TH A:hover {
+    text-decoration: none;
+}
+.ui-datepicker TABLE TBODY TR TD {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #E0E0E0;
+    border-left: 1px solid #BEBEBE;
+    overflow: hidden;
+    padding: 7px 0;
+    text-align: center;
+}
+.ui-datepicker TABLE TBODY TR TD:first-child {
+    border-left: 0 none !important;
+}
+.ui-datepicker TABLE TBODY TR TD.cmList {
+    background-color: #FFFFFF;
+    border-bottom: 0 none;
+    padding: 0;
+}
+.ui-datepicker TABLE TBODY TR.nob TD {
+    border: 0 none;
+}
+#tagSelect {
+    height: 25px;
+    margin-top: 5px;
+    position: relative;
+}
+#tagSelect INPUT {
+    border: 1px solid #BEBEBE;
+    height: 23px;
+    line-height: 23px;
+    padding: 0 5px;
+    width: 200px;
+}
+#tagSelect BUTTON.selectbutton {
+    background: url("//icons.wxug.com/i/wu/nowBarArrows.png") no-repeat scroll -2px -3px transparent;
+    border: 1px solid #BEBEBE;
+    height: 25px !important;
+    left: 209px;
+    line-height: 25px;
+    margin-right: 5px;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    width: 27px;
+}
+#tagSelect BUTTON.selectbutton:hover {
+    background-position: -2px -33px;
+}
+#tagSelect BUTTON.catbutton {
+    left: 250px;
+    position: absolute;
+    top: 5px;
+}
+.tidesTableHead {
+    color: #CCCCCC;
+    font-size: 10px;
+    text-align: center;
+    width: 100%;
+}
+.tidesTableHead TBODY TR TD {
+    background: url("//icons.wxug.com/i/wu/marinetides_dashes.png") repeat-x scroll center top transparent;
+    border-right: 1px solid #CCCCCC;
+    height: 27px;
+    line-height: 27px;
+    width: 12.5%;
+}
+.tidesTableHead TBODY TR TD:first-child {
+    border-left: 1px solid #CCCCCC;
+}
+.tidesTable {
+    font-size: 11px;
+    width: 100%;
+}
+.tidesTable TBODY TR TD {
+    border-bottom: 1px solid #CCCCCC;
+}
+.tidesDivider {
+    border-left: 1px dashed #6BD7F6;
+    font-size: 8px;
+    height: 36px;
+    padding: 0 3px;
+    position: absolute;
+}
+.tidesDividerFlipped {
+    border-right: 1px dashed #6BD7F6;
+    font-size: 8px;
+    height: 36px;
+    padding: 0 3px;
+    position: absolute;
+    text-align: right;
+}
+.imgFix {
+    margin: 0 0 -3px;
+}
+.pad710 {
+    padding: 7px 10px;
+}
+.showArchive SELECT {
+    width: 100%;
+}
+.showImageContainer {
+    border: 1px solid #D5D5D5;
+    float: left;
+}
+.showImageContainer IMG {
+    padding: 7px 7px 5px;
+}
+.showDescription {
+    overflow: hidden;
+    padding: 0 0 10px 10px;
+}
+#opinionBox {
+    border: 1px solid #BEBEBE;
+    height: 165px;
+    padding: 10px;
+    width: 454px;
+}
+#opinionBox #imgBox {
+    width: 100%;
+}
+#opinionBox #imgBox IMG {
+    padding-bottom: 5px;
+}
+#opinionBox #textBox {
+    border-bottom: 1px solid #BEBEBE;
+    height: 24px;
+    width: 100%;
+}
+.sticker {
+    border: 1px solid #808080;
+    display: block;
+    float: left;
+    margin-bottom: 13px;
+    margin-right: 13px;
+    padding: 15px;
+    text-decoration: none;
+}
+.sticker img {
+    box-shadow: 0 0 5px #333333;
+    margin-top: 3px;
+}
+.sticker_style {
+}
+.sticker_style A {
+    border: 1px solid #BBBBBB;
+    display: block;
+    float: left;
+    margin-right: 5px;
+    margin-top: 5px;
+    padding: 5px;
+    text-decoration: none;
+}
+.sticker_style A img {
+    box-shadow: 0 0 5px #333333;
+    height: 36px;
+    width: 36px;
+}
+.sticker_style A:hover {
+    background-color: #DDDDDD;
+}
+.sticker_style_selected A {
+    background-color: #FCF9DC;
+    border: 1px solid #CCC8A3;
+    display: block;
+    float: left;
+    margin-right: 5px;
+    margin-top: 5px;
+    padding: 5px;
+    text-decoration: none;
+}
+.sticker_style_selected A img {
+    box-shadow: 0 0 5px #333333;
+    height: 36px;
+    width: 36px;
+}
+.popup_sticker img {
+    box-shadow: 0 0 5px #333333;
+}
+#sticker_preview {
+    overflow: auto;
+    padding: 0;
+    position: absolute;
+    width: 450px;
+}
+#sticker_preview #final_html {
+    font-size: 0.9em;
+    height: 6.5em;
+    margin: 0;
+    width: 95%;
+}
+#iframe_preview {
+    overflow: auto;
+    padding: 0;
+    position: absolute;
+    width: 450px;
+}
+#iframe_preview #iframe_html {
+    font-size: 0.9em;
+    height: 6.5em;
+    margin: 0;
+    width: 95%;
+}
+#sticker_list {
+    width: 616px;
+}
+#iframe_sticker_list {
+    width: 616px;
+}
+.radio_html {
+    height: 80px;
+    width: 100%;
+}
+.actionsBig .introRow TD {
+    color: #666666;
+    vertical-align: middle;
+}
+.actionsBig .introRow TD.full {
+    color: #333333;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: bold;
+}
+.actionsBig .introRow SPAN {
+    font-size: 11px;
+}
+.actionsBig .plus {
+    background: url("//icons.wxug.com/i/wu/actionIconsBig.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    height: 22px;
+    overflow: hidden;
+    width: 22px;
+}
+.actionsBig .plus:hover {
+    background: url("//icons.wxug.com/i/wu/actionIconsBig.png") no-repeat scroll 0 -24px transparent;
+    display: block;
+    height: 22px;
+    overflow: hidden;
+    width: 22px;
+}
+.actionsBig .plusVoted {
+    background: url("//icons.wxug.com/i/wu/actionIconsBig.png") no-repeat scroll 0 -48px transparent;
+    display: block;
+    height: 22px;
+    overflow: hidden;
+    width: 22px;
+}
+.actionsBig .report {
+    background: url("//icons.wxug.com/i/wu/actionIconsBig.png") no-repeat scroll -24px 0 transparent;
+    display: block;
+    height: 22px;
+    overflow: hidden;
+    width: 22px;
+}
+.actionsBig .report:hover {
+    background: url("//icons.wxug.com/i/wu/actionIconsBig.png") no-repeat scroll -24px -24px transparent;
+    display: block;
+    height: 22px;
+    overflow: hidden;
+    width: 22px;
+}
+.actionsBig .reportVoted {
+    background: url("//icons.wxug.com/i/wu/actionIconsBig.png") no-repeat scroll -24px -48px transparent;
+    display: block;
+    height: 22px;
+    overflow: hidden;
+    width: 22px;
+}
+.actions .pNum {
+    border-bottom: 1px dotted #333333;
+    color: #666666;
+    cursor: help;
+    font-style: normal;
+    line-height: 22px;
+}
+.actions .plus {
+    background: url("//icons.wxug.com/i/wu/actionIcons.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    height: 22px;
+    overflow: hidden;
+    width: 22px;
+}
+.actions .plus:hover {
+    background: url("//icons.wxug.com/i/wu/actionIcons.png") no-repeat scroll 0 -22px transparent;
+    display: block;
+    height: 22px;
+    overflow: hidden;
+    width: 22px;
+}
+.actions .plusVoted {
+    background: url("//icons.wxug.com/i/wu/actionIcons.png") no-repeat scroll 0 -44px transparent;
+    display: block;
+    height: 22px;
+    overflow: hidden;
+    width: 22px;
+}
+.actions .minus {
+    background: url("//icons.wxug.com/i/wu/actionIcons.png") no-repeat scroll -22px 0 transparent;
+    display: block;
+    height: 22px;
+    overflow: hidden;
+    width: 22px;
+}
+.actions .minus:hover {
+    background: url("//icons.wxug.com/i/wu/actionIcons.png") no-repeat scroll -22px -22px transparent;
+    display: block;
+    height: 22px;
+    overflow: hidden;
+    width: 22px;
+}
+.actions .minusVoted {
+    background: url("//icons.wxug.com/i/wu/actionIcons.png") no-repeat scroll -22px -44px transparent;
+    display: block;
+    height: 22px;
+    overflow: hidden;
+    width: 22px;
+}
+.actions .report {
+    background: url("//icons.wxug.com/i/wu/actionIcons.png") no-repeat scroll -44px 0 transparent;
+    display: block;
+    height: 22px;
+    overflow: hidden;
+    width: 22px;
+}
+.actions .report:hover {
+    background: url("//icons.wxug.com/i/wu/actionIcons.png") no-repeat scroll -44px -22px transparent;
+    display: block;
+    height: 22px;
+    overflow: hidden;
+    width: 22px;
+}
+.actions .reportVoted {
+    background: url("//icons.wxug.com/i/wu/actionIcons.png") no-repeat scroll -44px -44px transparent;
+    display: block;
+    height: 22px;
+    overflow: hidden;
+    width: 22px;
+}
+.actions .hide {
+    background: url("//icons.wxug.com/i/wu/actionIcons.png") no-repeat scroll -66px 0 transparent;
+    display: block;
+    height: 22px;
+    overflow: hidden;
+    width: 44px;
+}
+.actions .hide:hover {
+    background: url("//icons.wxug.com/i/wu/actionIcons.png") no-repeat scroll -66px -22px transparent;
+    display: block;
+    height: 22px;
+    overflow: hidden;
+    width: 44px;
+}
+.actions .hideVoted {
+    background: url("//icons.wxug.com/i/wu/actionIcons.png") no-repeat scroll -66px -44px transparent;
+    display: block;
+    height: 22px;
+    overflow: hidden;
+    width: 44px;
+}
+.actions .show {
+    background: url("//icons.wxug.com/i/wu/actionIcons.png") no-repeat scroll -110px 0 transparent;
+    display: block;
+    height: 22px;
+    overflow: hidden;
+    width: 44px;
+}
+.actions .show:hover {
+    background: url("//icons.wxug.com/i/wu/actionIcons.png") no-repeat scroll -110px -22px transparent;
+    display: block;
+    height: 22px;
+    overflow: hidden;
+    width: 44px;
+}
+.actions .showVoted {
+    background: url("//icons.wxug.com/i/wu/actionIcons.png") no-repeat scroll -110px -44px transparent;
+    display: block;
+    height: 22px;
+    overflow: hidden;
+    width: 44px;
+}
+.casterMapMarker {
+    background: url("//icons.wxug.com/i/wu/stationSelector.png") no-repeat scroll -1px -114px transparent;
+    color: #FFFFFF;
+    display: block;
+    font-size: 11px;
+    height: 23px;
+    line-height: 23px;
+    overflow: hidden;
+    text-align: center;
+    text-decoration: none;
+    width: 26px;
+}
+.casterMapMarker.none {
+    display: none;
+}
+.casterMapMarker.hover {
+    background-position: -1px -139px;
+}
+.casterMapMarker:visited {
+    color: #FFFFFF;
+}
+.casterMapMarker:hover {
+    text-decoration: none;
+}
+.glossary DT {
+    margin: 0 0 5px;
+}
+.glossary DT .glossaryTerm {
+    font-weight: bold;
+}
+.glossary DD {
+    margin: 0 0 1em;
+}
+.glossary DD .glossarySourceLine {
+    color: #666666;
+    font-size: 10px;
+}
+.glossary .pendingDelete {
+    background-color: #FFDDDD;
+}
+.glossaryForm LABEL {
+    display: block;
+    float: left;
+    width: 75px;
+}
+.glossaryForm TEXTAREA {
+    width: 310px;
+}
+.wui-log {
+    background-color: #F5F5F5;
+    border: 1px solid #CCCCCC;
+    bottom: 5px;
+    height: 130px;
+    left: 5px;
+    max-width: 75%;
+    min-width: 400px;
+    position: fixed;
+    z-index: 10;
+}
+.wui-log .wui-log-head {
+    background-color: #DDDDDD;
+}
+.wui-log .wui-log-body {
+    height: 100%;
+    overflow-y: scroll;
+    padding: 0 2px;
+}
+.wui-log .wui-log-row TD {
+    border-bottom: 1px solid #DDDDDD;
+    vertical-align: top;
+}
+.wui-log .wui-log-time {
+    color: #666666;
+    font-size: 10px;
+    padding-right: 5px;
+}
+.wui-log .wui-log-close {
+    float: right;
+}
+.i {
+    font-style: italic;
+}
+.b {
+    font-weight: bold;
+}
+.nb {
+    font-weight: normal;
+}
+.ww {
+    word-wrap: break-word;
+}
+.p0 {
+    padding: 0 !important;
+}
+.p3 {
+    padding: 3px;
+}
+.p5 {
+    padding: 5px;
+}
+.p10 {
+    padding: 10px;
+}
+.p12 {
+    padding: 12px;
+}
+.p20 {
+    padding: 20px;
+}
+.rl10 {
+    padding: 0 10px;
+}
+.m0 {
+    margin: 0 !important;
+}
+.m5 {
+    margin: 5px;
+}
+.m10 {
+    margin: 10px;
+}
+.tm5 {
+    margin-top: 5px;
+}
+.tm10 {
+    margin-top: 10px !important;
+}
+.tm12 {
+    margin-top: 12px !important;
+}
+.tm20 {
+    margin-top: 20px;
+}
+.tm30 {
+    margin-top: 30px;
+}
+.tm40 {
+    margin-top: 40px;
+}
+.tm50 {
+    margin-top: 50px;
+}
+.tm60 {
+    margin-top: 60px;
+}
+.rm5 {
+    margin-right: 5px;
+}
+.rm10 {
+    margin-right: 10px;
+}
+.rm12 {
+    margin-right: 12px;
+}
+.rm20 {
+    margin-right: 20px;
+}
+.rm25 {
+    margin-right: 25px;
+}
+.lm5 {
+    margin-left: 5px;
+}
+.lm10 {
+    margin-left: 10px;
+}
+.lm12 {
+    margin-left: 12px;
+}
+.lm20 {
+    margin-left: 20px;
+}
+.bm5 {
+    margin-bottom: 5px;
+}
+.bm10 {
+    margin-bottom: 10px;
+}
+.bm12 {
+    margin-bottom: 12px;
+}
+.bm20 {
+    margin-bottom: 20px;
+}
+.taC {
+    text-align: center !important;
+}
+.taR {
+    text-align: right !important;
+}
+.taL {
+    text-align: left !important;
+}
+.taJ {
+    text-align: justify;
+}
+.vaT {
+    vertical-align: top !important;
+}
+.vaM {
+    vertical-align: middle !important;
+}
+.vaB {
+    vertical-align: bottom !important;
+}
+.cap {
+    text-transform: capitalize;
+}
+.upper {
+    text-transform: uppercase;
+}
+.sup {
+    font-size: 0.8em;
+    position: relative;
+    top: -0.4em;
+    vertical-align: baseline;
+}
+.mono {
+    font-family: monospace;
+}
+.fs10 {
+    font-size: 10px;
+}
+.quart {
+    width: 25%;
+}
+.third {
+    width: 33%;
+}
+.thirdx2 {
+    width: 66%;
+}
+.half {
+    width: 50%;
+}
+.full {
+    width: 100%;
+}
+.none {
+    display: none;
+}
+.block {
+    display: block;
+}
+.nobr {
+    white-space: nowrap;
+}
+.clearItem {
+    clear: both;
+}
+.clear {
+    clear: both;
+    height: 0;
+}
+.title {
+    text-align: right;
+    white-space: nowrap;
+}
+.field {
+    white-space: nowrap;
+}
+.borderAll {
+    border: 1px solid #BEBEBE;
+}
+.borderTop {
+    border-top: 1px solid #BEBEBE;
+}
+.borderRight {
+    border-right: 1px solid #BEBEBE;
+}
+.borderBot {
+    border-bottom: 1px solid #BEBEBE;
+}
+.borderLeft {
+    border-left: 1px solid #BEBEBE;
+}
+.fRight {
+    float: right;
+}
+.fLeft {
+    float: left;
+}
+.cellSep {
+    border-left: 1px solid #E0E0E0;
+}
+.unit160 {
+    overflow: hidden;
+    width: 160px;
+}
+.asPix {
+    display: none;
+}
+.newButton {
+    background: url("//icons.wxug.com/i/wu/newBG.gif") no-repeat scroll right center transparent;
+    padding-right: 35px;
+}
+.imgBorder {
+    border: 1px solid #333333;
+}
+.noticeSmall {
+    color: #999999;
+    font-size: 11px;
+}
+.padList LI {
+    margin-bottom: 7px;
+}
+.cPointer {
+    cursor: pointer;
+}
+.cDefault {
+    cursor: default;
+}
+.bcC {
+    border-collapse: collapse;
+}
+.bs0 {
+    border-spacing: 0;
+}
+.w100 {
+    width: 100px;
+}
+.w110 {
+    width: 110px;
+}
+.w125 {
+    width: 125px;
+}
+.w142 {
+    width: 142px;
+}
+.w150 {
+    width: 150px;
+}
+.w200 {
+    width: 200px;
+}
+.w202 {
+    width: 202px;
+}
+.w220 {
+    width: 220px;
+}
+.w250 {
+    width: 250px;
+}
+.w275 {
+    width: 275px !important;
+}
+.w295 {
+    width: 295px;
+}
+.w300 {
+    width: 300px;
+}
+.w312 {
+    width: 312px;
+}
+.w336 {
+    width: 336px;
+}
+.w330 {
+    width: 330px;
+}
+.w350 {
+    width: 350px;
+}
+.w400 {
+    width: 400px;
+}
+.w500 {
+    width: 500px;
+}
+.w600 {
+    width: 600px;
+}
+.w650 {
+    width: 650px;
+}
+.h200 {
+    height: 200px;
+}
+.h400 {
+    height: 400px;
+}
+.h500 {
+    height: 500px;
+}
+.h600 {
+    height: 600px;
+}
+.posRel {
+    position: relative;
+}
+.posAbs {
+    position: absolute;
+}
+.red {
+    color: #FF0000 !important;
+}
+.blue {
+    color: #0000FF;
+}
+.grey {
+    color: #999999;
+}
+.white {
+    color: #FFFFFF;
+}
+.green {
+    color: #008800;
+}
+.rfGreen {
+    color: #389B06;
+}
+.orange {
+    color: #FF8800;
+}
+.yellow {
+    color: #FFFF00;
+}
+.LayerExtremes_warning {
+    color: #999999;
+}
+.new {
+    color: #A52E16;
+    font-size: 10px;
+    font-variant: small-caps;
+    font-weight: bold;
+}
+.w10 {
+    width: 10px;
+}
+.w15 {
+    width: 15px;
+}
+.vaT {
+    vertical-align: top;
+}
+.vaM {
+    vertical-align: middle;
+}
+.vaB {
+    vertical-align: bottom;
+}
+.borderGB {
+    border-bottom: 1px solid #CCCCCC;
+}
+.borderBB {
+    border-bottom: 1px solid #0000FF;
+}
+.leftBar {
+    font-size: 12px;
+    width: 130px;
+}
+.code {
+    background-color: #F5F5F5;
+    border: 1px solid #CCCCCC;
+    font-family: Courier,monospace;
+    font-size: 11px;
+    text-align: left;
+    width: 300px;
+}
+.txtOnly IMG, .txtOnly OBJECT, .txtOnly EMBED {
+    display: none;
+}
+.boxR {
+    background-color: #FFFFFF;
+    border: 1px solid #990000;
+    vertical-align: top;
+}
+.boxG {
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    vertical-align: top;
+}
+.boxB {
+    background-color: #FFFFFF;
+    border: 1px solid #000088;
+    vertical-align: top;
+}
+.gap1 {
+    clear: both;
+    height: 1px;
+    line-height: 1px;
+}
+.none {
+    display: none;
+}
+.onlyPrint {
+    display: none;
+}
+.nobr {
+    white-space: nowrap;
+}
+.pre {
+    white-space: pre;
+}
+.caps {
+    text-transform: capitalize;
+}
+.lower {
+    text-transform: lowercase;
+}
+.clear {
+    clear: both;
+}
+.ad125 {
+    float: left;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    text-align: center;
+    width: 135px;
+}
+.center {
+    margin: 0 auto;
+}
+.subG {
+    background-color: #F5F5F5;
+    border-bottom: 1px solid #CCCCCC;
+    padding: 2px;
+}
+.subW {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #CCCCCC;
+    padding: 2px;
+}
+.mainB {
+    background-color: #CDD9FF;
+    border-bottom: 1px solid #172C6C;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 2px;
+}
+.bgW {
+    background-color: #FFFFFF;
+}
+.bgG {
+    background-color: #EEEEEE;
+}
+.bgY {
+    background-color: #FFFFCC;
+}
+.rowG TD {
+    background-color: #EEEEEE;
+    color: #000000;
+}
+.rowW TD {
+    background-color: #FFFFFF;
+    color: #000000;
+}
+.rowW:hover TD {
+    background-color: #FFFFCC;
+    color: #000000;
+}
+.rowY TD {
+    background-color: #FFFFCC;
+    color: #000000;
+}
+.sm {
+    font-size: 11px;
+}
+.smB {
+    font-family: Verdana,sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+}
+.small {
+    font-size: 12px;
+}
+.med {
+    font-size: 14px;
+}
+.big {
+    font-size: 16px;
+}
+.TabBox {
+    border-color: #172C6C;
+    border-style: solid;
+    border-width: 2px 1px 1px;
+}
+.TabNavOn {
+    background-color: #172C6C;
+    border-color: #213F9A #333333 #172C6C #213F9A;
+    border-style: solid;
+    border-width: 1px;
+    color: #FFFFFF;
+    font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    height: 20px;
+    margin-left: 2px;
+    margin-right: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    white-space: nowrap;
+}
+.TabNavOff {
+    background-color: #DDEEFF;
+    border-left: 5px solid #7BA3C6;
+    border-right: 1px solid #999999;
+    border-top: 1px solid #7BA3C6;
+    font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    height: 18px;
+    margin-left: 2px;
+    margin-right: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    white-space: nowrap;
+}
+.TabNavOver {
+    background-color: #DDEEFF;
+    border-left: 5px solid #4245AD;
+    border-right: 1px solid #000088;
+    border-top: 1px solid #4245AD;
+    font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    height: 18px;
+    margin-left: 2px;
+    margin-right: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    white-space: nowrap;
+}
+.TabLink {
+    color: #172C6C;
+    text-decoration: none;
+}
+.leftButton {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #999999;
+    border-right: 1px solid #999999;
+    border-top: 1px solid #CCCCCC;
+    margin-bottom: 1px;
+    width: 129px;
+}
+.leftButton:hover {
+    background-color: #FFFFCC;
+}
+.leftButton A {
+    color: #0000FF;
+    text-decoration: none;
+}
+.leftButton IMG {
+    margin: 1px 3px 1px 1px;
+}
+.leftList {
+    margin: 0;
+}
+.leftList LI {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #DDDDDD;
+    list-style-type: none;
+    margin: 0;
+    padding: 2px 0 2px 5px;
+}
+.leftadbody {
+    background-color: #FFFFFF;
+}
+.leftadbody LI {
+    list-style-type: circle;
+}
+.iconKey {
+    float: left;
+    font-size: 10px;
+    margin: 5px;
+    text-align: center;
+    width: 50px;
+}
+.endBox {
+    height: 0;
+    line-height: 0;
+}
+.popImg {
+    border-color: #496CD8 #172C6C #172C6C #496CD8;
+    border-style: solid;
+    border-width: 1px;
+}
+.indentImg {
+    border-color: #172C6C #496CD8 #496CD8 #172C6C;
+    border-style: solid;
+    border-width: 1px;
+}
+.subLink {
+    background-color: #FFEB9B;
+    border: 1px solid #9A8221;
+    color: #172C6C;
+    display: inline;
+    margin: 10px 0;
+    padding: 1px 10px;
+    text-decoration: none;
+}
+.subLink:hover {
+    background-color: #FFF5CD;
+    border: 1px solid #6C5B17;
+}
+.leftLink {
+    background-color: #FFFFFF;
+    border: 1px solid #9BB4FF;
+    color: #213F9A;
+    padding: 2px;
+    text-decoration: none;
+}
+.leftLink:hover {
+    background-color: #FFFFCC;
+    border: 1px solid #213F9A;
+    color: #213F9A;
+}
+.wxStickerType {
+    border-bottom: 1px solid #CCCCCC;
+    font-weight: bold;
+    margin: 0 0 10px;
+    padding: 2px;
+}
+.stickerCode {
+    height: 100px;
+    margin: 10px;
+    width: 600px;
+}
+.bgMap {
+    background-image: url("//icons.wxug.com/graphics/wu2/note_tornadomap.gif");
+    background-repeat: no-repeat;
+}
+.bgRadar {
+    background-image: url("//icons.wxug.com/graphics/wu2/note_radar.gif");
+    background-repeat: no-repeat;
+}
+.bgRadio {
+    background-image: url("//icons.wxug.com/graphics/wu2/note_wunderradio.gif");
+    background-repeat: no-repeat;
+}
+.bgTropicApple {
+    background-image: url("//icons.wxug.com/graphics/wu2/note_tropicapple.gif");
+    background-repeat: no-repeat;
+}
+.noteFeature {
+    height: 50px;
+    margin-bottom: 10px;
+    width: 300px;
+}
+.noteFeature A {
+    display: block;
+    font-family: Verdana,Geneva,Arial,Helvetica,sans-serif;
+    font-size: 14px;
+    height: 50px;
+    text-align: center;
+    text-decoration: none;
+    width: 300px;
+}
+.noteFeature A DIV.noteIntro {
+    color: #172C6C;
+    padding-top: 7px;
+}
+.noteFeature A DIV.noteTitle {
+    color: #172C6C;
+    font-weight: bold;
+    padding-top: 3px;
+    text-decoration: underline;
+}
+.notesBox {
+    background-image: url("//icons.wunderground.com/graphics/smash/bg_trans.gif");
+    background-repeat: repeat;
+    border-color: #B4B4B4 #333333 #333333 #B4B4B4;
+    border-style: solid;
+    border-width: 1px;
+    display: none;
+    position: absolute;
+    width: 450px;
+    z-index: 5000;
+}
+.notesBox .note-title {
+    border: 1px solid #CCCCCC;
+    color: #333333;
+    font-weight: bold;
+    margin: 2px 2px 0;
+    padding: 2px;
+}
+.notesBox .note-title .note-text {
+    float: left;
+}
+.notesBox .note-title .note-close {
+    background-color: #FEFF9F;
+    float: left;
+    height: 12px;
+    white-space: nowrap;
+    width: 430px;
+}
+.notesBox .body {
+    background-color: #F5F5F5;
+    margin: 0 5px 5px;
+    padding: 5px;
+}
+.loading {
+    background-image: url("//icons.wxug.com/i/loading-coda-small.gif");
+    background-repeat: no-repeat;
+}
+.loading-wa {
+    background-image: url("//icons.wxug.com/graphics/arrow-loading-white.gif");
+    background-repeat: no-repeat;
+}
+.fawnLabel{
+color: #f00e61;
+font-size: 16px;
+text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.7);
+font-family: Arial,sans-serif; 
+font-weight:bold;
+white-space: nowrap
+}
+.madisLabel{
+color: #333333;
+font-size: 16px;
+text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.7);
+font-family: Arial,sans-serif; 
+font-weight:bold;
+white-space: nowrap
+}
+.gladStoneFamilyLabel{
+color: #863ca6;
+font-size: 16px;
+text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.7);
+font-family: Arial,sans-serif; 
+font-weight:bold;
+white-space: nowrap
+}

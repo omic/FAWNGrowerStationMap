@@ -1,0 +1,538 @@
+/*
+ * HTML5 Boilerplate
+ *
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html,
+button,
+input,
+select,
+textarea {
+    color: #222;
+}
+
+body {
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/*
+ * Remove the gap between images and the bottom of their containers: h5bp.com/i/440
+ */
+
+img {
+    vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: vertical;
+}
+
+/* ==========================================================================
+   Chrome Frame prompt
+   ========================================================================== */
+
+.chromeframe {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+html {
+    height: 100%;
+}
+
+body{
+    height: 100%;
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+    background-repeat: no-repeat;
+    text-align: center;
+    background: #4aa3d7 url(../img/gradient_farm.jpg) center bottom no-repeat fixed;
+    background-size:800px 800px;
+}
+list{
+	height: 100%;
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+    background-repeat: no-repeat;
+    text-align: center;
+    background: #4aa3d7 url(../img/gradient_farm.jpg) center bottom no-repeat fixed;
+    background-size:800px 800px;
+	
+}
+
+#wrapper {
+    background: #4aa3d7 url(../img/gradient_farm.jpg) center bottom no-repeat fixed;
+    background-size:800px 800px;
+    overflow: auto;
+}
+
+
+a:link {color: #fff;text-decoration: none;} 
+a:visited {color: #fff;}
+a:hover,a:focus {color: #;text-decoration: none;}
+a:active {}
+
+#mainHeader{
+	width: 100%;
+	height: 40px;
+	background-color: #ededed; /* layer fill content */
+	-moz-box-shadow: 0 2px 0 rgba(0,0,0,.1), inset 0 -1px 0 rgba(255,255,255,.9); /* drop shadow and inner shadow */
+	-webkit-box-shadow: 0 2px 0 rgba(0,0,0,.1), inset 0 -1px 0 rgba(255,255,255,.9); /* drop shadow and inner shadow */
+	box-shadow: 0 2px 0 rgba(0,0,0,.1), inset 0 -1px 0 rgba(255,255,255,.9); /* drop shadow and inner shadow */
+	background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDQ1OCA5MCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PGxpbmVhckdyYWRpZW50IGlkPSJoYXQwIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjUwJSIgeTE9IjEwMCUiIHgyPSI1MCUiIHkyPSItMS40MjEwODU0NzE1MjAyZS0xNCUiPgo8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMDAwIiBzdG9wLW9wYWNpdHk9IjAiLz4KPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDAwIiBzdG9wLW9wYWNpdHk9IjAuMDUiLz4KICAgPC9saW5lYXJHcmFkaWVudD4KCjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI0NTgiIGhlaWdodD0iOTAiIGZpbGw9InVybCgjaGF0MCkiIC8+Cjwvc3ZnPg==); /* gradient overlay */
+	background-image: -moz-linear-gradient(bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,.05) 100%); /* gradient overlay */
+	background-image: -o-linear-gradient(bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,.05) 100%); /* gradient overlay */
+	background-image: -webkit-linear-gradient(bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,.05) 100%); /* gradient overlay */
+	background-image: linear-gradient(bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,.05) 100%); /* gradient overlay */
+
+}
+
+h3{
+	text-align: left;
+	margin: 0 8px 10px 8px;
+	padding-top: 15px;
+	border-bottom: 1px solid rgba(255,255,255,0.33);
+	color: #fff;
+}
+
+.dacsLogo{
+	width: 32px;
+	height: 32px;
+	position: relative;
+	left: 50%;
+	margin-top: -36px;
+	margin-left: -20px;
+}
+
+
+/* ==========================================================================
+   Navigation
+   ========================================================================== */
+nav {
+	height: 40px;
+	width: 100%;
+	background: #7db9e8;
+	font-size: 11pt;
+	position: relative;
+	border-bottom: 2px solid #283744;
+}
+
+
+nav ul {
+	padding: 0;
+	margin: 0 auto;
+	width: 60em;
+	height: 40px;
+	text-align: center;
+}
+
+
+nav li {
+	display: inline;
+	float: left;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
+.clearfix {
+    *zoom: 1;
+}
+
+nav a {
+	color: #fff;
+	display: inline-block;
+	width: 100px;
+	text-align: center;
+	text-decoration: none;
+	line-height: 40px;
+	text-shadow: 1px 1px 0px #283744;
+}
+
+nav li a {
+	border-right: 1px solid #576979;
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+}
+nav li:last-child a {
+	border-right: 0;
+}
+
+nav a:hover, nav a:active {
+	background-color: rgba(255,255,255,0.50);
+}
+
+nav a#pull {
+	display: none;
+}		
+
+.backToMap{
+	margin: 0 12px 15px 0;
+	float: right;
+}
+
+.backToMap img{
+	margin-top: -3px;
+}
+
+/* ==========================================================================
+   Content Styles
+   ========================================================================== */
+
+#mainWrap{
+	margin: 0 auto;
+	width: 60em;
+}
+
+#mainWrap div.boxWrap{
+	width: 310px;
+	padding: 0 0 35px 0;
+	margin: 15px auto 25px auto;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px; /* border radius */
+	-moz-background-clip: padding;
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box; /* prevents bg color from leaking outside the border */
+	background-color: rgba(0,0,0,0.25); /* layer fill content */
+	-moz-box-shadow: 0 0 0 1px rgba(3,4,4,.23); /* drop shadow */
+	-webkit-box-shadow: 0 0 0 1px rgba(3,4,4,.23); /* drop shadow */
+	box-shadow: 0 0 0 1px rgba(3,4,4,.23); /* drop shadow */
+}
+
+#mainWrap div input.tempForm{
+	width: 250px;
+	height: 40px;
+	margin: 32px 0 0 0;
+	padding: 5px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius:3px;
+	border-radius: 3px; /* border radius */
+	border: 1px solid #fff;
+	-moz-background-clip: padding;
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box; /* prevents bg color from leaking outside the border */
+	background-color: rgba(255,255,255,1); /* layer fill content */
+}
+
+a.lnk{
+	text-decoration: none;
+	display: block;
+	width: 225px;
+	margin: 15px auto 5px auto;
+	font-size: 14px;
+	font-weight: 700;
+	color: #ffffff;
+	padding: 15px 30px 10px 30px;
+	background-color: rgba(255,255,255,0.33);
+	-moz-border-radius: 3px;
+	-webkit-border-radius:3px;
+	border-radius: 3px; /* border radius */
+	text-shadow:
+		0px 0px 0px rgba(000,000,000,0),
+		0px 0px 0px rgba(255,255,255,0);
+}
+
+a.lnk img{
+	margin: -3px 5px 0 0;
+}
+
+a.lnk:hover {
+	background-color: rgba(69,165,217,0.64);
+}
+
+button.btnSubmit {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #ffffff;
+	padding: 10px 20px;
+	background: -moz-linear-gradient(
+		top,
+		#69addb 0%,
+		#5393bd);
+	background: -webkit-gradient(
+		linear, left top, left bottom, 
+		from(#69addb),
+		to(#5393bd));
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	border: 0px solid #b85f00;
+	-moz-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px -1px 0px rgba(255,255,255,0.7);
+	-webkit-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px -1px 0px rgba(255,255,255,0.7);
+	box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px -1px 0px rgba(255,255,255,0.7);
+	text-shadow:
+		0px -1px 1px rgba(000,000,000,0.2),
+		0px 1px 0px rgba(255,255,255,0.3);
+}
+
+
+ol.tags {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+    list-style: none;
+    list-style-image: none;
+	text-align: left;	
+	}
+ol.tags li a {
+	color:#fff;
+	text-decoration: none;
+	display: block;
+	padding: 8px 5px;
+	border-bottom: 1px dotted rgba(255,255,255,0.33);
+	margin: 0 8px;
+	}
+ol.tags li a span.meta {
+	float: right;
+	color:#fff;
+	}
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Image replacement
+ */
+
+.ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    /* IE 6/7 fallback */
+    *text-indent: -9999px;
+}
+
+.ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 150%;
+}
+
+/*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+ */
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+/*
+ * Hide visually and from screenreaders, but maintain layout
+ */
+
+.invisible {
+    visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/*
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+
+.clearfix {
+    *zoom: 1;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media screen and (max-width: 800px) {
+	#mainWrap{
+		margin: 0 auto;
+		width: 100%;
+	}
+
+	nav ul {
+		width: 100%;
+	}
+
+}
+
+@media screen and (max-width: 600px) {
+nav { 
+  		height: auto;
+  	}
+  	nav ul {
+  		width: 100%;
+  		display: block;
+  		height: auto;
+  	}
+  	nav li {
+  		width: 50%;
+  		float: left;
+  		position: relative;
+  	}
+  	nav li a {
+		border-bottom: 1px solid #576979;
+		border-right: 1px solid #576979;
+	}
+  	nav a {
+	  	text-align: left;
+	  	width: 100%;
+	  	text-indent: 25px;
+  	}
+}
+
+@media only screen and (max-width : 480px) {
+	nav {
+		border-bottom: 0;
+	}
+	nav ul {
+		display: none;
+		height: auto;
+	}
+	nav a#pull {
+		display: block;
+		background-color: #283744;
+		width: 100%;
+		position: relative;
+	}
+	nav a#pull:after {
+		content:"";
+		background: url('../img/nav-icon.png') no-repeat;
+		width: 30px;
+		height: 30px;
+		display: inline-block;
+		position: absolute;
+		right: 15px;
+		top: 10px;
+	}
+}
+
+@media only screen and (max-width : 320px) {
+	nav li {
+		display: block;
+		float: none;
+		width: 100%;
+	}
+	nav li a {
+		border-bottom: 1px solid #576979;
+	}
+}
