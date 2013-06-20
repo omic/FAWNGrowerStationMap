@@ -22,79 +22,149 @@
 </style>   
 </head> 
 <body>
+<!-- RECOMMENDED if your web app will not function without JavaScript enabled -->
+<noscript>
+<div style="width: 22em; position: absolute; left: 50%; margin-left: -11em; color: red; background-color: white; border: 1px solid red; padding: 4px; font-family: sans-serif">
+    Your web browser must have JavaScript enabled
+    in order for this application to display correctly.
+</div>
+</noscript>
+<!--[if lt IE 9]>
+
+<div class="ui-widget">
+    <div class="ui-state-highlight ui-corner-all">
+    <strong>Hey!</strong>
+    Looks like your browser is out of date. Why not update to the latest version? Click <a href="http://windows.microsoft.com/en-US/windows-8/internet-explorer">Update</a>
+</div>
+<![endif]-->
 <div id="map">
 </div> 
 <script>
 var map = initMap();
 var screenWidth = (window.screen.availWidth > 1680 ? 1680
-		: window.screen.availWidth); // is it time consuming?
+: window.screen.availWidth); // is it time consuming?
 // alert(screenWidth);
 var screenHeight = (window.screen.availHeight > 1050 ? 1050
-		: window.screen.availHeight);
+: window.screen.availHeight);
 var preInfoBox = null; // globel;
 var markers = []; // globel
 var previousData = [];// globel
 function checked() {
-	if (document.getElementById("fawn").checked) {
-		return true;
-	} else
-		return false;
+if (document.getElementById("fawn").checked) {
+return true;
+} else
+return false;
 }
 function checked2() {
-	if (document.getElementById("madis").checked)
-		return true;
-	else
-		return false;
+if (document.getElementById("madis").checked)
+return true;
+else
+return false;
 
 }
 function checked3() {
-	if (document.getElementById("grower").checked)
-		return true;
-	else
-		return false;
+if (document.getElementById("grower").checked)
+return true;
+else
+return false;
 
 }
 function showData() {
-	alert("showData " + previousData.length);
-	fillDataSeperately(previousData);
-	boundAjusted();
+alert("showData " + previousData.length);
+fillDataSeperately(previousData);
+boundAjusted();
 }
 function loadFawn() {
+if ($.browser.msie && window.XDomainRequest) {
+	// Use Microsoft XDR
+	var xdr = new XDomainRequest();
+	xdr.open("get", "http://test.fawn.ifas.ufl.edu/controller.php/latestmapjson/");
+	xdr.onload = function () {
+	var JSON = $.parseJSON(xdr.responseText);
+	if (JSON == null || typeof (JSON) == 'undefined')
+	{
+	JSON = $.parseJSON(data.firstChild.textContent);
+	}
+	var fawnStns = JSON;
+	var fawnStnObjs = createStnObjs(fawnStns.stnsWxData, 1);
+	previousData = previousData.concat(fawnStnObjs);
+	fillDataSeperately(previousData);
+	boundAjusted();
+	};
+	xdr.send();
+}else{
 	$.getJSON('http://test.fawn.ifas.ufl.edu/controller.php/latestmapjson/',
-			function(data) {
-				var fawnStns = data;
-				var fawnStnObjs = createStnObjs(fawnStns.stnsWxData, 1);// globel;
-				previousData = previousData.concat(fawnStnObjs);
-				// alert(previousData.length);
-				fillDataSeperately(previousData);
-				boundAjusted();
-			});
+	function(data) {
+	var fawnStns = data;
+	var fawnStnObjs = createStnObjs(fawnStns.stnsWxData, 1);// globel;
+	previousData = previousData.concat(fawnStnObjs);
+	// alert(previousData.length);
+	fillDataSeperately(previousData);
+	boundAjusted();
+	});
+}
 
 }
 function loadMadis() {
-	$.getJSON(
-			'http://test.fawn.ifas.ufl.edu/controller.php/nearbyNonFawn/all/',
-			function(data) {
-				var madisStns = data;
-				var madisStnObjs = createStnObjs(madisStns, 2);// globel;
-				previousData = previousData.concat(madisStnObjs);
-				// alert(previousData.length);
-				fillDataSeperately(previousData);
-				boundAjusted();
-			});
+if ($.browser.msie && window.XDomainRequest) {
+	// Use Microsoft XDR
+	var xdr = new XDomainRequest();
+	xdr.open("get", "http://test.fawn.ifas.ufl.edu/controller.php/nearbyNonFawn/all/");
+	xdr.onload = function () {
+	var JSON = $.parseJSON(xdr.responseText);
+	if (JSON == null || typeof (JSON) == 'undefined')
+	{
+	JSON = $.parseJSON(data.firstChild.textContent);
+	}
+	var familyStns = JSON;
+	var familyStnObjs = createStnObjs(familyStns, 2);
+	previousData = previousData.concat(familyStnObjs);
+	fillDataSeperately(previousData);
+	boundAjusted();
+	};
+	xdr.send();
+}else{
+$.getJSON(
+'http://test.fawn.ifas.ufl.edu/controller.php/nearbyNonFawn/all/',
+function(data) {
+var madisStns = data;
+var madisStnObjs = createStnObjs(madisStns, 2);// globel;
+previousData = previousData.concat(madisStnObjs);
+// alert(previousData.length);
+fillDataSeperately(previousData);
+boundAjusted();
+});
+}
 
 }
 function loadGrower() {
-	$
-			.getJSON(
-					' http://fdacswx.fawn.ifas.ufl.edu/index.php/dataservice/observation/latest/format/json/',
-					function(data) {
-						var familyStns = data;
-						var familyStnObjs = createStnObjs(familyStns, 3);
-						previousData = previousData.concat(familyStnObjs);
-						fillDataSeperately(previousData);
-						boundAjusted();
-					});
+if ($.browser.msie && window.XDomainRequest) {
+// Use Microsoft XDR
+var xdr = new XDomainRequest();
+xdr.open("get", "http://fdacswx.fawn.ifas.ufl.edu/index.php/dataservice/observation/latest/format/json/");
+xdr.onload = function () {
+var JSON = $.parseJSON(xdr.responseText);
+if (JSON == null || typeof (JSON) == 'undefined')
+{
+JSON = $.parseJSON(data.firstChild.textContent);
+}
+var familyStns = JSON;
+var familyStnObjs = createStnObjs(familyStns, 3);
+previousData = previousData.concat(familyStnObjs);
+fillDataSeperately(previousData);
+boundAjusted();
+};
+xdr.send();
+}else{
+$.getJSON('http://fdacswx.fawn.ifas.ufl.edu/index.php/dataservice/observation/latest/format/json/',
+	function(data) {
+		var familyStns = data;
+		var familyStnObjs = createStnObjs(familyStns, 3);
+		previousData = previousData.concat(familyStnObjs);
+		fillDataSeperately(previousData);
+		boundAjusted();
+	});
+}
 }
 function boundAjusted() {
 	google.maps.event.addListener(map, 'bounds_changed', function() {
@@ -664,6 +734,12 @@ function showPosition(position) {
 	map.setCenter(new google.maps.LatLng(lat, lng));
 }
 function initMap() {
+	if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(showPosition);
+		// alert(location[0]);
+	} else {
+		return;
+	}
 	// alert("initial");
 	var weather_style = [ {
 		featureType : "administrative",
