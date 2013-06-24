@@ -52,8 +52,10 @@
 <div id="map">
 </div>
 <script>
+var fawnStnData = [];
+var madisStnData = [];
+var growerStnData = [];
 var map = initMap();
-
 var screenWidth = (window.screen.availWidth > 1680 ? 1680
         : window.screen.availWidth); // is it time consuming?
 // alert(screenWidth);
@@ -62,12 +64,9 @@ var screenHeight = (window.screen.availHeight > 1050 ? 1050
 var preInfoBox = null; // globel;
 var markers = []; // globel
 var previousData = [];// globel
-var fawnStnData = [];
-var madisStnData = [];
-var growerStnData = [];
 
+//To avoid the IE abort data http://www.cypressnorth.com/blog/web-programming-and-development/internet-explorer-aborting-ajax-requests-fixed/
 function fetch(url, type) {
-    var Stns
     if ($.browser.msie && window.XDomainRequest) {
         // Use Microsoft XDR
         var xdr = new XDomainRequest();
@@ -77,22 +76,31 @@ function fetch(url, type) {
             if (JSON == null || typeof (JSON) == 'undefined') {
                 JSON = $.parseJSON(data.firstChild.textContent);
             }
-            Stns = JSON;
+           
+            var Stns = JSON;
             if (type == 1) {
                 var StnObjs = createStnObjs(Stns.stnsWxData, type);
                 fawnStnData = StnObjs;
+                 //alert("1 "+fawnStnData.length);
             }
             else if (type == 2) {
                 var StnObjs = createStnObjs(Stns, type);
                 madisStnData = StnObjs;
+                 //alert("2 "+madisStnData.length);
             }
             else if (type == 3) {
                 var StnObjs = createStnObjs(Stns, type);
                 growerStnData = StnObjs;
+                //alert("3 "+growerStnData.length);
             }
 
         };
+        xdr.onprogress=function(){ };
+        xdr.ontimeout=function(){ };
+        xdr.onerror=function(){ };
+        setTimeout(function(){
         xdr.send();
+        },0);
 
     } else {
         $.getJSON(
@@ -123,9 +131,12 @@ function loadData() {
     fetch(madisurl, 2);
     fetch(growerurl, 3);
 }
-function showData(stnData) {
-    //alert("showFwan");
-    previousData = previousData.concat(stnData);
+function fillData(StnObjs){
+previousData = previousData.concat(StnObjs);
+
+}
+function showData() {
+
     //alert(previousData.length);
     fillDataSeperately(previousData);
     boundAjusted();
@@ -370,21 +381,26 @@ function DataControl(controlDiv, map) {
             + ' </div>';
     controlUI.appendChild(controlText);
     google.maps.event.addDomListener(controlUI, 'click', function () {
-        // alert("click");
+        //alert("click");
         previousData = [];
+       // alert(previousData.length);
         var flag1 = fawnCheck();
         var flag2 = madisCheck();
         var flag3 = growerCheck();
         // alert(flag1);
         if (flag1 == true) {
-            showData(fawnStnData);
+           fillData(fawnStnData);          
         }
         if (flag2 == true) {
-            showData(madisStnData);
+   
+           fillData(madisStnData);
         }
         if (flag3 == true) {
-            showData(growerStnData);
+           // alert(growerStnData.length);
+           fillData(growerStnData);
+            //alert(previousData.length);
         }
+        showData();
     });
 
 }
