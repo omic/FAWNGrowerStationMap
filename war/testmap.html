@@ -141,10 +141,22 @@ function showData() {
     fillDataSeperately(previousData);
     boundAjusted();
 }
-
+var mapupdater;
 function boundAjusted() {
     google.maps.event.addListener(map, 'bounds_changed', function () {
-        fillDataSeperately(previousData);
+  /*
+    	$('#map').mouseup(function(){
+    	     		
+    		fillDataSeperately(previousData);});*/
+    		//if(timeOut)
+    	 clearTimeout(mapupdater);
+    		//console.log("cleaTimeout");
+         mapupdater=setTimeout(function() {
+        	 fillDataSeperately(previousData);
+        	// console.log("fillData");
+         }, 800);
+    		
+        
     });
 }
 function fillDataSeperately(newObjs) {
@@ -155,19 +167,39 @@ function fillDataSeperately(newObjs) {
             return;
         }
     }
+    //console.log (newObjs.length);
+    var time2=new Date().getTime();
     var inBoundNewObjs = filter(newObjs, bound);
-    // alert("inBoundNewObjs:"+inBoundNewObjs.length);
+    var time3=new Date().getTime();
+    //console.log(inBoundNewObjs.length);
     var noOverlapNewObjs = removeOverlap([], inBoundNewObjs, bound
             .pixelsPerRadLat(), bound.pixelsPerRadLng());
+    var time4=new Date().getTime();
     // alert("noOverlapNewObjs:"+noOverlapNewObjs.length);
     clearOverlays(markers);
+    var time5=new Date().getTime();
     markers = loadStnMarkers(noOverlapNewObjs);
+    var time6=new Date().getTime();
     preBound = bound;
+    /*
+    console.log ("/////////filldata total: "+(time6-time2));
+    console.log ("filter: "+(time3-time2));
+    console.log ("removeoverlap: "+(time4-time3));
+    console.log ("clearoverlay: "+(time5-time4));
+    console.log ("loadmarker: "+(time6-time5));
+    */
 }
 function clearOverlays(markers) {
     if (Object.prototype.toString.call(markers) === '[object Array]') {
+    	console.log("/////////////marker length"+markers.length);
         for (var i = 0; i < markers.length; i++) {
+        	var time1=new Date().getTime();
             markers[i].setMap(null);
+            var time2=new Date().getTime();
+            if((time2-time1)>=40){
+            	console.log("makers"+markers[i].labelContent);
+            console.log("set time: "+(time2-time1));
+        }
         }
     }
 }
@@ -261,10 +293,20 @@ function showInfoBox(stnObj) {
  * 
  */
 function createStnObjs(stations, tag) {
+	 var time1=new Date().getTime();
     var stnObjs = [];
     for (var i = 0; i < stations.length; i++) {
-        stnObjs[i] = Station.createStnObj(stations[i], tag);
+    	//we get rid of 1/2 madis stations
+    	//since the ie is slow
+    	
+    	if(tag == 2 && i%2 == 0){
+    		continue;
+    	}
+    	
+        stnObjs[stnObjs.length] = Station.createStnObj(stations[i], tag);
     }
+    var time2=new Date().getTime();
+    console.log("create: "+(time2-time1));
     return stnObjs;
 }
 
@@ -316,6 +358,7 @@ function filter(stations, bound) {
                 && stations[i].lat < bound.highLat - 0.01
                 && stations[i].lng > bound.lowLng + 0.01
                 && stations[i].lng < bound.highLng - 0.01) {
+        	//filter 2/3 points
             if (stations[i].getTemp() !== 'NA') {
                 eligiableStns[j] = stations[i];
                 j++;
