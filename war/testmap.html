@@ -64,6 +64,9 @@ var screenHeight = (window.screen.availHeight > 1050 ? 1050
 var preInfoBox = null; // globel;
 var markers = []; // globel
 var previousData = [];// globel
+//used to slow down users' request
+var checkboxTask; //globel
+var boundchangedTask; //globel
 
 //To avoid the IE abort data http://www.cypressnorth.com/blog/web-programming-and-development/internet-explorer-aborting-ajax-requests-fixed/
 function fetch(url, type) {
@@ -127,9 +130,10 @@ function loadData() {
     var fawnurl = 'http://test.fawn.ifas.ufl.edu/controller.php/latestmapjson/';
     var madisurl = 'http://test.fawn.ifas.ufl.edu/controller.php/nearbyNonFawn/all/';
     var growerurl = 'http://fdacswx.fawn.ifas.ufl.edu/index.php/dataservice/observation/latest/format/json/';
+    fetch(growerurl, 3);
     fetch(fawnurl, 1);
     fetch(madisurl, 2);
-    fetch(growerurl, 3);
+    
 }
 function fillData(StnObjs){
 previousData = previousData.concat(StnObjs);
@@ -141,20 +145,16 @@ function showData() {
     fillDataSeperately(previousData);
     boundAjusted();
 }
-var mapupdater;
+
+
 function boundAjusted() {
     google.maps.event.addListener(map, 'bounds_changed', function () {
-  /*
-    	$('#map').mouseup(function(){
-    	     		
-    		fillDataSeperately(previousData);});*/
-    		//if(timeOut)
-    	 clearTimeout(mapupdater);
-    		//console.log("cleaTimeout");
-         mapupdater=setTimeout(function() {
+  		clearTimeout(boundchangedTask);
+         console.log("cleaTimeout");
+         boundchangedTask=setTimeout(function() {
         	 fillDataSeperately(previousData);
-        	// console.log("fillData");
-         }, 800);
+        	 console.log("fillData");
+         }, 1200);
     		
         
     });
@@ -181,25 +181,26 @@ function fillDataSeperately(newObjs) {
     markers = loadStnMarkers(noOverlapNewObjs);
     var time6=new Date().getTime();
     preBound = bound;
-    /*
-    console.log ("/////////filldata total: "+(time6-time2));
+    
+    console.log ("====filldata total: "+(time6-time2)+"======");
+    console.log ("markers length :" + markers.length);
     console.log ("filter: "+(time3-time2));
     console.log ("removeoverlap: "+(time4-time3));
     console.log ("clearoverlay: "+(time5-time4));
     console.log ("loadmarker: "+(time6-time5));
-    */
+    
 }
 function clearOverlays(markers) {
     if (Object.prototype.toString.call(markers) === '[object Array]') {
-    	console.log("/////////////marker length"+markers.length);
+    	//console.log("/////////////marker length"+markers.length);
         for (var i = 0; i < markers.length; i++) {
         	var time1=new Date().getTime();
             markers[i].setMap(null);
             var time2=new Date().getTime();
-            if((time2-time1)>=40){
+            /*if((time2-time1)>=40){
             	console.log("makers"+markers[i].labelContent);
-            console.log("set time: "+(time2-time1));
-        }
+                console.log("set time: "+(time2-time1));
+        	}*/
         }
     }
 }
@@ -244,12 +245,7 @@ function bindInfoBox(marker, stnObj) {
         // window.location.href='tower_data.html?id=304';
         var ib = showInfoBox(stnObj)
         id2.style.display = '';
-        // ib.open(map, this);
-
-        // if(preInfoBox != null){
-        // preInfoBox.close();
-        // }
-        // preInfoBox = ib;
+        
     });
 }
 function showInfoBox(stnObj) {
@@ -296,10 +292,9 @@ function createStnObjs(stations, tag) {
 	 var time1=new Date().getTime();
     var stnObjs = [];
     for (var i = 0; i < stations.length; i++) {
-    	//we get rid of 1/2 madis stations
+    	//we get rid of 2/3 madis stations
     	//since the ie is slow
-    	
-    	if(tag == 2 && i%2 == 0){
+    	if(tag == 2 && i%3 == 0){
     		continue;
     	}
     	
@@ -397,6 +392,7 @@ function haveOverlap(stnA, stnB, pixelPerRadLat, pixelPerRadLng) {
         return true;
     return false;
 }
+
 function DataControl(controlDiv, map) {
 
     // Set CSS styles for the DIV containing the control
@@ -421,16 +417,37 @@ function DataControl(controlDiv, map) {
     controlText.innerHTML = '<div>'
             + '<label class="gladStoneFamilyLabel" id="checkbox3"onclick="growerCheck()">'
             + '<input id="grower" type="checkbox" >' + 'Grower' + '</label>'
-            + ' </div>';
+            + '<br />Zoom in to see<br /> more stations</div>';
     controlUI.appendChild(controlText);
+    
     google.maps.event.addDomListener(controlUI, 'click', function () {
-        //alert("click");
+    	/* check box update
+    	 * only update map by 1.2 seconds (no quick than)
+    	 * to fix issue pointed out by Camilo
+    	 * If I un-select  or select one type of weather station, 
+    	 * sometimes it takes a few seconds before those weather stations are removed from or added to the view; 
+    	 * sometimes I have to un-select and select them several times, before anything happens
+    	 */
+    	clearTimeout(checkboxTask);
+        console.log("clear check chekboxTask");
+        checkboxTask = setTimeout(function() {
+        	updateMarkers();
+        }, 1200);
+    	
+    });
+
+}
+function updateMarkers(){
+		console.log("==updateMarkers==");
+		previousData = null;
         previousData = [];
-       // alert(previousData.length);
         var flag1 = fawnCheck();
         var flag2 = madisCheck();
         var flag3 = growerCheck();
-        // alert(flag1);
+        //load grower first
+        if (flag3 == true) {
+           fillData(growerStnData);
+        }
         if (flag1 == true) {
            fillData(fawnStnData);          
         }
@@ -438,14 +455,9 @@ function DataControl(controlDiv, map) {
    
            fillData(madisStnData);
         }
-        if (flag3 == true) {
-           // alert(growerStnData.length);
-           fillData(growerStnData);
-            //alert(previousData.length);
-        }
+       
         showData();
-    });
-
+  
 }
 // using html5 geolocation to get the location of the current user, brower
 // support IE,Firefox,chrome,safari,opera
@@ -520,8 +532,9 @@ function initMap() {
         },
         // center: centerLatLng,
         zoom: 9,
-        mapTypeId: 'weather'
+        mapTypeId: 'weather',
     });
+    map.setOptions({maxZoom:11, minZoom: 7});
     map.mapTypes.set('weather', new google.maps.StyledMapType(weather_style, {
         name: 'weather'
     }));
