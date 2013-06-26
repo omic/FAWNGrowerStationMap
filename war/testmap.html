@@ -51,6 +51,7 @@
 <![endif]-->
 <div id="map">
 </div>
+<div id="loading" style="z-index:99999;position:fixed;display:none;"><img src="/image/loading.gif" width="60px" height="60px" /></div>
 <script>
 var fawnStnData = [];
 var madisStnData = [];
@@ -67,6 +68,17 @@ var previousData = [];// globel
 //used to slow down users' request
 var checkboxTask; //globel
 var boundchangedTask; //globel
+function loadingPos() {
+if($('#loading').css("display")!="block"){
+  // alert( $('#map').css("width"));
+  var mapwidth=$('#map').css("width");
+  var mapheight=$('#map').css("height");
+   $('#loading').css("left",(mapwidth.replace(/px/g, "")/2-30)+"px");
+$('#loading').css("top",(mapheight.replace(/px/g, "")/2-30)+"px");
+ $('#loading').css("display","block");
+ //alert("show");
+ }
+}
 
 //To avoid the IE abort data http://www.cypressnorth.com/blog/web-programming-and-development/internet-explorer-aborting-ajax-requests-fixed/
 function fetch(url, type) {
@@ -148,7 +160,9 @@ function showData() {
 
 
 function boundAjusted() {
+    
     google.maps.event.addListener(map, 'bounds_changed', function () {
+    loadingPos();
   		clearTimeout(boundchangedTask);
          console.log("cleaTimeout");
          boundchangedTask=setTimeout(function() {
@@ -160,6 +174,7 @@ function boundAjusted() {
     });
 }
 function fillDataSeperately(newObjs) {
+    
     var preBound = null;
     var bound = getBounds(map);
     if (preBound != null) {
@@ -188,6 +203,9 @@ function fillDataSeperately(newObjs) {
     console.log ("removeoverlap: "+(time4-time3));
     console.log ("clearoverlay: "+(time5-time4));
     console.log ("loadmarker: "+(time6-time5));
+    setTimeout(function() {
+        	  $('#loading').css("display","none");
+         }, 500);
     
 }
 function clearOverlays(markers) {
@@ -428,6 +446,7 @@ function DataControl(controlDiv, map) {
     	 * sometimes it takes a few seconds before those weather stations are removed from or added to the view; 
     	 * sometimes I have to un-select and select them several times, before anything happens
     	 */
+    	  loadingPos();
     	clearTimeout(checkboxTask);
         console.log("clear check chekboxTask");
         checkboxTask = setTimeout(function() {
