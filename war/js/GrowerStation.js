@@ -16,7 +16,7 @@ function GrowerStation(arr) {
     this.windspeed=arr.wind_speed;
     this.humidity=arr.humidity;
     this.winddirection=arr.wind_direction;
-    this.wet_bulb_temp=arr.wet_bulb_temp;
+    this.wet_bulb_temp=(arr.wet_bulb_temp==null?'NA':arr.wet_bulb_temp);
     //alert("whahahaha "+this.lat);
 }
 GrowerStation.prototype = new Station();
@@ -27,7 +27,10 @@ GrowerStation.prototype.getTemp=function(){
 	return this.temper;
 }
 GrowerStation.prototype.getWindSpeed=function(){
-	return this.windspeed;
+	//var speed=Number(this.windspeed);
+	var speed=Math.round(Number(this.windspeed)* 100) / 100
+	return speed;
+	//return speed.toFixed(2);
 }
 GrowerStation.prototype.getDateTime = function(){
 	return this.datetime;

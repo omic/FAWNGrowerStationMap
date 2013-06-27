@@ -28,9 +28,9 @@ function createInfoBox(stnObj) {
     if (stnObj.type == "GROWER") {
         var boxText = document.createElement("div");
         boxText.innerHTML = '<div class="infobox-pointer"></div>'
-                + '<div class="infobox-title"><a href="station.php?id=330">'
+                + '<div class="infobox-title">'
                 + stnObj.getStationTitle()
-                + '</a></div>'
+                +'</div>'
                 + '<div class="ui-tabs ui-widget ui-widget-content ui-corner-all" id="infobox-tabs">'
                 + '<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">'
                 + '<li class="ui-state-default ui-corner-top  ui-tabs-selected ui-state-active"><a href="#infobox-tabs-0">Current</a></li>'
@@ -41,10 +41,10 @@ function createInfoBox(stnObj) {
                 + '<table class="infoTable grey" cellpadding="0" cellspacing="0"><tbody>'
 
                 + '<tr>'
-                + '<td class="nobr dtr">Station ID:'
+                + '<td class="nobr dtr">Station ID:<span>'
                 + stnObj.stnID
-                + '</td>'
-                + '<td class="nobr dtr">Lat: <span>'
+                + '</span></td>'
+                + '<td class="nobr dtr">Lat:<span>'
                 + stnObj.lat
                 + '</span></td>'
                 + '</tr>'
@@ -53,27 +53,25 @@ function createInfoBox(stnObj) {
                 + '<td class="nobr dtr">Lon: <span>'
                 + stnObj.lng
                 + '</span></td>'
-                + '<td class="nobr">Elev: <span>'
-                + stnObj.elevFt
-                + ' ft</span></td>'
+                + '<td class="nobr dtr">Wind Direction: <span>'
+                + stnObj.winddirection
+                + '&deg</span></td>'
                 + '</tr>'
 
                 + '<tr>'
-                + '<td class="nobr dtr">Date Time:'
+                + '<td class="nobr dtr">Date Time:<span>'
                 + stnObj.getDateTime()
-                + '</td>'
-                + '<td class="nobr dtr">Humadity: <span>'
-                + stnObj.humidity
                 + '</span></td>'
+                + '<td class="nobr dtr">Humidity: <span>'
+                + stnObj.humidity
+                + '%</span></td>'
                 + '</tr>'
 
                 + '<tr>'
                 + '<td class="nobr dtr">Wet Bulb Temp:<span>'
                 + stnObj.wet_bulb_temp
-                + '</span></td>'
-                + '<td class="nobr dtr">Wind Direction: <span>'
-                + stnObj.winddirection
-                + '</span></td>'
+                + '&degF</span></td>'
+               
                 + '</tr>'
 
                 + '</tbody></table>'
@@ -108,9 +106,9 @@ function createInfoBox(stnObj) {
     } else if (stnObj.type == "FAWN") {
         var boxText = document.createElement("div");
         boxText.innerHTML = '<div class="infobox-pointer"></div>'
-                + '<div class="infobox-title"><a href="station.php?id=330">'
+                + '<div class="infobox-title">'
                 + stnObj.getStationTitle()
-                + '</a></div>'
+                + '</div>'
                 + '<div class="ui-tabs ui-widget ui-widget-content ui-corner-all" id="infobox-tabs">'
                 + '<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">'
                 + '<li class="ui-state-default ui-corner-top  ui-tabs-selected ui-state-active"><a href="#infobox-tabs-0">Current</a></li>'
@@ -120,10 +118,10 @@ function createInfoBox(stnObj) {
                 + '<div class="ui-tabs-panel ui-widget-content ui-corner-bottom" id="infobox-tabs-0">'
                 + '<table class="infoTable grey" cellpadding="0" cellspacing="0"><tbody>'
                 + '<tr>'
-                + '<td class="nobr dtr">Station ID:'
+                + '<td class="nobr dtr">Station ID: <span>'
                 + stnObj.stnID
-                + '</td>'
-                + '<td class="nobr dtr">Lat:<span> '
+                + '</span></td>'
+                + '<td class="nobr dtr">Lat: <span> '
                 + stnObj.lat
                 + '</span></td>'
 
@@ -135,31 +133,31 @@ function createInfoBox(stnObj) {
                 + '</span></td>'
                 + '<td class="nobr dtr">Elev: <span>'
                 + stnObj.elevFt
-                + ' </span>ft</td>'
+                + 'ft</span></td>'
                 + '</tr>'
                 + '<tr>'
-                + '<td class="nobr dtr" >Date Time:<span>'
+                + '<td class="nobr dtr" >Date Time: <span>'
                 + stnObj.getDateTime()
                 + '</span></td>'
-                + '<td class="nobr dtr">totalRad2mWm2:<span>'
+                + '<td class="nobr dtr">totalRad2mWm2: <span>'
                 + stnObj.totalRad2mWm2
-                + '</span></td>'
+                + 'W/m2</span></td>'
 
                 + '</tr>'
-                + '<td class="nobr dtr">relHum2mPct:<span>'
+                + '<td class="nobr dtr">relHum2mPct: <span>'
                 + stnObj.relHum2mPct
-                + '</span></td>'
+                + '%</span></td>'
                 + '<td class="nobr dtr">Wind Direction: <span>'
                 + stnObj.windDirction
-                + '</span></td>'
+                + '&deg</span></td>'
                 + '</tr>'
                 + '<tr>'
                 + '<td class="nobr dtr">temp60cmF: <span>'
                 + stnObj.temp60cmF
-                + '</span>&degF</td>'
+                + '&degF</span></td>'
                 + '<td class="nobr dtr">temp10mF: <span>'
                 + stnObj.temp10mF
-                + '</span>&degF</td>'
+                + '&degF</span></td>'
 
                 + '</tr>'
                 + '<tr>'
@@ -169,16 +167,16 @@ function createInfoBox(stnObj) {
                 + '</span></td>'
                 + '<td class="nobr dtr">Min Daily Temp: <span>'
                 + stnObj.minDailyTemp
-                + '</span>&degF</td>'
+                + '&degF</span></td>'
                 + '</tr>'
                 + '<tr>'
 
                 + '<td class="nobr dtr">dewPoint2mF: <span>'
                 + stnObj.dewPoint2mF
-                + '</span></td>'
+                + '&degF</span></td>'
                 + '<td class="nobr dtr">etInch: <span>'
                 + stnObj.etInch
-                + '</span></td>'
+                + '"</span></td>'
                 + '</tr>'
 
                 + '</tbody></table>'
@@ -213,9 +211,9 @@ function createInfoBox(stnObj) {
     } else {
         var boxText = document.createElement("div");
         boxText.innerHTML = '<div class="infobox-pointer"></div>'
-                + '<div class="infobox-title"><a href="station.php?id=330">'
+                + '<div class="infobox-title">'
                 + stnObj.getStationTitle()
-                + '</a></div>'
+                + '</div>'
                 + '<div class="ui-tabs ui-widget ui-widget-content ui-corner-all" id="infobox-tabs">'
                 + '<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">'
                 + '<li class="ui-state-default ui-corner-top  ui-tabs-selected ui-state-active"><a href="#infobox-tabs-0">Current</a></li>'
@@ -225,9 +223,9 @@ function createInfoBox(stnObj) {
                 + '<div class="ui-tabs-panel ui-widget-content ui-corner-bottom" id="infobox-tabs-0">'
                 + '<table class="infoTable grey" cellpadding="0" cellspacing="0"><tbody>'
                 + '<tr>'
-                + '<td class="full">Station ID:'
+                + '<td class="full">Station ID: <span>'
                 + stnObj.stnID
-                + '</td>'
+                + '</span></td>'
                 + '<td class="nobr dtr">Lat: <span>'
                 + stnObj.lat
                 + '</span></td>'
@@ -238,9 +236,9 @@ function createInfoBox(stnObj) {
                 + stnObj.elevFt
                 + ' ft</span></td>'
                 + '</tr>'
-                + '<tr><td colspan = "3">Date Time:'
+                + '<tr><td colspan = "3">Date Time: <span>'
                 + stnObj.getDateTime()
-                + '</td></tr>'
+                + '</span></td></tr>'
                 + '</tbody></table>'
                 + '<table class="infoTable borderTop grt" cellpadding="0" cellspacing="0">'
                 + '<tbody>'

@@ -42,7 +42,10 @@ FawnStation.prototype.getDateTime = function(){
 	return this.dateTime;
 }
 FawnStation.prototype.getWindSpeed=function(){
-	return this.windSpeed;
+	//var speed=Number(this.windSpeed);	
+	//return speed.toFixed(2);
+	var speed=Math.round(Number(this.windSpeed)* 100) / 100
+	return speed;
 }
 FawnStation.prototype.getWindDirection=function(){
 	return this.windDirction;
