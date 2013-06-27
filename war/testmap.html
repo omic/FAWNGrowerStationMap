@@ -164,10 +164,10 @@ function boundAjusted() {
     google.maps.event.addListener(map, 'bounds_changed', function () {
     loadingPos();
   		clearTimeout(boundchangedTask);
-         console.log("cleaTimeout");
+        // //console.log("cleaTimeout");
          boundchangedTask=setTimeout(function() {
         	 fillDataSeperately(previousData);
-        	 console.log("fillData");
+        	 //console.log("fillData");
          }, 1200);
     		
         
@@ -182,11 +182,11 @@ function fillDataSeperately(newObjs) {
             return;
         }
     }
-    //console.log (newObjs.length);
+    ////console.log (newObjs.length);
     var time2=new Date().getTime();
     var inBoundNewObjs = filter(newObjs, bound);
     var time3=new Date().getTime();
-    //console.log(inBoundNewObjs.length);
+    ////console.log(inBoundNewObjs.length);
     var noOverlapNewObjs = removeOverlap([], inBoundNewObjs, bound
             .pixelsPerRadLat(), bound.pixelsPerRadLng());
     var time4=new Date().getTime();
@@ -197,12 +197,12 @@ function fillDataSeperately(newObjs) {
     var time6=new Date().getTime();
     preBound = bound;
     
-    console.log ("====filldata total: "+(time6-time2)+"======");
-    console.log ("markers length :" + markers.length);
-    console.log ("filter: "+(time3-time2));
-    console.log ("removeoverlap: "+(time4-time3));
-    console.log ("clearoverlay: "+(time5-time4));
-    console.log ("loadmarker: "+(time6-time5));
+    //console.log ("====filldata total: "+(time6-time2)+"======");
+    //console.log ("markers length :" + markers.length);
+    //console.log ("filter: "+(time3-time2));
+    //console.log ("removeoverlap: "+(time4-time3));
+    //console.log ("clearoverlay: "+(time5-time4));
+    //console.log ("loadmarker: "+(time6-time5));
     setTimeout(function() {
         	  $('#loading').css("display","none");
          }, 500);
@@ -210,14 +210,14 @@ function fillDataSeperately(newObjs) {
 }
 function clearOverlays(markers) {
     if (Object.prototype.toString.call(markers) === '[object Array]') {
-    	//console.log("/////////////marker length"+markers.length);
+    	////console.log("/////////////marker length"+markers.length);
         for (var i = 0; i < markers.length; i++) {
         	var time1=new Date().getTime();
             markers[i].setMap(null);
             var time2=new Date().getTime();
             /*if((time2-time1)>=40){
-            	console.log("makers"+markers[i].labelContent);
-                console.log("set time: "+(time2-time1));
+            	//console.log("makers"+markers[i].labelContent);
+                //console.log("set time: "+(time2-time1));
         	}*/
         }
     }
@@ -319,7 +319,7 @@ function createStnObjs(stations, tag) {
         stnObjs[stnObjs.length] = Station.createStnObj(stations[i], tag);
     }
     var time2=new Date().getTime();
-    console.log("create: "+(time2-time1));
+    //console.log("create: "+(time2-time1));
     return stnObjs;
 }
 
@@ -448,7 +448,7 @@ function DataControl(controlDiv, map) {
     	 */
     	  loadingPos();
     	clearTimeout(checkboxTask);
-        console.log("clear check chekboxTask");
+        //console.log("clear check chekboxTask");
         checkboxTask = setTimeout(function() {
         	updateMarkers();
         }, 1200);
@@ -457,7 +457,7 @@ function DataControl(controlDiv, map) {
 
 }
 function updateMarkers(){
-		console.log("==updateMarkers==");
+		//console.log("==updateMarkers==");
 		previousData = null;
         previousData = [];
         var flag1 = fawnCheck();
