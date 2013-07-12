@@ -68,14 +68,14 @@ var madisStnData = [];
 var growerStnData = [];
 //intial map
 function initMap() {
-    loadData();
-    
+    loadData();   
+    /*
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
     } else {
       
         return;
-    }
+    }*/
     
     var weather_style = [
         {
@@ -115,25 +115,23 @@ function initMap() {
             ]
         }
     ];
-     //set the center of the map
-    var centerLatLng = new google.maps.LatLng(28.2967, -81.3668);
-    var map = new google.maps.Map(document.getElementById('map'), {
+     var centerLatLng = new google.maps.LatLng(28.2967, -81.3668);
+    var map = new google.maps.Map(document.getElementById('map'), {       
         mapTypeControlOptions: {
             mapTypeIds: [ 'weather' ]
         },
-         center: centerLatLng,
-        zoom: 9,
+        mapTypeControl:false,
+        center: centerLatLng,
+        zoom: 7,
         mapTypeId: 'weather'
     });
     map.mapTypes.set('weather', new google.maps.StyledMapType(weather_style, {
-        name: 'weather'}));
-     
-    var homeControlDiv = document.createElement('div');
-    
+        name: 'weather'}));   
+    var homeControlDiv = document.createElement('div');    
     var homeControl = new DataControl(homeControlDiv, map);
     homeControlDiv.index = -1;
     map.controls[google.maps.ControlPosition.RIGHT_TOP].push(homeControlDiv);
-    getLocation();
+   // getLocation();
     return map;
 
 }

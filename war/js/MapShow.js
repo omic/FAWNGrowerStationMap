@@ -646,28 +646,29 @@ function DataControl(controlDiv, map) {
     // Setting padding to 5 px will offset the control
     // from the edge of the map
     controlDiv.style.padding = '15px';
-    var controlUI = document.createElement('div');
-    controlUI.style.backgroundColor = 'white';
-    controlUI.style.borderStyle = 'solid';
-    controlUI.innerHTML = '<div>' + '<label class="fawnLabel" id="checkbox"onclick="fawnCheck()">'
+   
+    var controlFawn= document.createElement('div');
+    controlFawn.style.backgroundColor = 'white';
+    controlFawn.style.borderStyle = 'solid';
+    controlFawn.innerHTML = '<div>' + 'Please select your <br/> source of weather <br />station. Zoom in to<br /> see more stations<br /><label class="fawnLabel" id="checkbox"onclick="fawnCheck()">'
             + '<input id="fawn" type="checkbox" >' + 'Fawn' + '</label>'
             + ' </div>'
 
-    controlDiv.appendChild(controlUI);
+    controlDiv.appendChild(controlFawn);
     controlMadis = document.createElement('div');
     controlMadis.innerHTML = '<div>'
             + '<label class="madisLabel" id="checkbox2"onclick="madisCheck()">'
-            + ' <input id="madis" type="checkbox">' + ' Madis' + ' </label>'
-    '</div>';
-    controlUI.appendChild(controlMadis);
-    controlText = document.createElement('div');
-    controlText.innerHTML = '<div>'
+            + '<input id="madis" type="checkbox">' + 'Madis' + '</label>'
+    +'</div>';
+    controlFawn.appendChild(controlMadis);
+    controlGrower = document.createElement('div');
+    controlGrower.innerHTML = '<div>'
             + '<label class="gladStoneFamilyLabel" id="checkbox3"onclick="growerCheck()">'
             + '<input id="grower" type="checkbox" >' + 'Grower' + '</label>'
-            + '<br />Zoom in to see<br /> more stations</div>';
-    controlUI.appendChild(controlText);
+            + '</div>';
+    controlFawn.appendChild(controlGrower);
     
-    google.maps.event.addDomListener(controlUI, 'click', function () {
+    google.maps.event.addDomListener(controlFawn, 'click', function () {
     	/* check box update
     	 * only update map by 1.2 seconds (no quick than)
     	 * to fix issue pointed out by Camilo
@@ -718,12 +719,13 @@ function getLocation() {
     }
 }
 function showPosition(position) {
-    var location = new Array(2);
+    
     var lat = position.coords.latitude;
     var lng = position.coords.longitude;
     location[0] = lat;
     location[1] = lng;
-    // alert(location[0]);
+    alert(location[0]);
     // alert(lng);
-    map.setCenter(new google.maps.LatLng(lat, lng));
+    return location;
+   // map.setCenter(new google.maps.LatLng(lat, lng));
 }
