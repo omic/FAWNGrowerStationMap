@@ -719,13 +719,12 @@ function getLocation() {
     }
 }
 function showPosition(position) {
-    
+	var location;
     var lat = position.coords.latitude;
     var lng = position.coords.longitude;
     location[0] = lat;
     location[1] = lng;
     alert(location[0]);
     // alert(lng);
-    return location;
-   // map.setCenter(new google.maps.LatLng(lat, lng));
+   map.setCenter(new google.maps.LatLng(lat, lng));
 }
