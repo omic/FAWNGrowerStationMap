@@ -108,7 +108,7 @@ function growerCheck() {
  * 
  */
 function createInfoBox(stnObj) {
-
+    //alert(stnObj.lat+" "+stnObj.lng);
     if (stnObj.type == "GROWER") {
         var boxText = document.createElement("div");
         boxText.innerHTML = '<div class="infobox-pointer"></div>'
@@ -554,6 +554,7 @@ function createStnObjs(stations, tag) {
 }
 
 function getBounds(map) {
+	//alert("map: "+map.getZoom());
     var bound = {};
     var bounds = map.getBounds();
     var sw = bounds.getSouthWest();
@@ -594,13 +595,14 @@ function getBounds(map) {
  * 
  */
 function filter(stations, bound) {
+	//alert(bound);
     var eligiableStns = [];
     var j = 0;
     for (var i = 0; i < stations.length; i++) {
-        if (stations[i].lat > bound.lowLat + 0.01
-                && stations[i].lat < bound.highLat - 0.01
-                && stations[i].lng > bound.lowLng + 0.01
-                && stations[i].lng < bound.highLng - 0.01) {
+        if (stations[i].lat > bound.lowLat 
+                && stations[i].lat < bound.highLat 
+                && stations[i].lng > bound.lowLng 
+                && stations[i].lng < bound.highLng ) {
         	//filter 2/3 points
             if (stations[i].getTemp() !== 'NA') {
                 eligiableStns[j] = stations[i];
