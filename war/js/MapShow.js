@@ -188,11 +188,12 @@ function createInfoBox(stnObj) {
                 + '<div class="ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide" id="infobox-tabs-2">'
                 + '</div>';
     } else if (stnObj.type == "FAWN") {
-        var boxText = document.createElement("div");
+        var boxText = document.createElement("div");    
+        var href="http://fawn.ifas.ufl.edu/station/station.php?id="+stnObj.stnID;
         boxText.innerHTML = '<div class="infobox-pointer"></div>'
-                + '<div class="infobox-title">'
+                + '<div class="infobox-title"><a href='+href+'>'
                 + stnObj.getStationTitle()
-                + '</div>'
+                + '</a></div>'
                 + '<div class="ui-tabs ui-widget ui-widget-content ui-corner-all" id="infobox-tabs">'
                 + '<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">'
                 + '<li class="ui-state-default ui-corner-top  ui-tabs-selected ui-state-active"><a href="#infobox-tabs-0">Current</a></li>'
