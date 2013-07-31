@@ -4,6 +4,7 @@
 
 
 function GrowerStation(arr) {
+	
 	this.stnName = arr.station_name;
 	this.stnID = arr.station_id;
 	this.elevFt = 'NA';
@@ -17,6 +18,7 @@ function GrowerStation(arr) {
     this.humidity=arr.humidity;
     this.winddirection=arr.wind_direction;
     this.wet_bulb_temp=(arr.wet_bulb_temp==null?'NA':arr.wet_bulb_temp);
+    this.total_rainfall=arr.total_rain_inche_since_installed;
     //alert("whahahaha "+this.lat);
 }
 GrowerStation.prototype = new Station();

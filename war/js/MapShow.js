@@ -125,10 +125,10 @@ function createInfoBox(stnObj) {
                 + '<table class="infoTable grey" cellpadding="0" cellspacing="0"><tbody>'
 
                 + '<tr>'
-                + '<td class="nobr dtr">Station ID:<span>'
+                + '<td class="nobr dtr">Station ID: <span>'
                 + stnObj.stnID
                 + '</span></td>'
-                + '<td class="nobr dtr">Lat:<span>'
+                + '<td class="nobr dtr">Lat: <span>'
                 + stnObj.lat
                 + '</span></td>'
                 + '</tr>'
@@ -143,7 +143,7 @@ function createInfoBox(stnObj) {
                 + '</tr>'
 
                 + '<tr>'
-                + '<td class="nobr dtr">Date Time:<span>'
+                + '<td class="nobr dtr">Date Time: <span>'
                 + stnObj.getDateTime()
                 + '</span></td>'
                 + '<td class="nobr dtr">Humidity: <span>'
@@ -152,10 +152,12 @@ function createInfoBox(stnObj) {
                 + '</tr>'
 
                 + '<tr>'
-                + '<td class="nobr dtr">Wet Bulb Temp:<span>'
+                + '<td class="nobr dtr">Wet Bulb Temp: <span>'
                 + stnObj.wet_bulb_temp
                 + '&degF</span></td>'
-               
+                + '<td class="nobr dtr">total rainfall: <span>'
+                + stnObj.total_rainfall
+                + '"</span></td>'
                 + '</tr>'
 
                 + '</tbody></table>'
@@ -375,7 +377,7 @@ function createInfoBox(stnObj) {
 function loadData() {
     var fawnurl = 'http://test.fawn.ifas.ufl.edu/controller.php/latestmapjson/';
     var madisurl = 'http://test.fawn.ifas.ufl.edu/controller.php/nearbyNonFawn/all/';
-    var growerurl = 'http://fdacswx.fawn.ifas.ufl.edu/index.php/dataservice/observation/latest/format/json/';
+    var growerurl = 'http://test.fdacswx.fawn.ifas.ufl.edu/index.php/dataservice/observation/latest/format/json/';
     fetch(growerurl, 3);
     fetch(fawnurl, 1);
     fetch(madisurl, 2);
