@@ -155,7 +155,7 @@ function createInfoBox(stnObj) {
                 + '<td class="nobr dtr">Wet Bulb Temp: <span>'
                 + stnObj.wet_bulb_temp
                 + '&degF</span></td>'
-                + '<td class="nobr dtr">total rainfall: <span>'
+                + '<td class="nobr dtr">Total Rainfall: <span>'
                 + stnObj.total_rainfall
                 + '"</span></td>'
                 + '</tr>'
