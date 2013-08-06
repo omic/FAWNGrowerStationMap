@@ -189,9 +189,11 @@ function createInfoBox(stnObj) {
                 + '</div>'
                 + '<div class="ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide" id="infobox-tabs-2">'
                 + '</div>';
-    } else if (stnObj.type == "FAWN") {
-        var boxText = document.createElement("div");    
+    } /*else if (stnObj.type == "FAWN") {
+        //var boxText = document.createElement("div");    
         var href="http://fawn.ifas.ufl.edu/station/station.php?id="+stnObj.stnID;
+        window.location =href;
+        
         boxText.innerHTML = '<div class="infobox-pointer"></div>'
                 + '<div class="infobox-title"><a href='+href+'>'
                 + stnObj.getStationTitle()
@@ -295,7 +297,8 @@ function createInfoBox(stnObj) {
                 + '</div>'
                 + '<div class="ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide" id="infobox-tabs-2">'
                 + '</div>';
-    } else {
+                
+    }*/ else {
         var boxText = document.createElement("div");
         boxText.innerHTML = '<div class="infobox-pointer"></div>'
                 + '<div class="infobox-title">'
@@ -476,6 +479,11 @@ function loadStnMarkers(stnObjs) {
 }
 function bindInfoBox1(marker, stnObj) {
     google.maps.event.addListener(marker, "click", function (e) {
+    	if (stnObj.type == "FAWN") {
+            //var boxText = document.createElement("div");    
+            var href="http://fawn.ifas.ufl.edu/station/station.php?id="+stnObj.stnID;
+            window.location =href;}
+    	else{
         var ib = createInfoBox(stnObj)
         ib.open(map, this);
         // close previous information box
@@ -483,6 +491,7 @@ function bindInfoBox1(marker, stnObj) {
             preInfoBox.close();
         }
         preInfoBox = ib;
+    	}
     });
 }
 
@@ -498,34 +507,6 @@ function bindInfoBox(marker, stnObj) {
         id2.style.display = '';
         
     });
-}
-function showInfoBox(stnObj) {
-    var listText = document.getElementById("list");
-    listText.innerHTML = '<div class="boxWrap">' + '<h3>'
-            + stnObj.getStationTitle()
-            + '</h3>'
-            + '<ol class="tags">'
-            + '<li><a href="#"><span class="meta">'
-            + stnObj.stnID
-            + '</span> Tower ID</a></li>'
-            + '<li><a href="#"><span class="meta">'
-            + stnObj.getDateTime()
-            + '</span> Time</a></li>'
-            + '<li><a href="#"><span class="meta">'
-            + stnObj.getTemp()
-            + '&degF</span> Air Temp</a></li>'
-            + '<li><a href="#"><span class="meta">8</span> Wet Bulb</a></li>'
-            + '<li><a href="#"><span class="meta">56</span> Humidity</a></li>'
-            + '<li><a href="#"><span class="meta">56</span> Wind Direction</a></li>'
-            + '<li><a href="#"><span class="meta">'
-            + stnObj.getWindSpeed()
-            + '</span> Wind Speed</a></li>'
-            + '<li><a href="#"><span class="meta">'
-            + stnObj.getRain()
-            + '&rdquo;</span> Rainfall</a></li>'
-            + '</ol>'
-            + '</div>'
-            + '<a href="map.html" class="backToMap"><img src="img/map.png"/> Back to Map</a>'
 }
 /*
  * @function createInfoBox: create information box based on the given station
