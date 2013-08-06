@@ -19,10 +19,15 @@ function GrowerStation(arr) {
     this.winddirection=arr.wind_direction;
     this.wet_bulb_temp=(arr.wet_bulb_temp==null?'NA':arr.wet_bulb_temp);
     this.total_rainfall=arr.total_rain_inche_since_installed;
+    this.vendor=arr.vendor_name;
     //alert("whahahaha "+this.lat);
 }
 GrowerStation.prototype = new Station();
 GrowerStation.prototype.getRain=function(){
+	if(this.vendor=="Ag-tronix"||this.vendor=="Rainwise"){
+		return "NA"
+	}
+	else
 	return this.rainfall;
 }
 GrowerStation.prototype.getTemp=function(){
