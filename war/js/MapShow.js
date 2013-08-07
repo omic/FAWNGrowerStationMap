@@ -117,13 +117,13 @@ function createInfoBox(stnObj) {
                 +'</div>'
                 + '<div class="ui-tabs ui-widget ui-widget-content ui-corner-all" id="infobox-tabs">'
                 + '<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">'
-                + '<li class="ui-state-default ui-corner-top  ui-tabs-selected ui-state-active"><a href="#infobox-tabs-0">Current</a></li>'
+                + '<li class="ui-state-default ui-corner-top  ui-tabs-selected ui-state-active">'
+                + '<a href="#infobox-tabs-0">Current (updated every 15 min)</a></li>'
             // +'<li class="ui-state-default ui-corner-top">Forecast</li>'
             // +'<li class="ui-state-default ui-corner-top">Graph</li>'
                 + '</ul>'
                 + '<div class="ui-tabs-panel ui-widget-content ui-corner-bottom" id="infobox-tabs-0">'
                 + '<table class="infoTable grey" cellpadding="0" cellspacing="0"><tbody>'
-
                 + '<tr>'
                 + '<td class="nobr dtr">Station ID: <span>'
                 + stnObj.stnID
@@ -138,7 +138,7 @@ function createInfoBox(stnObj) {
                 + stnObj.lng
                 + '</span></td>'
                 + '<td class="nobr dtr">Wind Direction: <span>'
-                + stnObj.winddirection
+                + stnObj.wind_direction
                 + '&deg</span></td>'
                 + '</tr>'
 
@@ -150,13 +150,12 @@ function createInfoBox(stnObj) {
                 + stnObj.humidity
                 + '%</span></td>'
                 + '</tr>'
-
                 + '<tr>'
                 + '<td class="nobr dtr">Wet Bulb Temp: <span>'
                 + stnObj.wet_bulb_temp
                 + '&degF</span></td>'
-                + '<td class="nobr dtr">Total Rainfall: <span>'
-                + stnObj.total_rainfall
+                + '<td class="nobr dtr">Rain: <span>'
+                + stnObj.getRain()
                 + '"</span></td>'
                 + '</tr>'
 
@@ -164,13 +163,16 @@ function createInfoBox(stnObj) {
                 + '<table class="infoTable borderTop grt" cellpadding="0" cellspacing="0">'
                 + '<tbody>'
                 + '<tr>'
-                + '<td class="vaT dtr"><div id="nowTemp"><div class="titleSubtle bm10">Temperature</div><div id="tempActual">'
-                + stnObj.getTemp()
+                + '<td class="vaT">'
+                + '<div id="nowTemp"><div class="titleSubtle bm10">Temperature</div>'
+                + '<div id="tempActual">'
+                + stnObj.temper
                 + ' <span class="tempUnit">&degF</span></div></div></td>'
                 + '<td class="vaT">'
-                + '<div id="nowRain"><div class="titleSubtle bm10">Rain</div>'
+                + '<div id="nowRain"><div class="titleSubtle bm10">Cumm Rain*</div>'
                 + '<div id="rain">'
-                + stnObj.getRain()
+                //+stnObj.getRain()
+                + stnObj.getTotalRain()
                 + '<span class="rainUnit">&rdquo;</span></div>'
                 + '</div>'
                 + '</td>'
@@ -182,18 +184,18 @@ function createInfoBox(stnObj) {
                 + '</div>'
                 + '</td>'
                 + '</tr>'
+                +'<tr><td colspan="2">*Since weather station instl</td></tr>'
                 + '</tbody>'
                 + '</table>'
                 + '</div>'
                 + '<div class="ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide" id="infobox-tabs-1">'
                 + '</div>'
                 + '<div class="ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide" id="infobox-tabs-2">'
-                + '</div>';
+               + '</div>';
     } /*else if (stnObj.type == "FAWN") {
         //var boxText = document.createElement("div");    
         var href="http://fawn.ifas.ufl.edu/station/station.php?id="+stnObj.stnID;
-        window.location =href;
-        
+        window.location =href;     
         boxText.innerHTML = '<div class="infobox-pointer"></div>'
                 + '<div class="infobox-title"><a href='+href+'>'
                 + stnObj.getStationTitle()
@@ -351,6 +353,10 @@ function createInfoBox(stnObj) {
                 + '</div>'
                 + '</td>'
                 + '</tr>'
+                
+                
+                
+                
                 + '</tbody>'
                 + '</table>'
                 + '</div>'

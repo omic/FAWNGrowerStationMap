@@ -325,7 +325,7 @@
     width: 132px;
 }
 .infoBox #nowTemp {
-    width: 89px;
+    width: 60px;
 }
 .infoBox #nowTemp #tempActual {
     font-size: 24px;
@@ -342,7 +342,7 @@
 }
 
 .infoBox #nowRain {
-    width: 89px;
+    width: 70px;
 
 }
 .infoBox #nowRain #rain {
@@ -355,7 +355,7 @@
 }
 
 .infoBox #nowWind {
-    width: 89px;
+    width: 70px;
 
 }
 .infoBox #nowWind #wind {
@@ -6062,6 +6062,7 @@ a.newWin:after {
 }
 .vaT {
     vertical-align: top !important;
+    width: 30%;
 }
 .vaM {
     vertical-align: middle !important;

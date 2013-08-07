@@ -4,40 +4,46 @@
 
 
 function GrowerStation(arr) {
-	
+	for(var name in arr) {
+		if(arr[name]===null||arr[name]=='9999'){
+			arr[name] = 'NA';
+		}
+	}
+	this.type = "GROWER";
 	this.stnName = arr.station_name;
 	this.stnID = arr.station_id;
-	this.elevFt = 'NA';
 	this.lng = arr.longitude;
 	this.lat =  arr.latitude;
-	this.type = "GROWER";
-	this.temper = (arr.temps=='9999'?'NA':this.round(arr.dry_bulb_air_temp,0)) ;
-	this.rainfall = (arr.rainfall=='9999'?'NA':arr.rainfall);
-    this.datetime = arr.date_time;
-    this.windspeed=arr.wind_speed;
-    this.humidity=arr.humidity;
-    this.winddirection=arr.wind_direction;
-    this.wet_bulb_temp=(arr.wet_bulb_temp==null?'NA':arr.wet_bulb_temp);
-    this.total_rainfall=arr.total_rain_inche_since_installed;
-    this.vendor=arr.vendor_name;
-    //alert("whahahaha "+this.lat);
+	this.temper = this.round(arr.dry_bulb_air_temp,0) ;
+	this.rainfall = arr.rainfall;
+	this.datetime = arr.date_time;
+	this.wind_speed=arr.wind_speed;
+	this.humidity=arr.humidity;
+	this.wind_direction=arr.wind_direction;
+	this.wet_bulb_temp=arr.wet_bulb_temp;
+	this.total_rainfall=arr.total_rain_inche_since_installed;
+	this.vendor_name=arr.vendor_name;
 }
 GrowerStation.prototype = new Station();
 GrowerStation.prototype.getRain=function(){
-	if(this.vendor=="Ag-tronix"||this.vendor=="Rainwise"){
+	
+	if(this.vendor_name=="Ag-tronix"||this.vendor_name=="Rainwise"){
 		return "NA"
 	}
 	else
+	
 	return this.rainfall;
 }
 GrowerStation.prototype.getTemp=function(){
-	return this.temper;
-}
+		return this.temper;
+	}
 GrowerStation.prototype.getWindSpeed=function(){
-	//var speed=Number(this.windspeed);
-	var speed=Math.round(Number(this.windspeed)* 100) / 100
+	var speed=Math.round(Number(this.wind_speed)* 100) / 100
 	return speed;
-	//return speed.toFixed(2);
+}
+GrowerStation.prototype.getTotalRain=function(){
+	var total_rain=Math.round(Number(this.total_rainfall)* 100) / 100
+	return total_rain;
 }
 GrowerStation.prototype.getDateTime = function(){
 	return this.datetime;
