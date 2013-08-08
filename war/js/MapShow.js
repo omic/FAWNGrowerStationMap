@@ -167,15 +167,13 @@ function createInfoBox(stnObj) {
                 + '<div id="nowTemp"><div class="titleSubtle bm10">Temperature</div>'
                 + '<div id="tempActual">'
                 + stnObj.temper
-                + ' <span class="tempUnit">&degF</span></div></div></td>'
+                + '<span class="tempUnit">&degF</span></div></div></td>'
                 + '<td class="vaT">'
                 + '<div id="nowRain"><div class="titleSubtle bm10">Cumm Rain*</div>'
                 + '<div id="rain">'
                 //+stnObj.getRain()
                 + stnObj.getTotalRain()
-                + '<span class="rainUnit">&rdquo;</span></div>'
-                + '</div>'
-                + '</td>'
+                + '<span class="rainUnit">&rdquo;</span></div></div></td>'
                 + '<td class="vaT">'
                 + '<div id="nowWind"><div class="titleSubtle bm10">Wind Speed</div>'
                 + '<div id="wind">'
@@ -184,14 +182,14 @@ function createInfoBox(stnObj) {
                 + '</div>'
                 + '</td>'
                 + '</tr>'
-                +'<tr><td colspan="2">*Since weather station instl</td></tr>'
+                + '<tr><td colspan="2">*Since weather station instl</td></tr>'
                 + '</tbody>'
                 + '</table>'
                 + '</div>'
                 + '<div class="ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide" id="infobox-tabs-1">'
                 + '</div>'
                 + '<div class="ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide" id="infobox-tabs-2">'
-               + '</div>';
+                + '</div>';
     } /*else if (stnObj.type == "FAWN") {
         //var boxText = document.createElement("div");    
         var href="http://fawn.ifas.ufl.edu/station/station.php?id="+stnObj.stnID;
@@ -594,10 +592,10 @@ function filter(stations, bound) {
                 && stations[i].lng > bound.lowLng 
                 && stations[i].lng < bound.highLng ) {
         	//filter 2/3 points
-            if (stations[i].getTemp() !== 'NA') {
+          
                 eligiableStns[j] = stations[i];
                 j++;
-            }
+            
         }
     }
     return eligiableStns;

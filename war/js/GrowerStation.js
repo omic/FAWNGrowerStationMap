@@ -9,12 +9,13 @@ function GrowerStation(arr) {
 			arr[name] = 'NA';
 		}
 	}
+	//arr.dry_bulb_air_temp='NA';
 	this.type = "GROWER";
 	this.stnName = arr.station_name;
 	this.stnID = arr.station_id;
 	this.lng = arr.longitude;
 	this.lat =  arr.latitude;
-	this.temper = this.round(arr.dry_bulb_air_temp,0) ;
+	this.temper = (arr.dry_bulb_air_temp==='NA'?'NA':this.round(arr.dry_bulb_air_temp,0))
 	this.rainfall = arr.rainfall;
 	this.datetime = arr.date_time;
 	this.wind_speed=arr.wind_speed;
@@ -38,25 +39,29 @@ GrowerStation.prototype.getTemp=function(){
 		return this.temper;
 	}
 GrowerStation.prototype.getWindSpeed=function(){
+	if(this.wind_speed=='NA')
+		return this.wind_speed;
+	else{
 	var speed=Math.round(Number(this.wind_speed)* 100) / 100
 	return speed;
+	}
 }
 GrowerStation.prototype.getTotalRain=function(){
-	
-	var total_rain=Math.round(Number(this.total_rainfall)* 100) / 100
-	if(this.vendor_name=="Ag-tronix"||this.vendor_name=="Rainwise"){
+	if(this.vendor_name=="Ag-tronix"||this.vendor_name=="Rainwise"||this.total_rainfall=='NA'){
 		return "NA"
 	}
-	else
+	else{
+	var total_rain=Math.round(Number(this.total_rainfall)* 100) / 100
 	return total_rain;
+	}
 }
 GrowerStation.prototype.getDateTime = function(){
 	return this.datetime;
 }
 GrowerStation.prototype.getLabelContent = function(){
 	var html = '<div class="gladStoneFamilyLabel">'+
-		this.temper+
-		'&deg;F'+
+	     //'123'+
+	this.temper+'&deg;F'+
 		'</div>';
 	return html;
 }
