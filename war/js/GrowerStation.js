@@ -42,7 +42,12 @@ GrowerStation.prototype.getWindSpeed=function(){
 	return speed;
 }
 GrowerStation.prototype.getTotalRain=function(){
+	
 	var total_rain=Math.round(Number(this.total_rainfall)* 100) / 100
+	if(this.vendor_name=="Ag-tronix"||this.vendor_name=="Rainwise"){
+		return "NA"
+	}
+	else
 	return total_rain;
 }
 GrowerStation.prototype.getDateTime = function(){
