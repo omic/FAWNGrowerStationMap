@@ -381,15 +381,20 @@ function createInfoBox(stnObj) {
     var ib = new InfoBox(myOptions);
     return ib;
 }
+
 function loadData() {
+	//alert("hello");
     var fawnurl = 'http://test.fawn.ifas.ufl.edu/controller.php/latestmapjson/';
     var madisurl = 'http://test.fawn.ifas.ufl.edu/controller.php/nearbyNonFawn/all/';
     var growerurl = 'http://test.fdacswx.fawn.ifas.ufl.edu/index.php/dataservice/observation/latest/format/json/';
     fetch(growerurl, 3);
     fetch(fawnurl, 1);
     fetch(madisurl, 2);
-    
+   
 }
+//update data every 15 min
+var refresh=window.setInterval(loadData,900000);
+//var refresh=window.setInterval(loadData,60000);
 function fillData(StnObjs){
 	previousData = previousData.concat(StnObjs);
 }
