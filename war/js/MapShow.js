@@ -119,8 +119,6 @@ function createInfoBox(stnObj) {
                 + '<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">'
                 + '<li class="ui-state-default ui-corner-top  ui-tabs-selected ui-state-active">'
                 + '<a href="#infobox-tabs-0">Current (updated every 15 min)</a></li>'
-            // +'<li class="ui-state-default ui-corner-top">Forecast</li>'
-            // +'<li class="ui-state-default ui-corner-top">Graph</li>'
                 + '</ul>'
                 + '<div class="ui-tabs-panel ui-widget-content ui-corner-bottom" id="infobox-tabs-0">'
                 + '<table class="infoTable grey" cellpadding="0" cellspacing="0"><tbody>'
@@ -307,8 +305,6 @@ function createInfoBox(stnObj) {
                 + '<div class="ui-tabs ui-widget ui-widget-content ui-corner-all" id="infobox-tabs">'
                 + '<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">'
                 + '<li class="ui-state-default ui-corner-top  ui-tabs-selected ui-state-active"><a href="#infobox-tabs-0">Current</a></li>'
-            // +'<li class="ui-state-default ui-corner-top">Forecast</li>'
-            // +'<li class="ui-state-default ui-corner-top">Graph</li>'
                 + '</ul>'
                 + '<div class="ui-tabs-panel ui-widget-content ui-corner-bottom" id="infobox-tabs-0">'
                 + '<table class="infoTable grey" cellpadding="0" cellspacing="0"><tbody>'
@@ -350,11 +346,7 @@ function createInfoBox(stnObj) {
                 + '<span class="windUnit">MPH</span></div>'
                 + '</div>'
                 + '</td>'
-                + '</tr>'
-                
-                
-                
-                
+                + '</tr>'              
                 + '</tbody>'
                 + '</table>'
                 + '</div>'
@@ -482,11 +474,11 @@ function loadStnMarkers(stnObjs) {
             // labelStyle: {opacity: 0.85},
             icon: image
         });
-        bindInfoBox1(markers[i], stnObjs[i]);
+        bindInfoBox(markers[i], stnObjs[i]);
     }
     return markers;
 }
-function bindInfoBox1(marker, stnObj) {
+function bindInfoBox(marker, stnObj) {
     google.maps.event.addListener(marker, "click", function (e) {
     	if (stnObj.type == "FAWN") {
             //var boxText = document.createElement("div");    
@@ -503,25 +495,6 @@ function bindInfoBox1(marker, stnObj) {
     	}
     });
 }
-
-function bindInfoBox(marker, stnObj) {
-    google.maps.event.addListener(marker, "click", function (e) {
-        var id = document.getElementById("map");
-        var id2 = document.getElementById("list");
-        id.style.display = 'none';
-        // <a href="tower_data.html?id="KPNS"">81</a>
-        // var id=stnObj.stnID;
-        // window.location.href='tower_data.html?id=304';
-        var ib = showInfoBox(stnObj)
-        id2.style.display = '';
-        
-    });
-}
-/*
- * @function createInfoBox: create information box based on the given station
- * object @para:Station stnObj @return: InfoBox ib
- * 
- */
 
 /*
  * @function createStnObjs: make Station objects by the given associate array it
