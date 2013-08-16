@@ -1,6 +1,10 @@
 var fawnStnData = [];
 var madisStnData = [];
 var growerStnData = [];
+var FAWN_STATION_URL = "http://fawn.ifas.ufl.edu/station/station.php?id=";    
+var FAWN_OBZ_URL = 'http://fawn.ifas.ufl.edu/controller.php/latestmapjson/';
+var MADIS_OBZ_URL = 'http://fawn.ifas.ufl.edu/controller.php/nearbyNonFawn/all/';
+var GROWER_OBZ_URL = 'http://fdacswx.fawn.ifas.ufl.edu/index.php/dataservice/observation/latest/format/json/';
 var screenWidth = (window.screen.availWidth > 1680 ? 1680
         : window.screen.availWidth); // is it time consuming?
 // alert(screenWidth);
@@ -33,8 +37,7 @@ function fetch(url, type) {
             var JSON = $.parseJSON(xdr.responseText);
             if (JSON == null || typeof (JSON) == 'undefined') {
                 JSON = $.parseJSON(data.firstChild.textContent);
-            }
-           
+            }        
             var Stns = JSON;
             if (type == 1) {
                 var StnObjs = createStnObjs(Stns.stnsWxData, type);
@@ -375,12 +378,10 @@ function createInfoBox(stnObj) {
 
 function loadData() {
 	//alert("hello");
-    var fawnurl = 'http://test.fawn.ifas.ufl.edu/controller.php/latestmapjson/';
-    var madisurl = 'http://test.fawn.ifas.ufl.edu/controller.php/nearbyNonFawn/all/';
-    var growerurl = 'http://test.fdacswx.fawn.ifas.ufl.edu/index.php/dataservice/observation/latest/format/json/';
-    fetch(growerurl, 3);
-    fetch(fawnurl, 1);
-    fetch(madisurl, 2);
+
+    fetch(GROWER_OBZ_URL, 3);
+    fetch(FAWN_OBZ_URL, 1);
+    fetch(MADIS_OBZ_URL, 2);
    
 }
 //update data every 15 min
@@ -481,7 +482,8 @@ function bindInfoBox(marker, stnObj) {
     google.maps.event.addListener(marker, "click", function (e) {
     	if (stnObj.type == "FAWN") {
             //var boxText = document.createElement("div");    
-            var href="http://fawn.ifas.ufl.edu/station/station.php?id="+stnObj.stnID;
+            //var href="http://fawn.ifas.ufl.edu/station/station.php?id="+stnObj.stnID;
+            var href=FAWN_STATION_URL+stnObj.stnID;
             window.location =href;}
     	else{
         var ib = createInfoBox(stnObj)
