@@ -1,6 +1,0 @@
-.loginButton{
-  body.connected #login { display: none; }
-  body.connected #logout { display: block; }
-  body.not_connected #login { display: block; }
-      body.not_connected #logout { display: none; }
-}
