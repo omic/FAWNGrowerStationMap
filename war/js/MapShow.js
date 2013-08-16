@@ -1,4 +1,3 @@
-
 var fawnStnData = [];
 var madisStnData = [];
 var growerStnData = [];

@@ -1,5 +1,10 @@
 
 /*@import "http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two";*/
+/*.gm-style div {  
+font-size: 12px !important;
+font-family: "Times New Roman",Georgia,Serif !important;
+font-weight:bolder !important;
+} */
 #map_wrapper {
     overflow: hidden;
     position: relative;
@@ -6671,26 +6676,26 @@ a.newWin:after {
     background-repeat: no-repeat;
 }
 .fawnLabel{
-color: #f00e61;
-font-size: 16px;
-text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.7);
-font-family: Arial,sans-serif; 
-font-weight:bold;
-white-space: nowrap
+color: #f00e61 !important;
+font-size: 16px !important;
+text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.7) !important;
+font-family: Arial,sans-serif !important; 
+font-weight:bold !important;
+white-space: nowrap !important
 }
 .madisLabel{
 color: #333333;
-font-size: 16px;
-text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.7);
-font-family: Arial,sans-serif; 
-font-weight:bold;
-white-space: nowrap
+font-size: 16px !important;
+text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.7) !important;
+font-family: Arial,sans-serif !important; 
+font-weight:bold !important;
+white-space: nowrap !important
 }
 .gladStoneFamilyLabel{
-color: #863ca6;
-font-size: 16px;
-text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.7);
-font-family: Arial,sans-serif; 
-font-weight:bold;
-white-space: nowrap
+color: #863ca6 !important;
+font-size: 16px !important;
+text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.7) !important;
+font-family: Arial,sans-serif !important; 
+font-weight:bold !important;
+white-space: nowrap !important
 }
