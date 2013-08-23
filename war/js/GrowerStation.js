@@ -27,12 +27,12 @@ function GrowerStation(arr) {
 }
 GrowerStation.prototype = new Station();
 GrowerStation.prototype.getRain=function(){
-	
+
 	if(this.vendor_name=="Ag-tronix"||this.vendor_name=="Rainwise"){
 		return "NA"
 	}
 	else
-	
+
 	return this.rainfall;
 }
 GrowerStation.prototype.getTemp=function(){
