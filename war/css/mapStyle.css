@@ -5,6 +5,16 @@ font-size: 12px !important;
 font-family: "Times New Roman",Georgia,Serif !important;
 font-weight:bolder !important;
 } */
+#panel {
+  position: absolute;
+  top: 140px;
+  left: 87%;
+  margin-left: -180px;
+  z-index: 5;
+  background-color: #fff;
+  padding: 5px;
+  border: 1px solid #999;
+}
 #map_wrapper {
     overflow: hidden;
     position: relative;
