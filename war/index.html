@@ -81,6 +81,7 @@
 <script>
 
 var map = initMap();
+
 var screenWidth = (window.screen.availWidth > 1680 ? 1680
         : window.screen.availWidth); // is it time consuming?
 // alert(screenWidth);
@@ -129,6 +130,7 @@ function codeAddress() {
 function initMap() {
     geocoder = new google.maps.Geocoder();
     loadData();   
+
     /*
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
@@ -175,7 +177,7 @@ function initMap() {
             ]
         }
     ];
-     var centerLatLng = new google.maps.LatLng(28.2967, -81.3668);
+    var centerLatLng = new google.maps.LatLng(28.2967, -81.3668);
     var map = new google.maps.Map(document.getElementById('map'), {       
         mapTypeControlOptions: {
             mapTypeIds: [ 'weather' ]
@@ -191,7 +193,7 @@ function initMap() {
     var homeControl = new DataControl(homeControlDiv, map);
     homeControlDiv.index = -1;
     map.controls[google.maps.ControlPosition.RIGHT_TOP].push(homeControlDiv);
-   // getLocation();
+	window.setInterval(loadData,300000);	
     return map;
 
 }

@@ -16,19 +16,22 @@ var previousData = [];// globel
 //used to slow down users' request
 var checkboxTask; //globel
 var boundchangedTask; //globel
+
+
+
 function loadingPos() {
-if($('#loading').css("display")!="block"){
-  // alert( $('#map').css("width"));
-  var mapwidth=$('#map').css("width");
-  var mapheight=$('#map').css("height");
-   $('#loading').css("left",(mapwidth.replace(/px/g, "")/2-30)+"px");
-$('#loading').css("top",(mapheight.replace(/px/g, "")/2-30)+"px");
- $('#loading').css("display","block");
- //alert("show");
- }
+	if($('#loading').css("display")!="block"){
+		// alert( $('#map').css("width"));
+		var mapwidth=$('#map').css("width");
+		var mapheight=$('#map').css("height");
+		$('#loading').css("left",(mapwidth.replace(/px/g, "")/2-30)+"px");
+		$('#loading').css("top",(mapheight.replace(/px/g, "")/2-30)+"px");
+		$('#loading').css("display","block");
+	}
 }
 //To avoid the IE abort data http://www.cypressnorth.com/blog/web-programming-and-development/internet-explorer-aborting-ajax-requests-fixed/
 function fetch(url, type) {
+	url += "?" + new Date().getTime();;
     if ($.browser.msie && window.XDomainRequest) {
         // Use Microsoft XDR
         var xdr = new XDomainRequest();
@@ -54,7 +57,7 @@ function fetch(url, type) {
                 growerStnData = StnObjs;
                 //alert("3 "+growerStnData.length);
             }
-
+			updateMarkers();
         };
         xdr.onprogress=function(){ };
         xdr.ontimeout=function(){ };
@@ -80,25 +83,25 @@ function fetch(url, type) {
                         var StnObjs = createStnObjs(Stns, type);
                         growerStnData = StnObjs;
                     }
-                    //alert("aaaa"+ fawnStnData.length);
+                    updateMarkers();
                 });
     }
 }
 function fawnCheck() {
-    if (document.getElementById("fawn").checked) {
+    if (document.getElementById("fawn")!=null&&document.getElementById("fawn").checked) {
         return true;
     } else
         return false;
 }
 function madisCheck() {
-    if (document.getElementById("madis").checked)
+    if (document.getElementById("madis")!=null&&document.getElementById("madis").checked)
         return true;
     else
         return false;
 
 }
 function growerCheck() {
-    if (document.getElementById("grower").checked)
+    if (document.getElementById("grower")!=null && document.getElementById("grower").checked)
         return true;
     else
         return false;
@@ -377,16 +380,11 @@ function createInfoBox(stnObj) {
 }
 
 function loadData() {
-	//alert("hello");
-
-    fetch(GROWER_OBZ_URL, 3);
+	fetch(GROWER_OBZ_URL, 3);
     fetch(FAWN_OBZ_URL, 1);
-    fetch(MADIS_OBZ_URL, 2);
-   
+    fetch(MADIS_OBZ_URL, 2);  
 }
-//update data every 15 min
-var refresh=window.setInterval(loadData,900000);
-//var refresh=window.setInterval(loadData,60000);
+
 function fillData(StnObjs){
 	previousData = previousData.concat(StnObjs);
 }
@@ -509,9 +507,9 @@ function createStnObjs(stations, tag) {
     for (var i = 0; i < stations.length; i++) {
     	//we get rid of 2/3 madis stations
     	//since the ie is slow
-    	if(tag == 2 && i%3 == 0){
+    	/*if(tag == 2 && i%3 == 0){
     		continue;
-    	}
+    	}*/
     	
         stnObjs[stnObjs.length] = Station.createStnObj(stations[i], tag);
     }
@@ -570,9 +568,7 @@ function filter(stations, bound) {
                 && stations[i].lat < bound.highLat 
                 && stations[i].lng > bound.lowLng 
                 && stations[i].lng < bound.highLng ) {
-        	//filter 2/3 points
-          
-                eligiableStns[j] = stations[i];
+				eligiableStns[j] = stations[i];
                 j++;
             
         }
@@ -645,7 +641,7 @@ function DataControl(controlDiv, map) {
     	 * sometimes it takes a few seconds before those weather stations are removed from or added to the view; 
     	 * sometimes I have to un-select and select them several times, before anything happens
     	 */
-    	  loadingPos();
+    	loadingPos();
     	clearTimeout(checkboxTask);
         //console.log("clear check chekboxTask");
         checkboxTask = setTimeout(function() {
@@ -673,8 +669,11 @@ function updateMarkers(){
    
            fillData(madisStnData);
         }
-       
-        showData();
+        //if any one of data source is selected, show data.
+		if(flag1 || flag2 || flag3){
+			showData();
+		}
+        
   
 }
 // using html5 geolocation to get the location of the current user, brower
