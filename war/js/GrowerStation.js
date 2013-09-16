@@ -28,7 +28,7 @@ function GrowerStation(arr) {
 GrowerStation.prototype = new Station();
 GrowerStation.prototype.getRain=function(){
 	
-	if(this.vendor_name=="Ag-tronix"||this.vendor_name=="Rainwise"){
+	if(this.vendor_name=="Ag-tronix"){
 		return "NA"
 	}
 	else
