@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="js/highstock.js"></script>
+<script src="/js/graphic.js"></script>
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" />
+<link type="text/css" rel="stylesheet" href="/css/zhaostyle.css" />
+</head>
+<body>
+<div class="span12" onclick=weatherControl.dataObj.stationChange();>
+<div class="row" onchange=weatherControl.dataObj.stationChange(); >
+<div id="stationChoice" class="span3" style="padding-top: 30px;"  >
+<label>Grower:<label>
+<select id="grower" onchange=weatherControl.dataObj.growerChange();> 
+</select>
+</div>
+<div id="stationChoice" class="span3" style="padding-top: 30px;">
+<label>Station:<label>
+<select id="station"  > 
+<option value="">Station Name</option>
+</select>
+</div>
+<div id="parameter" class="span3" style="padding-top: 30px;" >
+<label>Parameter:<label>
+<select id="dataType" >
+<option value="wet">Web Bulb Temperature</option>
+<option value="dry">Dry Bulb Temperature</option>
+<option value="rain">Rain Fall</option></select>
+</div>
+<div id="noDataError" style="padding-top: 50px;" ></div>
+</div>
+</div>
+<div id="container" class="span10">
+</div>
+<div id="infoDiv" class="span6 scrollWrapper" style="padding-top: 30px;white-space:nowrap;font-size:14pt;display:none;"> 
+<table id="infotable" class="table table-bordered" style="font-size:70%">
+<thead>
+   <tr>
+    <th>Time</th>
+    <th>Info</th>
+   </tr> 
+   </thead>
+     <tbody id="tbody">
+    </tbody> 
+</table>
+</div>
+<script>
+var stationParameter = window.location.search.substring(1);
+var stnID=stationParameter.split("=")[1];
+var weatherControl=new graphicControl();
+var grower=new Array();
+weatherControl.graphObj.intialChart();
+weatherControl.dataObj.fillGrowerBox(stnID);
+
+</script>
+
+</body>
+</html>

@@ -1,10 +1,13 @@
 var fawnStnData = [];
 var madisStnData = [];
 var growerStnData = [];
+var currentStaionID;
 var FAWN_STATION_URL = "http://fawn.ifas.ufl.edu/station/station.php?id=";    
 var FAWN_OBZ_URL = 'http://fawn.ifas.ufl.edu/controller.php/latestmapjson/';
 var MADIS_OBZ_URL = 'http://fawn.ifas.ufl.edu/controller.php/nearbyNonFawn/all/';
 var GROWER_OBZ_URL = 'http://fdacswx.fawn.ifas.ufl.edu/index.php/dataservice/observation/latest/format/json/';
+
+var grower=new Array();
 var screenWidth = (window.screen.availWidth > 1680 ? 1680
         : window.screen.availWidth); // is it time consuming?
 // alert(screenWidth);
@@ -57,7 +60,9 @@ function fetch(url, type) {
                 growerStnData = StnObjs;
                 //alert("3 "+growerStnData.length);
             }
-			updateMarkers();
+            setTimeout(function() {
+             	updateMarkers();
+             }, 1200);
         };
         xdr.onprogress=function(){ };
         xdr.ontimeout=function(){ };
@@ -83,7 +88,9 @@ function fetch(url, type) {
                         var StnObjs = createStnObjs(Stns, type);
                         growerStnData = StnObjs;
                     }
-                    updateMarkers();
+                    setTimeout(function() {
+                     	updateMarkers();
+                     }, 1200);
                 });
     }
 }
@@ -107,6 +114,12 @@ function growerCheck() {
         return false;
 
 }
+
+function popupGraph(){
+	   
+	  weatherControl.graphObj.intialChart();
+	  weatherControl.dataObj.fillGrowerBox(currentStaionID);
+}
 /*
  * @function createInfoBox: create information box based on the given station
  * object @para:Station stnObj @return: InfoBox ib
@@ -116,14 +129,18 @@ function createInfoBox(stnObj) {
     //alert(stnObj.lat+" "+stnObj.lng);
     if (stnObj.type == "GROWER") {
         var boxText = document.createElement("div");
+        currentStaionID=stnObj.stnID;
+        var graphUrl="graph.html?id="+currentStaionID;
         boxText.innerHTML = '<div class="infobox-pointer"></div>'
                 + '<div class="infobox-title">'
                 + stnObj.getStationTitle()
                 +'</div>'
                 + '<div class="ui-tabs ui-widget ui-widget-content ui-corner-all" id="infobox-tabs">'
-                + '<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">'
+                + '<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" stytle="display:inline">'
                 + '<li class="ui-state-default ui-corner-top  ui-tabs-selected ui-state-active">'
                 + '<a href="#infobox-tabs-0">Current (updated every 15 min)</a></li>'
+                + '<li class="ui-state-default ui-state-active">'
+                + '<a onclick=popupGraph()>See Weather Graph</a></li>'
                 + '</ul>'
                 + '<div class="ui-tabs-panel ui-widget-content ui-corner-bottom" id="infobox-tabs-0">'
                 + '<table class="infoTable grey" cellpadding="0" cellspacing="0"><tbody>'
@@ -135,7 +152,6 @@ function createInfoBox(stnObj) {
                 + stnObj.lat
                 + '</span></td>'
                 + '</tr>'
-
                 + '<tr>'
                 + '<td class="nobr dtr">Lon: <span>'
                 + stnObj.lng
@@ -676,6 +692,33 @@ function updateMarkers(){
         
   
 }
+function codeAddress() {
+	  //var address = document.getElementById('address').value;
+	  var stationID=document.getElementById('stationID').value;
+	  var result = $.grep(growerStnData, function(e){ return e.stnID ==stationID;});
+	  if(result.length==0){
+	  result = $.grep(fawnStnData, function(e){ return e.stnID ==stationID;});
+	  }
+	  if(result.length==0){
+	  result = $.grep(madisStnData, function(e){ return e.stnID ==stationID;});
+	  }
+	  if(result.length==0){
+	  alert("Please make sure that you enter the right station ID!");
+	  return;
+	  }
+	  var address=result[0].lat+", "+result[0].lng;
+	  geocoder.geocode( { 'address': address}, function(results, status) {
+	    if (status == google.maps.GeocoderStatus.OK) {
+	      map.setCenter(results[0].geometry.location);
+	      var marker = new google.maps.Marker({
+	          map: map,
+	          position: results[0].geometry.location
+	      });
+	    } else {
+	      alert('Geocode was not successful for the following reason: ' + status);
+	    }
+	  });
+	}
 // using html5 geolocation to get the location of the current user, brower
 // support IE,Firefox,chrome,safari,opera
 function getLocation() {

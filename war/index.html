@@ -7,15 +7,20 @@
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
     <script src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/src/infobox.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <script src="js/Station.js" type="text/javascript"></script>
     <script src="js/MadisStation.js" type="text/javascript"></script>
     <script src="js/FawnStation.js" type="text/javascript"></script>
     <script src="js/GrowerStation.js" type="text/javascript"></script>
     <script src="js/MarkerWithLabel.js"></script>
-    <!--<script src="js/MapShow.js"></script>-->
     <script src="js/MapShow.js"></script>
+    <script src="js/graphic.js"></script>
     <!--function needed to display the map-->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="css/mapStyle.css">
+    <script src="js/highstock.js"></script>
+
+ 
     <!-- Full Screen Google Map -->
     <style type="text/css">
         html {
@@ -78,8 +83,37 @@
 <div id="map">
 </div>
 
-<script>
+<div id="dialog" title="Weather Graph">
+<div stytle="display:inline" onclick=weatherControl.dataObj.stationChange();>
+<div onchange=weatherControl.dataObj.stationChange(); >
+<div id="growerChoice" style="padding-top: 30px;float:left"  >
+<label>Grower:<label>
+<select id="growerName" onchange=weatherControl.dataObj.growerChange();> 
+</select>
+</div>
+<div id="stationChoice" style="padding-top: 30px; float:left">
+<label>Station:<label>
+<select id="station"  > 
+<option value="">Station Name</option>
+</select>
+</div>
+<div id="parameter" style="padding-top: 30px;float:left" >
+<label>Parameter:<label>
+<select id="dataType" >
+<option value="wet">Web Bulb Temperature</option>
+<option value="dry">Dry Bulb Temperature</option>
+<option value="rain">Rain Fall</option></select>
+</div>
+<div id="noDataError" style="padding-top: 50px;float:left" >
+</div>
+</div>
+</div>
+<div id="container"style="width:600px" >
+</div>
+</div>
 
+<script>
+var weatherControl=new graphicControl();
 var map = initMap();
 
 var screenWidth = (window.screen.availWidth > 1680 ? 1680
@@ -95,38 +129,7 @@ var madisStnData = [];
 var growerStnData = [];
 //intial map
 var geocoder;
-function codeAddress() {
-  //var address = document.getElementById('address').value;
-  var stationID=document.getElementById('stationID').value;
-  var result = $.grep(growerStnData, function(e){ return e.stnID ==stationID;});
 
-  if(result.length==0){
-  result = $.grep(fawnStnData, function(e){ return e.stnID ==stationID;});
-  }
-  if(result.length==0){
-  result = $.grep(madisStnData, function(e){ return e.stnID ==stationID;});
-  }
-  if(result.length==0){
-  alert("Please make sure that you enter the right station ID!");
-  return;
-  } 
-  if(result.length==0){
-  alert("Can not find the Station, Please make sure that you enter the right ID and type!");
-  return;
-  }
-  var address=result[0].lat+", "+result[0].lng;
-  geocoder.geocode( { 'address': address}, function(results, status) {
-    if (status == google.maps.GeocoderStatus.OK) {
-      map.setCenter(results[0].geometry.location);
-      var marker = new google.maps.Marker({
-          map: map,
-          position: results[0].geometry.location
-      });
-    } else {
-      alert('Geocode was not successful for the following reason: ' + status);
-    }
-  });
-}
 function initMap() {
     geocoder = new google.maps.Geocoder();
     loadData();   
