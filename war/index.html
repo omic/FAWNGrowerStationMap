@@ -13,8 +13,8 @@
     <script src="js/FawnStation.js" type="text/javascript"></script>
     <script src="js/GrowerStation.js" type="text/javascript"></script>
     <script src="js/MarkerWithLabel.js"></script>
-    <script src="js/MapShow.js"></script>
-    <script src="js/graphic.js"></script>
+    <script src="js/MapShow.js"></script> 
+    <script src="js/angular.js"></script>
     <!--function needed to display the map-->
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="css/mapStyle.css">
@@ -52,7 +52,7 @@
         }
     </style>
 </head>
-<body>
+<body ng-app >
 <div id="header">
 	<span>
 		<h1>MY FLORIDA FARM WEATHER</h1>
@@ -75,132 +75,158 @@
         Looks like your browser is out of date. Why not update to the latest version? Click <a
             href="http://windows.microsoft.com/en-US/windows-8/internet-explorer">Update</a>
     </div>
-<![endif]-->
- <div id="panel">
-      <input id="stationID" type="textbox" placeholder="Station ID">
-      <input type="button" value="Search Station" onclick="codeAddress()">
     </div>
+<![endif]-->
+
 <div id="map">
 </div>
-
-<div id="dialog" title="Weather Graph">
-<div stytle="display:inline" onclick=weatherControl.dataObj.stationChange();>
-<div onchange=weatherControl.dataObj.stationChange(); >
-<div id="growerChoice" style="padding-top: 30px;float:left"  >
+<div ng-controller="MyCntrl" class="ng-scope">
+ <div id="panel">
+      <input id="stationID" ng-model="searchStation" type="textbox" placeholder="Station ID">
+      <input type="button" value="Search Station" onclick="codeAddress()">
+    </div>
+<div id="dialog1" title="Weather Graph" >
+<div id="growerChoice" style="padding-top: 30px;float:left">
 <label>Grower:<label>
-<select id="growerName" onchange=weatherControl.dataObj.growerChange();> 
+<select
+   ng-model="grower" 
+   ng-options="g.label for g in growerOption"
+    ng-change="growerChange()">
+    <option>--</option>
 </select>
 </div>
 <div id="stationChoice" style="padding-top: 30px; float:left">
 <label>Station:<label>
-<select id="station"  > 
-<option value="">Station Name</option>
+<select
+   ng-change="stationChange()"
+   ng-model="station" 
+   ng-options="s.label for s in stationOption"> 
+    <option>--</option>
 </select>
 </div>
 <div id="parameter" style="padding-top: 30px;float:left" >
 <label>Parameter:<label>
-<select id="dataType" >
-<option value="wet">Web Bulb Temperature</option>
-<option value="dry">Dry Bulb Temperature</option>
-<option value="rain">Rain Fall</option></select>
+<select
+   ng-change="parameterChange()"
+   ng-model="parameter" 
+   ng-options="p.label for p in parameters" >
+    <option>--</option>
+</select>
 </div>
 <div id="noDataError" style="padding-top: 50px;float:left" >
 </div>
+<div id="container"  style="width:600px;float:left;"></div>
+<div id="weatherInfo"  style="float:left;padding-top: 50px;padding-left: 30px;" >
+       <span>Current (updated every 15 min)</span>
+        <ul class="stations">
+        <li>
+          Station Name: <span ng-bind="stnName"></span>
+        </li></br>
+        <li>
+          Station ID: <span ng-bind="stnID"></span>
+        </li></br>
+        <li>
+          Lat: <span ng-bind="stnLat"></span>
+        </li></br>
+         <li>
+          Lng: <span ng-bind="stnLng"></span>
+        </li></br>
+         <li>
+          Wind Direction: <span ng-bind="windDirection"></span> &deg
+        </li></br>
+         <li>
+          Temperature: <span ng-bind="temperature"></span> &degF
+        </li></br>
+         <li>
+          Cumm Rain*: <span ng-bind="totalRain"></span> "
+        </li></br>
+         <li>
+          Wind Speed: <span ng-bind="windSpeed"></span> MPH
+        </li></br>
+          <li>
+          Rainfall: <span ng-bind="rain"></span> "
+        </li></br>
+          <li>
+          Wet Bulb Temp: <span ng-bind="webBulbTemp"></span> &degF
+        </li></br>
+          <li>
+          Humidity: <span ng-bind="humidity"></span> %
+        </li></br>
+         <li>
+          Date Time: <span ng-bind="dateTime"></span>
+        </li>        
+      </ul> 
+      <span>*Since weather station instl</span>
 </div>
 </div>
-<div id="container"style="width:600px" >
+<div id="dialog2" title="Madis Station" >
+    <ul class="stations">
+        <li>
+          Station Name: <span ng-bind="mStnName"></span>
+        </li></br>
+        <li>
+          Station ID: <span ng-bind="mStnID"></span>
+        </li></br>
+        <li>
+          Lat: <span ng-bind="mStnLat"></span>
+        </li></br>
+         <li>
+          Lng: <span ng-bind="mStnLng"></span>
+        </li></br>
+         <li>
+          Elev: <span ng-bind="elev"></span> ft
+        </li></br>
+         <li>
+          Temperature: <span ng-bind="mTemperature"></span> &degF
+        </li></br>
+         <li>
+          Wind Speed: <span ng-bind="mWindSpeed"></span> MPH
+        </li></br>
+          <li>
+          Rainfall: <span ng-bind="mRain"></span> "
+        </li></br>
+         <li>
+          Date Time: <span ng-bind="mDateTime"></span>
+        </li>  
+            
+      </ul> 
 </div>
 </div>
+
 
 <script>
-var weatherControl=new graphicControl();
-var map = initMap();
-
-var screenWidth = (window.screen.availWidth > 1680 ? 1680
-        : window.screen.availWidth); // is it time consuming?
-// alert(screenWidth);
-var screenHeight = (window.screen.availHeight > 1050 ? 1050
-        : window.screen.availHeight);
-var preInfoBox = null; // globel;
-var markers = []; // globel
-var previousData = [];// globel
-var fawnStnData = [];
-var madisStnData = [];
-var growerStnData = [];
-//intial map
-var geocoder;
-
-function initMap() {
-    geocoder = new google.maps.Geocoder();
-    loadData();   
-    /*
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else {
-      
-        return;
-    }*/
-    
-    var weather_style = [
-        {
-            featureType: "administrative",
-            elementType: "labels",
-            stylers: [
-                {
-                    visibility: "off"
-                }
-            ]
-        },
-        {
-            featureType: "poi",
-            elementType: "labels",
-            stylers: [
-                {
-                    visibility: "off"
-                }
-            ]
-        },
-        {
-            featureType: "water",
-            elementType: "labels",
-            stylers: [
-                {
-                    visibility: "on"
-                }
-            ]
-        },
-        {
-            featureType: "road",
-            elementType: "labels",
-            stylers: [
-                {
-                    visibility: "off"
-                }
-            ]
-        }
-    ];
-    var centerLatLng = new google.maps.LatLng(28.2967, -81.3668);
-    var map = new google.maps.Map(document.getElementById('map'), {       
-        mapTypeControlOptions: {
-            mapTypeIds: [ 'weather' ]
-        },
-        mapTypeControl:false,
-        center: centerLatLng,
-        zoom: 7,
-        mapTypeId: 'weather'
+  $(function() {
+    $( "#dialog1" ).dialog({
+      autoOpen: false,
+      show: {
+        effect: "blind",
+        duration: 1000
+      },
+      width: 1000,
+       height: 600,
+      hide: {
+        effect: "explode",
+        duration: 1000
+      }
     });
-    map.mapTypes.set('weather', new google.maps.StyledMapType(weather_style, {
-        name: 'weather'}));   
-    var homeControlDiv = document.createElement('div');    
-    var homeControl = new DataControl(homeControlDiv, map);
-    homeControlDiv.index = -1;
-    map.controls[google.maps.ControlPosition.RIGHT_TOP].push(homeControlDiv);
-	window.setInterval(loadData,300000);	
-    return map;
-
-}
-
+        $( "#dialog2" ).dialog({
+      autoOpen: false,
+      show: {
+        effect: "blind",
+        duration: 1000
+      },
+      width: 400, 
+      height: 350,
+      hide: {
+        effect: "explode",
+        duration: 1000
+      }
+       });
+       });
 </script>
+
+
+
 
 </body>
 </html>

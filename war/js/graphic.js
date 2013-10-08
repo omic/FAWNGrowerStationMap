@@ -15,6 +15,18 @@ function graphicControl() {
     this.graphObj = new weatherGraphic();
     this.dataObj = new weatherDataControl();
 }
+function growerController($scope,$http){
+	$scope.start=function(){
+	  $http.get(GROWER_OBZ_URL).success(function(data) {
+		  var stationID=$("#station").val();
+		    var stations = data;	    
+		    for(var i=0;i<stations.lenght;i++){
+		    	if(stations.station_id==stationID)
+		    		$scope.station=stations[i];
+		    }
+		  });
+	}
+}
 function weatherDataControl() {
     var STATION_NAME_URL = "http://test.fdacswx.fawn.ifas.ufl.edu/index.php/test/read/station/format/json";
     var graph = new weatherGraphic();
@@ -27,6 +39,7 @@ function weatherDataControl() {
     var id = "weather data";
     var idToGrowerName=[];	
     this.fillGrowerBox = function (stnID) {
+    	grower=[];
         $.getJSON(STATION_NAME_URL,
             function (data) {
                 if (!data) {
@@ -66,7 +79,8 @@ function weatherDataControl() {
                     $("#growerName").val(idToGrowerName[stnID]);
                     fillStationByGrower();
                     fetchData();
-                    $( "#dialog" ).dialog({ width: 750, height: 600});
+                    //$( "#dialog" ).dialog( "open" );
+               	 $( "#dialog" ).dialog({ width: 1000, height: 600});
                 }
             });
     }

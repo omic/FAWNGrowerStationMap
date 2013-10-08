@@ -24,6 +24,9 @@ Station.createStnObj = function(arr,tag){
 	
 }
 Station.prototype.getStationTitle = function(){
+	if(this.type=="GROWER")
+		return this.stnName;
+	else
 	return this.stnName + ' - ' +  this.type;
 }
 Station.prototype.round = function(num, precision){

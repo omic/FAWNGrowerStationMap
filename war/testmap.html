@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title></title>
+    <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/src/infobox.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script src="js/Station.js" type="text/javascript"></script>
+    <script src="js/MadisStation.js" type="text/javascript"></script>
+    <script src="js/FawnStation.js" type="text/javascript"></script>
+    <script src="js/GrowerStation.js" type="text/javascript"></script>
+    <script src="js/MarkerWithLabel.js"></script>
+    <script src="js/MapShow.js"></script>
+    <script src="js/graphic.js"></script>
+    <script src="js/angular.js"></script>
+    <!--function needed to display the map-->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="css/mapStyle.css">
+    <script src="js/highstock.js"></script>
+
+ 
+    <!-- Full Screen Google Map -->
+    <style type="text/css">
+        html {
+            height: 100%
+        }
+
+        body {
+            height: 100%;
+            margin: 0px;
+            padding: 0px
+        }
+
+        #map {
+            height: 100%
+        }
+        
+        #header{
+	        height: 125px;
+	        margin: 0;
+			background: #1e5799 url(image/heade_pattern.png) left top repeat-x;
+        }
+        
+        #header span{
+        	display: block;
+        	text-indent: -500em;
+	        width: 550px;
+	        height: 125px;
+	        background:transparent url(image/header_logo.png)left top no-repeat;
+        }
+    </style>
+</head>
+<body ng-app>
+<div id="header" >
+	<span>
+		<h1>MY FLORIDA FARM WEATHER</h1>
+		<p>FLORIDA DEPARTMENT OF AGRICULTURE AND CONSUMER SERVICES
+		AND THE FLORIDA AUTOMATED WEATHER NETWORK</p>
+	</span>
+</div>
+<!-- RECOMMENDED if your web app will not function without JavaScript enabled -->
+<noscript>
+    <div style="width: 22em; position: absolute; left: 50%; margin-left: -11em; color: red; background-color: white; border: 1px solid red; padding: 4px; font-family: sans-serif">
+        Your web browser must have JavaScript enabled
+        in order for this application to display correctly.
+    </div>
+</noscript>
+<!--[if lt IE 9]>
+
+<div class="ui-widget">
+    <div class="ui-state-highlight ui-corner-all">
+        <strong>Hey!</strong>
+        Looks like your browser is out of date. Why not update to the latest version? Click <a
+            href="http://windows.microsoft.com/en-US/windows-8/internet-explorer">Update</a>
+    </div>
+<![endif]-->
+ <div id="panel">
+      <input id="stationID" type="textbox" placeholder="Station ID">
+      <input type="button" value="Search Station" onclick="codeAddress()">
+    </div>
+<div id="map">
+</div>
+
+<div id="dialog" title="Weather Graph" ng-controller="growerController" class="ng-scope">
+<div stytle="display:inline" onclick="weatherControl.dataObj.stationChange()" >
+<div ng-click="start()" onchange="weatherControl.dataObj.stationChange()" >
+<div id="growerChoice" style="padding-top: 30px;float:left"  >
+<label>Grower:<label>
+<select id="growerName" onchange="weatherControl.dataObj.growerChange()" ng-click="start()"> 
+</select>
+</div>
+<div id="stationChoice" style="padding-top: 30px; float:left">
+<label>Station:<label>
+<select id="station"  ng-model="select_value" ng-change="start()"> 
+<option value="">Station Name</option>
+</select>
+</div>
+<div id="parameter" style="padding-top: 30px;float:left" >
+<label>Parameter:<label>
+<select id="dataType" >
+<option value="wet">Web Bulb Temperature</option>
+<option value="dry">Dry Bulb Temperature</option>
+<option value="rain">Rain Fall</option></select>
+</div>
+<div id="noDataError" style="padding-top: 50px;float:left" >
+</div>
+</div>
+</div>
+<div id="container"style="width:600px;float:left;" >
+</div>
+<div id="weatherInfo" style="float:left;padding-top: 50px;padding-left: 30px;" >
+      <ul class="stations">
+        <li>
+          Station Name: {{station.name}}
+        </li>
+        <li>
+          Station ID: {{station.name}}
+        </li>
+         <li>
+          Lat: {{station.lat}}
+        </li>
+      </ul>
+</div>
+</div>
+
+<script>
+var weatherControl=new graphicControl();
+var map = initMap();
+
+var screenWidth = (window.screen.availWidth > 1680 ? 1680
+        : window.screen.availWidth); // is it time consuming?
+// alert(screenWidth);
+var screenHeight = (window.screen.availHeight > 1050 ? 1050
+        : window.screen.availHeight);
+var preInfoBox = null; // globel;
+var markers = []; // globel
+var previousData = [];// globel
+var fawnStnData = [];
+var madisStnData = [];
+var growerStnData = [];
+//intial map
+var geocoder;
+
+function initMap() {
+    geocoder = new google.maps.Geocoder();
+    loadData();   
+    /*
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+      
+        return;
+    }*/
+    
+    var weather_style = [
+        {
+            featureType: "administrative",
+            elementType: "labels",
+            stylers: [
+                {
+                    visibility: "off"
+                }
+            ]
+        },
+        {
+            featureType: "poi",
+            elementType: "labels",
+            stylers: [
+                {
+                    visibility: "off"
+                }
+            ]
+        },
+        {
+            featureType: "water",
+            elementType: "labels",
+            stylers: [
+                {
+                    visibility: "on"
+                }
+            ]
+        },
+        {
+            featureType: "road",
+            elementType: "labels",
+            stylers: [
+                {
+                    visibility: "off"
+                }
+            ]
+        }
+    ];
+    var centerLatLng = new google.maps.LatLng(28.2967, -81.3668);
+    var map = new google.maps.Map(document.getElementById('map'), {       
+        mapTypeControlOptions: {
+            mapTypeIds: [ 'weather' ]
+        },
+        mapTypeControl:false,
+        center: centerLatLng,
+        zoom: 7,
+        mapTypeId: 'weather'
+    });
+    map.mapTypes.set('weather', new google.maps.StyledMapType(weather_style, {
+        name: 'weather'}));   
+    var homeControlDiv = document.createElement('div');    
+    var homeControl = new DataControl(homeControlDiv, map);
+    homeControlDiv.index = -1;
+    map.controls[google.maps.ControlPosition.RIGHT_TOP].push(homeControlDiv);
+	window.setInterval(loadData,300000);	
+    return map;
+
+}
+
+</script>
+
+</body>
+</html>
