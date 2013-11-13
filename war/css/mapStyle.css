@@ -5,9 +5,11 @@ font-size: 12px !important;
 font-family: "Times New Roman",Georgia,Serif !important;
 font-weight:bolder !important;
 } */
+
 #panel {
   position: absolute;
-  top: 140px;
+  width:300px;
+  top: 150px;
   right: 140px;
   margin-left: -180px;
   z-index: 5;
