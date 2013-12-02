@@ -155,6 +155,7 @@ function MyCntrl($scope) {
                                      source: stationName
                                    });
                                  $scope.growerOption = [];
+                                 
                                  for (var i = 0; i < keys.length; i++) {
                                      $scope.growerOption[i] = {"id": keys[i], "label": keys[i]};
                                  }
@@ -626,9 +627,9 @@ function MyCntrl($scope) {
         var centerLatLng = new google.maps.LatLng(28.2967, -81.3668);
         var map = new google.maps.Map(document.getElementById('map'), {
             mapTypeControlOptions: {
-                mapTypeIds: [ 'weather' ]
+                mapTypeIds: [ 'weather' ,'satellite']
             },
-            mapTypeControl: false,
+            mapTypeControl: true,
             center: centerLatLng,
             zoom: 7,
             mapTypeId: 'weather'
