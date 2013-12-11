@@ -5,7 +5,7 @@ var boundchangedTask;
 
 function MyCntrl($scope) {
 	var STATION_NAME_URL = "http://test.fdacswx.fawn.ifas.ufl.edu/index.php/test/read/station/format/json";
-	var GROWER_OBZ_URL = 'http://fdacswx.fawn.ifas.ufl.edu/index.php/dataservice/observation/latest/format/json/';
+	var GROWER_OBZ_URL = 'http://test.fdacswx.fawn.ifas.ufl.edu/index.php/read/latestobz/format/json';
 	var FAWN_STATION_URL = "http://fawn.ifas.ufl.edu/station/station.php?id=";
 	var FAWN_OBZ_URL = 'http://fawn.ifas.ufl.edu/controller.php/latestmapjson/';
 	var MADIS_OBZ_URL = 'http://fawn.ifas.ufl.edu/controller.php/nearbyNonFawn/all/';
@@ -516,6 +516,12 @@ function MyCntrl($scope) {
 								}
 								$scope
 										.$apply(function() {
+											if($scope.currentStation.fresh){
+												$scope.fresh='Current (updated every 15 min)';
+											}
+											else{
+												$scope.fresh='This station has not been updated since '+$scope.currentStation.date_time;
+											}
 											$scope.stnID = $scope.currentStation.station_id;
 											$scope.stnName = $scope.currentStation.station_name;
 											$scope.stnLat = $scope.currentStation.latitude;
@@ -916,7 +922,7 @@ function MyCntrl($scope) {
 
 	/*
 	 * @function filter: kick out the stations of which 1. the lat & lng are not in
-	 * the bound. 2. temperature != 'NA' @para:Station[] stations @para:Bound bound
+	 * the bound. 
 	 * @return: Station[] eligiableStns
 	 * 
 	 */
