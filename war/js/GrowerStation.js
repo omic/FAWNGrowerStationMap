@@ -24,6 +24,7 @@ function GrowerStation(arr) {
 	this.wet_bulb_temp=arr.wet_bulb_temp;
 	this.total_rainfall=arr.total_rain_inche_since_installed;
 	this.vendor_name=arr.vendor_name;
+	this.fresh=arr.fresh;
 }
 GrowerStation.prototype = new Station();
 GrowerStation.prototype.getRain=function(){
@@ -59,9 +60,16 @@ GrowerStation.prototype.getDateTime = function(){
 	return this.datetime;
 }
 GrowerStation.prototype.getLabelContent = function(){
+	if(this.fresh){
 	var html = '<div class="gladStoneFamilyLabel">'+
 	     //'123'+
 	this.temper+'&deg;F'+
 		'</div>';
+	}
+	else{
+		var html = '<div class="gladStoneFamilyLabel">NA&deg;F'+
+		'</div>';
+	}
 	return html;
-}
+	}
+	

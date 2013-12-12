@@ -4,14 +4,13 @@ var map;
 var boundchangedTask;
 
 function MyCntrl($scope) {
-	var STATION_NAME_URL = "http://test.fdacswx.fawn.ifas.ufl.edu/index.php/test/read/station/format/json";
+	var STATION_NAME_URL = "http://fdacswx.fawn.ifas.ufl.edu/index.php/test/read/station/format/json";
 	var GROWER_OBZ_URL = 'http://test.fdacswx.fawn.ifas.ufl.edu/index.php/read/latestobz/format/json';
 	var FAWN_STATION_URL = "http://fawn.ifas.ufl.edu/station/station.php?id=";
 	var FAWN_OBZ_URL = 'http://fawn.ifas.ufl.edu/controller.php/latestmapjson/';
 	var MADIS_OBZ_URL = 'http://fawn.ifas.ufl.edu/controller.php/nearbyNonFawn/all/';
 	var fawnStnData = [];
 	var madisStnData = [];
-
 	var currentStationID;
 	var graphchart;
 	var seriesData = [];
@@ -32,24 +31,9 @@ function MyCntrl($scope) {
 	var preInfoBox = null; // globel;
 	var markers = []; // globel
 	var previousData = [];// globel
-	var checkboxTask; //globel
+	var checkboxTask; // globel
 	var stationName = [];
-	var Browser = new Object();
-	$scope.browserType = function() {
-		Browser.isMozilla = (typeof document.implementation != 'undefined')
-				&& (typeof document.implementation.createDocument != 'undefined')
-				&& (typeof HTMLDocument != 'undefined');
-		Browser.isIE = window.ActiveXObject ? true : false;
-		Browser.isFirefox = (navigator.userAgent.toLowerCase().indexOf(
-				"firefox") != -1);
-		Browser.isSafari = (navigator.userAgent.toLowerCase().indexOf("safari") != -1);
-		Browser.isOpera = (navigator.userAgent.toLowerCase().indexOf("opera") != -1);
-		Browser.isChrome = (navigator.userAgent.toLowerCase().indexOf("chrome") != -1);
-		if (Browser.isChrome && Browser.isSafari)
-			Browser.isSafari = false;
-	}
-	$scope.browserType();
-	//intial map
+
 	$scope.parameters = [ {
 		"id" : "dry",
 		"label" : "Dry Bulb Temperature"
@@ -69,7 +53,7 @@ function MyCntrl($scope) {
 		xdr.onload = function() {
 			var JSON = $.parseJSON(xdr.responseText);
 			if (!JSON) {
-				//JSON = $.parseJSON(data.firstChild.textContent);
+				// JSON = $.parseJSON(data.firstChild.textContent);
 				alert("Current has no station");
 			} else {
 				var stnObj = JSON;
@@ -82,7 +66,7 @@ function MyCntrl($scope) {
 						grower[key][grower[key].length] = stnObj[i].id + "$$$"
 								+ stnObj[i].station_name;
 					} else {
-						//alert(stnObj[i].id);
+						// alert(stnObj[i].id);
 						var id = [];
 						id[0] = stnObj[i].id + "$$$" + stnObj[i].station_name;
 						grower[key] = id;
@@ -128,7 +112,7 @@ function MyCntrl($scope) {
 						grower[key][grower[key].length] = stnObj[i].id + "$$$"
 								+ stnObj[i].station_name;
 					} else {
-						//alert(stnObj[i].id);
+						// alert(stnObj[i].id);
 						var id = [];
 						id[0] = stnObj[i].id + "$$$" + stnObj[i].station_name;
 						grower[key] = id;
@@ -159,7 +143,7 @@ function MyCntrl($scope) {
 		$('#station').children('option:not(:first)').remove();
 		var growerName = $scope.grower.label;
 		$scope.stationOption = [];
-		//alert($scope.grower.label);
+		// alert($scope.grower.label);
 		var id = grower[growerName];
 		for ( var i = 0; i < id.length; i++) {
 			var arr = id[i].split("$$$");
@@ -174,7 +158,7 @@ function MyCntrl($scope) {
 	}
 
 	$scope.growerChange = function() {
-		//alert($scope.grower.label);
+
 		fillStationByGrower();
 		$scope.station = $scope.stationOption[0];
 		displayWeatherInformation();
@@ -188,9 +172,8 @@ function MyCntrl($scope) {
 		fetchData();
 	}
 	var fetchData = function() {
-		//alert($scope.station.id);
-		var timeStart;
-		var url = 'http://test.fdacswx.fawn.ifas.ufl.edu/index.php/test/read/sevenday/station_id/'
+		// alert($scope.station.id);
+		var url = 'http://test.fdacswx.fawn.ifas.ufl.edu/index.php/read/sevendaytimestamp/station_id/'
 				+ $scope.station.id + '/format/json/';
 		// if in IE browser
 		if ($.browser.msie && window.XDomainRequest) {
@@ -200,23 +183,16 @@ function MyCntrl($scope) {
 			xdr.onload = function() {
 				var JSON = $.parseJSON(xdr.responseText);
 				if (JSON == null || typeof (JSON) == 'undefined') {
-					//JSON = $.parseJSON(data.firstChild.textContent);
+					// JSON = $.parseJSON(data.firstChild.textContent);
 					stnData = [];
-					parseData("IE", stnData);
-					timeStart = 0;
+					parseData(stnData);
 				} else {
 					var stnData = JSON;
 					if (stnData != null) {
-						parseData("IE", stnData);
-						timeStart = seriesData[0][0];
-						//var test=graphchart.series[0].xData;
+						parseData(stnData);
+						// var test=graphchart.series[0].xData;
 					}
 				}
-				/*
-				 else{
-				 seriesData=[];
-				 timeStart=0;
-				 }*/
 				if (!graphchart.get(id)) {
 					addSeries(id, newTitle, seriesName);
 				} else {
@@ -237,15 +213,13 @@ function MyCntrl($scope) {
 				if (data != null) {
 					$("#noDataError").empty();
 					var stnData = data;
-					parseData("Other", stnData);
-					timeStart = seriesData[0][0];
+					parseData(stnData);
 				} else {
 					$("#noDataError").html("<label> Current No Data<label>")
 							.css("color", "red");
 					;
 					var stnData = [];
-					timeStart = 0;
-					parseData("Other", stnData);
+					parseData(stnData);
 				}
 
 				if (!graphchart.get(id)) {
@@ -257,62 +231,19 @@ function MyCntrl($scope) {
 			});
 		}
 	}
-	/*
-	 * Diffrent Web browser has it's own format requirement of date string
-	 *
-	 */
-	var formatDate = function(dateStr, browerType) {
-		var is_firefox = navigator.userAgent.indexOf('Firefox') > -1;
-		var is_safari = navigator.userAgent.indexOf("Safari") > -1;
-		var is_chrome = navigator.userAgent.indexOf('Chrome') > -1;
-		if ((is_chrome) && (is_safari)) {
-			is_safari = false;
-		}
-		if (browerType == "IE") {
-			//alert("safari");
-			//2013-08-07 14:00:00 EDT
-			var dateString = dateStr.split(" ");//[2013-08-07,14:00:00,EDT]
-			var dateArr = dateString[0].split("-");//[2013,08,07]
-			var timeArr = dateString[1].split(":");//[14,0,0]
-			var dateStr = new Date(dateArr[0], (dateArr[1] - 1), dateArr[2],
-					timeArr[0], timeArr[1], timeArr[2]).toString();
-			var dateTime = dateStr.split(" ");
-			var dateTemp = dateTime[0] + " " + dateTime[1] + " " + dateTime[2]
-					+ " " + dateTime[5] + " " + dateTime[3] + " "
-					+ dateString[2];// Wed Aug 7 2013 17:00:00 EDT
-			var date = new Date(dateTemp);
-			//alert(date);
-		} else {
-			if (is_safari || is_firefox || Browser.isMozilla) {
-				var dateString = dateStr.split(" ");//[2013-08-07,14:00:00,EDT]
-				var dateArr = dateString[0].split("-");//[2013,08,07]
-				var timeArr = dateString[1].split(":");//[14,0,0]
-				var dateStr = new Date(dateArr[0], (dateArr[1] - 1),
-						dateArr[2], timeArr[0], timeArr[1], timeArr[2])
-						.toString();
-				var dateTime = dateStr.split(" ");//"Sun Sep 08 2013 10:00:00 GMT-0400 (EDT)"
-				var dateTemp = dateTime[0] + " " + dateTime[1] + " "
-						+ dateTime[2] + " " + dateTime[3] + " " + dateTime[4]
-						+ " " + dateTime[5];// Wed Aug 7 2013 17:00:00 EDT
-				var date = new Date(dateTemp);
-			} else {
-				var date = new Date(dateStr);
-			}
-		}
-		return date;
-	}
-	var parseData = function(browserTyper, stnData) {
+
+	var parseData = function(stnData) {
 		var dataType = $scope.parameter.id;
 		if (dataType == "wet") {
 			newTitle = 'Graphic Weather Data (Temperature F)';
 			seriesName = "Wet Bulb Temperature";
 			wetBulbTemper = [];
 			for ( var i = 0; i < stnData.length; i++) {
-				//parse JSON style:{"obz_temp":"82","local_time":"2013-08-07 17:00:00 EDT"} to highcart style: [1375902000000,82]
+				// parse JSON style:{"obz_temp":"82","local_time":"2013-08-07
+				// 17:00:00 EDT"} to highcart style: [1375902000000,82]
 				var temperPoint = [];
-				var dateStr = stnData[i].date_time; //"2013-07-18 10:00:00 EDT"
-				var date = formatDate(dateStr, browserTyper);// format date for IE
-				temperPoint[0] = date.getTime();
+				temperPoint[0] = stnData[i].date_time;// time stamp:
+														// 1375902000000
 				if (stnData[i].wet_bulb_temp == null) {
 					temperPoint[1] = null;
 				} else {
@@ -327,11 +258,10 @@ function MyCntrl($scope) {
 			dryBulbTemper = [];
 			for ( var i = 0; i < stnData.length; i++) {
 
-				//parse JSON style:{"obz_temp":"82","local_time":"2013-08-07 17:00:00 EDT"} to highcart style: [1375902000000,82]
+				// parse JSON style:{"obz_temp":"82","local_time":"2013-08-07
+				// 17:00:00 EDT"} to highcart style: [1375902000000,82]
 				var temperPoint = [];
-				var dateStr = stnData[i].date_time; //"2013-07-18 10:00:00 EDT"
-				var date = formatDate(dateStr, browserTyper);// format date for IE
-				temperPoint[0] = date.getTime();
+				temperPoint[0] = stnData[i].date_time;
 				if (stnData[i].dry_bulb_air_temp == null) {
 					temperPoint[1] = null;
 				} else {
@@ -346,11 +276,10 @@ function MyCntrl($scope) {
 			seriesName = "Rainfall"
 			rainfall = [];
 			for ( var i = 0; i < stnData.length; i++) {
-				//parse JSON style:{"obz_temp":"82","local_time":"2013-08-07 17:00:00 EDT"} to highcart style: [1375902000000,82]
+				// parse JSON style:{"obz_temp":"82","local_time":"2013-08-07
+				// 17:00:00 EDT"} to highcart style: [1375902000000,82]
 				var rainfallPoint = [];
-				var dateStr = stnData[i].date_time; //"2013-07-18 10:00:00 EDT"
-				var date = formatDate(dateStr, browserTyper);// format date for IE
-				rainfallPoint[0] = date.getTime();
+				rainfallPoint[0] = stnData[i].date_time;
 				if (stnData[i].rainfall == null) {
 					rainfallPoint[1] = null;
 				} else {
@@ -363,7 +292,8 @@ function MyCntrl($scope) {
 		}
 	}
 	$scope.intialChart = function() {
-		Highcharts.setOptions({ // This is for all plots, change Date axis to local timezone
+		Highcharts.setOptions({ // This is for all plots, change Date axis to
+								// local timezone
 			global : {
 				useUTC : false
 			}
@@ -404,15 +334,6 @@ function MyCntrl($scope) {
 			},
 			xAxis : {
 				type : 'datetime',
-				events : {
-					setExtremes : function(e) {
-						if (typeof (e.rangeSelectorButton) !== 'undefined') {
-							range = e.rangeSelectorButton.count;
-							var timeStart = e.min;
-							//weatherInfo.inserTable(seriesData, timeStart);
-						}
-					}
-				},
 				minRange : 3600 * 1000
 			}
 
@@ -516,11 +437,14 @@ function MyCntrl($scope) {
 								}
 								$scope
 										.$apply(function() {
-											if($scope.currentStation.fresh){
-												$scope.fresh='Current (updated every 15 min)';
-											}
-											else{
-												$scope.fresh='This station has not been updated since '+$scope.currentStation.date_time;
+											if ($scope.currentStation.fresh) {
+												$scope.fresh = 'Current (updated every 15 min)';
+												$("#fresh").css('color',
+														'black');
+											} else {
+												$scope.fresh = 'This station has not been updated since '
+														+ $scope.currentStation.date_time;
+												$("#fresh").css('color', 'red');
 											}
 											$scope.stnID = $scope.currentStation.station_id;
 											$scope.stnName = $scope.currentStation.station_name;
@@ -545,12 +469,11 @@ function MyCntrl($scope) {
 		geocoder = new google.maps.Geocoder();
 		loadData();
 		/*
-		 if (navigator.geolocation) {
-		 navigator.geolocation.getCurrentPosition(showPosition);
-		 } else {
-
-		 return;
-		 }*/
+		 * if (navigator.geolocation) {
+		 * navigator.geolocation.getCurrentPosition(showPosition); } else {
+		 * 
+		 * return; }
+		 */
 
 		var weather_style = [ {
 			featureType : "administrative",
@@ -604,7 +527,6 @@ function MyCntrl($scope) {
 
 	function loadingPos() {
 		if ($('#loading').css("display") != "block") {
-			// alert( $('#map').css("width"));
 			var mapwidth = $('#map').css("width");
 			var mapheight = $('#map').css("height");
 			$('#loading').css("left",
@@ -615,10 +537,10 @@ function MyCntrl($scope) {
 		}
 	}
 
-	//To avoid the IE abort data http://www.cypressnorth.com/blog/web-programming-and-development/internet-explorer-aborting-ajax-requests-fixed/
+	// To avoid the IE abort data
+	// http://www.cypressnorth.com/blog/web-programming-and-development/internet-explorer-aborting-ajax-requests-fixed/
 	function fetch(url, type) {
 		url += "?" + new Date().getTime();
-		;
 		if ($.browser.msie && window.XDomainRequest) {
 			// Use Microsoft XDR
 			var xdr = new XDomainRequest();
@@ -632,15 +554,15 @@ function MyCntrl($scope) {
 				if (type == 1) {
 					var StnObjs = createStnObjs(Stns.stnsWxData, type);
 					fawnStnData = StnObjs;
-					//alert("1 "+fawnStnData.length);
+					// alert("1 "+fawnStnData.length);
 				} else if (type == 2) {
 					var StnObjs = createStnObjs(Stns, type);
 					madisStnData = StnObjs;
-					//alert("2 "+madisStnData.length);
+					// alert("2 "+madisStnData.length);
 				} else if (type == 3) {
 					var StnObjs = createStnObjs(Stns, type);
 					growerStnData = StnObjs;
-					//alert("3 "+growerStnData.length);
+					// alert("3 "+growerStnData.length);
 				}
 				setTimeout(function() {
 					updateMarkers();
@@ -676,24 +598,14 @@ function MyCntrl($scope) {
 		}
 	}
 
-	function popupGraph() {
-		//  weatherControl.graphObj.intialChart();
-		//  weatherControl.dataObj.fillGrowerBox(currentStaionID);
-		$scope.grower = idToGrowerName[currentStaionID];
-		$("#dialog").dialog({
-			width : 1000,
-			height : 600
-		});
-	}
-
 	/*
-	 * @function createInfoBox: create information box based on the given station
-	 * object @para:Station stnObj @return: InfoBox ib
+	 * @function createInfoBox: create information box based on the given
+	 * station object @para:Station stnObj @return: InfoBox ib
 	 * 
 	 */
 	var createInfoBox = function(stnObj) {
 		loadingPos();
-		//alert(stnObj.lat+" "+stnObj.lng);
+		// alert(stnObj.lat+" "+stnObj.lng);
 		if (stnObj.type == "GROWER") {
 			var boxText = document.createElement("div");
 			var weatherInfor = document.getElementById("weatherInfo");
@@ -715,9 +627,9 @@ function MyCntrl($scope) {
 			fetchData();
 			displayWeatherInformation();
 			setTimeout(function() {
-				$("#dialog1").dialog("open");
+				$("#growerPopup").dialog("open");
 			}, 200);
-			//$("#dialog1").dialog("open");
+			// $("#dialog1").dialog("open");
 
 		} else {
 			$scope.$apply(function() {
@@ -731,7 +643,7 @@ function MyCntrl($scope) {
 				$scope.mRain = stnObj.getRain();
 				$scope.mDateTime = stnObj.getDateTime();
 			});
-			$("#dialog2").dialog("open");
+			$("#madisDialog").dialog("open");
 		}
 		setTimeout(function() {
 			$('#loading').css("display", "none");
@@ -750,7 +662,7 @@ function MyCntrl($scope) {
 
 	function showData() {
 
-		//alert(previousData.length);
+		// alert(previousData.length);
 		fillDataSeperately(previousData);
 		boundAjusted();
 	}
@@ -763,7 +675,7 @@ function MyCntrl($scope) {
 			// //console.log("cleaTimeout");
 			boundchangedTask = setTimeout(function() {
 				fillDataSeperately(previousData);
-				//console.log("fillData");
+				// console.log("fillData");
 			}, 1200);
 
 		});
@@ -778,11 +690,11 @@ function MyCntrl($scope) {
 				return;
 			}
 		}
-		////console.log (newObjs.length);
+		// //console.log (newObjs.length);
 		var time2 = new Date().getTime();
 		var inBoundNewObjs = filter(newObjs, bound);
 		var time3 = new Date().getTime();
-		////console.log(inBoundNewObjs.length);
+		// //console.log(inBoundNewObjs.length);
 		var noOverlapNewObjs = removeOverlap([], inBoundNewObjs, bound
 				.pixelsPerRadLat(), bound.pixelsPerRadLng());
 		var time4 = new Date().getTime();
@@ -793,12 +705,12 @@ function MyCntrl($scope) {
 		var time6 = new Date().getTime();
 		preBound = bound;
 
-		//console.log ("====filldata total: "+(time6-time2)+"======");
-		//console.log ("markers length :" + markers.length);
-		//console.log ("filter: "+(time3-time2));
-		//console.log ("removeoverlap: "+(time4-time3));
-		//console.log ("clearoverlay: "+(time5-time4));
-		//console.log ("loadmarker: "+(time6-time5));
+		// console.log ("====filldata total: "+(time6-time2)+"======");
+		// console.log ("markers length :" + markers.length);
+		// console.log ("filter: "+(time3-time2));
+		// console.log ("removeoverlap: "+(time4-time3));
+		// console.log ("clearoverlay: "+(time5-time4));
+		// console.log ("loadmarker: "+(time6-time5));
 		setTimeout(function() {
 			$('#loading').css("display", "none");
 		}, 500);
@@ -807,15 +719,16 @@ function MyCntrl($scope) {
 
 	function clearOverlays(markers) {
 		if (Object.prototype.toString.call(markers) === '[object Array]') {
-			////console.log("/////////////marker length"+markers.length);
+			// //console.log("/////////////marker length"+markers.length);
 			for ( var i = 0; i < markers.length; i++) {
 				var time1 = new Date().getTime();
 				markers[i].setMap(null);
 				var time2 = new Date().getTime();
-				/*if((time2-time1)>=40){
-				 //console.log("makers"+markers[i].labelContent);
-				 //console.log("set time: "+(time2-time1));
-				 }*/
+				/*
+				 * if((time2-time1)>=40){
+				 * //console.log("makers"+markers[i].labelContent);
+				 * //console.log("set time: "+(time2-time1)); }
+				 */
 			}
 		}
 	}
@@ -844,48 +757,46 @@ function MyCntrl($scope) {
 	function bindInfoBox(marker, stnObj) {
 		google.maps.event.addListener(marker, "click", function(e) {
 			if (stnObj.type == "FAWN") {
-				//var boxText = document.createElement("div");    
-				//var href="http://fawn.ifas.ufl.edu/station/station.php?id="+stnObj.stnID;
+				// var boxText = document.createElement("div");
+				// var
+				// href="http://fawn.ifas.ufl.edu/station/station.php?id="+stnObj.stnID;
 				var href = FAWN_STATION_URL + stnObj.stnID;
 				window.location = href;
 			} else {
 				var ib = createInfoBox(stnObj)
 				/*
-				 ib.open(map, this);
-				 // close previous information box
-				 if (preInfoBox != null) {
-				 preInfoBox.close();
-				 }
-				 preInfoBox = ib;*/
+				 * ib.open(map, this); // close previous information box if
+				 * (preInfoBox != null) { preInfoBox.close(); } preInfoBox = ib;
+				 */
 			}
 		});
 	}
 
 	/*
-	 * @function createStnObjs: make Station objects by the given associate array it
-	 * makes much easier when display different type of station infomation.
-	 * @para:Object[] station @return: Station[] stnObjs
+	 * @function createStnObjs: make Station objects by the given associate
+	 * array it makes much easier when display different type of station
+	 * infomation. @para:Object[] station @return: Station[] stnObjs
 	 * 
 	 */
 	function createStnObjs(stations, tag) {
 		var time1 = new Date().getTime();
 		var stnObjs = [];
 		for ( var i = 0; i < stations.length; i++) {
-			//we get rid of 2/3 madis stations
-			//since the ie is slow
-			/*if(tag == 2 && i%3 == 0){
-			 continue;
-			 }*/
+			// we get rid of 2/3 madis stations
+			// since the ie is slow
+			/*
+			 * if(tag == 2 && i%3 == 0){ continue; }
+			 */
 
 			stnObjs[stnObjs.length] = Station.createStnObj(stations[i], tag);
 		}
 		var time2 = new Date().getTime();
-		//console.log("create: "+(time2-time1));
+		// console.log("create: "+(time2-time1));
 		return stnObjs;
 	}
 
 	function getBounds(map) {
-		//alert("map: "+map.getZoom());
+		// alert("map: "+map.getZoom());
 		var bound = {};
 		var bounds = map.getBounds();
 		var sw = bounds.getSouthWest();
@@ -921,13 +832,12 @@ function MyCntrl($scope) {
 	}
 
 	/*
-	 * @function filter: kick out the stations of which 1. the lat & lng are not in
-	 * the bound. 
-	 * @return: Station[] eligiableStns
+	 * @function filter: kick out the stations of which 1. the lat & lng are not
+	 * in the bound. @return: Station[] eligiableStns
 	 * 
 	 */
 	function filter(stations, bound) {
-		//alert(bound);
+		// alert(bound);
 		var eligiableStns = [];
 		var j = 0;
 		for ( var i = 0; i < stations.length; i++) {
@@ -944,8 +854,9 @@ function MyCntrl($scope) {
 	}
 
 	/*
-	 * @function removeOverlap: keep the stations having no overlap @para:Station[]
-	 * stations @para:Bound bound @return: Station[] noOverLapStns
+	 * @function removeOverlap: keep the stations having no overlap
+	 * @para:Station[] stations @para:Bound bound @return: Station[]
+	 * noOverLapStns
 	 * 
 	 */
 	function removeOverlap(noOverLapStns, stations, pixelPerRadLat,
@@ -1004,16 +915,17 @@ function MyCntrl($scope) {
 		controlFawn.appendChild(controlGrower);
 
 		google.maps.event.addDomListener(controlFawn, 'click', function() {
-			/* check box update
-			 * only update map by 1.2 seconds (no quick than)
-			 * to fix issue pointed out by Camilo
-			 * If I un-select  or select one type of weather station,
-			 * sometimes it takes a few seconds before those weather stations are removed from or added to the view;
-			 * sometimes I have to un-select and select them several times, before anything happens
+			/*
+			 * check box update only update map by 1.2 seconds (no quick than)
+			 * to fix issue pointed out by Camilo If I un-select or select one
+			 * type of weather station, sometimes it takes a few seconds before
+			 * those weather stations are removed from or added to the view;
+			 * sometimes I have to un-select and select them several times,
+			 * before anything happens
 			 */
 			loadingPos();
 			clearTimeout(checkboxTask);
-			//console.log("clear check chekboxTask");
+			// console.log("clear check chekboxTask");
 			checkboxTask = setTimeout(function() {
 				updateMarkers();
 			}, 1200);
@@ -1023,13 +935,13 @@ function MyCntrl($scope) {
 	}
 
 	function updateMarkers() {
-		//console.log("==updateMarkers==");
+		// console.log("==updateMarkers==");
 		previousData = null;
 		previousData = [];
 		var flag1 = fawnCheck();
 		var flag2 = madisCheck();
 		var flag3 = growerCheck();
-		//load grower first
+		// load grower first
 		if (flag3 == true) {
 			fillData(growerStnData);
 		}
@@ -1049,7 +961,7 @@ function MyCntrl($scope) {
 }
 var newMarker;
 function codeAddress() {
-	//var address = document.getElementById('address').value;
+	// var address = document.getElementById('address').value;
 	var stationName = document.getElementById('stationName').value;
 	var result = $.grep(growerStnData, function(e) {
 		return e.stnName == stationName;
