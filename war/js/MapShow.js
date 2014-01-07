@@ -5,7 +5,7 @@ var boundchangedTask;
 
 function MyCntrl($scope) {
 	var STATION_NAME_URL = "http://fdacswx.fawn.ifas.ufl.edu/index.php/test/read/station/format/json";
-	var GROWER_OBZ_URL = 'http://test.fdacswx.fawn.ifas.ufl.edu/index.php/read/latestobz/format/json';
+	var GROWER_OBZ_URL = 'http://fdacswx.fawn.ifas.ufl.edu/index.php/read/latestobz/format/json';
 	var FAWN_STATION_URL = "http://fawn.ifas.ufl.edu/station/station.php?id=";
 	var FAWN_OBZ_URL = 'http://fawn.ifas.ufl.edu/controller.php/latestmapjson/';
 	var MADIS_OBZ_URL = 'http://fawn.ifas.ufl.edu/controller.php/nearbyNonFawn/all/';
@@ -42,7 +42,7 @@ function MyCntrl($scope) {
 		"label" : "Web Bulb Temperature"
 	}, {
 		"id" : "rain",
-		"label" : "Rain Fall"
+		"label" : "Rainfall"
 	} ];
 	$scope.parameter = $scope.parameters[0];
 
@@ -283,7 +283,7 @@ function MyCntrl($scope) {
 				if (stnData[i].rainfall == null) {
 					rainfallPoint[1] = null;
 				} else {
-					rainfallPoint[1] = parseInt(stnData[i].rainfall);
+					rainfallPoint[1] = parseFloat(stnData[i].rainfall);
 				}
 				rainfall[i] = rainfallPoint;
 			}
@@ -304,7 +304,7 @@ function MyCntrl($scope) {
 				renderTo : 'container',
 				defaultSeriesType : 'line'
 			},
-
+			
 			rangeSelector : {
 				buttons : [ {
 					type : 'minute',
@@ -325,7 +325,7 @@ function MyCntrl($scope) {
 				}, {
 					type : 'all',
 					text : '7d'
-				} ],
+				} ]
 
 			},
 
@@ -334,7 +334,7 @@ function MyCntrl($scope) {
 			},
 			xAxis : {
 				type : 'datetime',
-				minRange : 3600 * 1000
+				//minRange : 3600 * 1000
 			}
 
 		});
