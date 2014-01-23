@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +14,7 @@
     <script src="js/FawnStation.js" type="text/javascript"></script>
     <script src="js/GrowerStation.js" type="text/javascript"></script>
     <script src="js/MarkerWithLabel.js"></script>
+    <script src="js/UserObz.js"></script>
     <script src="js/MapShow.js"></script> 
     <script src="js/angular.js"></script>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
@@ -105,13 +107,12 @@
     <option>--</option>
 </select>
 </div>
-<div id="parameter" style="padding-top: 15px;padding-left: 25px;float:left;" >
+<div style="padding-top: 15px;padding-left: 25px;float:left;" >
 <label>Parameter:<label>
-<select
-   ng-change="parameterChange()"
-   ng-model="parameter" 
-   ng-options="p.label for p in parameters" >
-    <option>--</option>
+<select id="parameter" onchange=parameterChange(); >
+    <option value="dry">Dry Bulb Temperature</option>
+    <option value="wet">Wet Bulb Temperature</option>
+    <option value="rainfall">Rainfall</option>
 </select>
 </div>
 <div id="noDataError" style="padding-top: 20px;float:left" >
@@ -193,6 +194,26 @@
             
       </ul> 
 </div>
+<div id="userDialog" title="User Observation" >
+    <ul class="stations" style="font-size:13px">
+        <li>
+          Lat: <span ng-bind="userLat"></span>
+        </li></br>
+        <li>
+          Lon: <span ng-bind="userLon"></span>
+        </li></br>
+        <li>
+          Temperature Enter Date Time: <span ng-bind="enterTime"></span>
+        </li></br>
+        <li>
+          Temerature Expiration Date Time: <span ng-bind="expTime"></span>
+        </li></br>
+        <li>
+          Temperature: <span ng-bind="temperature"></span> &degF
+        </li></br>
+            
+      </ul> 
+</div>
 </div>
 
 
@@ -222,6 +243,19 @@
       },
       width: 400, 
       height: 400,
+      hide: {
+        effect: "fade",
+        duration: 1000
+      }
+       });
+         $( "#userDialog" ).dialog({
+      autoOpen: false,
+      show: {
+        effect: "blind",
+        duration: 1000
+      },
+      width: 500, 
+      height: 240,
       hide: {
         effect: "fade",
         duration: 1000

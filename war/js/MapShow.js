@@ -5,12 +5,14 @@ var boundchangedTask;
 
 function MyCntrl($scope) {
 	var STATION_NAME_URL = "http://fdacswx.fawn.ifas.ufl.edu/index.php/test/read/station/format/json";
-	var GROWER_OBZ_URL = 'http://fdacswx.fawn.ifas.ufl.edu/index.php/read/latestobz/format/json';
+	var GROWER_OBZ_URL = 'http://test.fdacswx.fawn.ifas.ufl.edu/index.php/read/latestobz/format/json';
 	var FAWN_STATION_URL = "http://fawn.ifas.ufl.edu/station/station.php?id=";
 	var FAWN_OBZ_URL = 'http://fawn.ifas.ufl.edu/controller.php/latestmapjson/';
 	var MADIS_OBZ_URL = 'http://fawn.ifas.ufl.edu/controller.php/nearbyNonFawn/all/';
+	var USER_OBZ_URL = 'http://testfawngrowerprojectmobile.appspot.com/controller/user_observed_obzs'
 	var fawnStnData = [];
 	var madisStnData = [];
+	var userStnData = [];
 	var currentStationID;
 	var graphchart;
 	var seriesData = [];
@@ -33,7 +35,7 @@ function MyCntrl($scope) {
 	var previousData = [];// globel
 	var checkboxTask; // globel
 	var stationName = [];
-
+    /*
 	$scope.parameters = [ {
 		"id" : "dry",
 		"label" : "Dry Bulb Temperature"
@@ -44,7 +46,7 @@ function MyCntrl($scope) {
 		"id" : "rain",
 		"label" : "Rainfall"
 	} ];
-	$scope.parameter = $scope.parameters[0];
+	$scope.parameter = $scope.parameters[0];*/
 
 	if ($.browser.msie && window.XDomainRequest) {
 		// Use Microsoft XDR
@@ -151,7 +153,7 @@ function MyCntrl($scope) {
 				"id" : arr[0],
 				"label" : arr[1]
 			};
-			$scope.parameter = $scope.parameters[0];
+			//$scope.parameter = $scope.parameters[0];
 			// $scope.station = $scope.stationOption[0];
 		}
 
@@ -233,7 +235,8 @@ function MyCntrl($scope) {
 	}
 
 	var parseData = function(stnData) {
-		var dataType = $scope.parameter.id;
+		//var dataType = $scope.parameter.id;
+		var dataType = $( "#parameter" ).val();
 		if (dataType == "wet") {
 			newTitle = 'Graphic Weather Data (Temperature F)';
 			seriesName = "Wet Bulb Temperature";
@@ -564,6 +567,10 @@ function MyCntrl($scope) {
 					growerStnData = StnObjs;
 					// alert("3 "+growerStnData.length);
 				}
+				else if (type == 4) {
+					var StnObjs = createStnObjs(Stns, type);
+					userStnData = StnObjs;
+				}
 				setTimeout(function() {
 					updateMarkers();
 				}, 1200);
@@ -590,6 +597,10 @@ function MyCntrl($scope) {
 				} else if (type == 3) {
 					var StnObjs = createStnObjs(Stns, type);
 					growerStnData = StnObjs;
+				}
+				else if (type == 4) {
+					var StnObjs = createStnObjs(Stns, type);
+					userStnData = StnObjs;
 				}
 				setTimeout(function() {
 					updateMarkers();
@@ -631,7 +642,18 @@ function MyCntrl($scope) {
 			}, 200);
 			// $("#dialog1").dialog("open");
 
-		} else {
+		} 
+		else if (stnObj.type=="USER"){
+			$scope.$apply(function() {
+				$scope.userLat = stnObj.lat;
+				$scope.userLon = stnObj.lng;
+				$scope.enterTime = stnObj.datetime;
+				$scope.expTime= stnObj.expiretime;
+				$scope.temperature = stnObj.temper;
+			});
+			$("#userDialog").dialog("open");
+		}
+		else {
 			$scope.$apply(function() {
 				$scope.mStnName = stnObj.getStationTitle();
 				$scope.mStnID = stnObj.stnID;
@@ -654,6 +676,7 @@ function MyCntrl($scope) {
 		fetch(GROWER_OBZ_URL, 3);
 		fetch(FAWN_OBZ_URL, 1);
 		fetch(MADIS_OBZ_URL, 2);
+		fetch(USER_OBZ_URL, 4);
 	}
 
 	function fillData(StnObjs) {
@@ -721,9 +744,7 @@ function MyCntrl($scope) {
 		if (Object.prototype.toString.call(markers) === '[object Array]') {
 			// //console.log("/////////////marker length"+markers.length);
 			for ( var i = 0; i < markers.length; i++) {
-				var time1 = new Date().getTime();
 				markers[i].setMap(null);
-				var time2 = new Date().getTime();
 				/*
 				 * if((time2-time1)>=40){
 				 * //console.log("makers"+markers[i].labelContent);
@@ -913,6 +934,13 @@ function MyCntrl($scope) {
 				+ '<input id="grower" type="checkbox" checked >' + 'Grower'
 				+ '</label>' + '</div>';
 		controlFawn.appendChild(controlGrower);
+		controlUser = document.createElement('div');
+		controlUser.innerHTML = '<div>'
+				+ '<label class="userEnteredDataLabel" id="checkbox4"onclick="userCheck()">'
+				+ '<input id="user" type="checkbox"  >' + 'User'
+				+ '</label>' + '</div>';
+		controlFawn.appendChild(controlUser);
+		
 
 		google.maps.event.addDomListener(controlFawn, 'click', function() {
 			/*
@@ -941,6 +969,7 @@ function MyCntrl($scope) {
 		var flag1 = fawnCheck();
 		var flag2 = madisCheck();
 		var flag3 = growerCheck();
+		var flag4 = userCheck();
 		// load grower first
 		if (flag3 == true) {
 			fillData(growerStnData);
@@ -951,6 +980,10 @@ function MyCntrl($scope) {
 		if (flag2 == true) {
 
 			fillData(madisStnData);
+		}
+		if (flag4 == true) {
+
+			fillData(userStnData);
 		}
 		showData();
 
@@ -1035,4 +1068,14 @@ function growerCheck() {
 	else
 		return false;
 
+}
+function userCheck() {
+	if (document.getElementById("user") != null&&document.getElementById("user").checked){
+
+		return true;
+	}
+	else{
+		return false;
+
+	}
 }

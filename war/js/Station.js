@@ -18,6 +18,9 @@ Station.createStnObj = function(arr,tag){
 		//alert("xxxxx"+x);
 		return new GrowerStation(arr);
 	}
+	else if(tag==4){
+		return new UserStation(arr);
+	}
 	else{
 		return new GladStoneFamilyStation(arr);
 	}
