@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
-lastWarOutDir=/Users/max/Documents/FAWNGrowerStationMap/war
+jarsExcludedFromWebInfLib=
+lastWarOutDir=/Users/wentingzhao/Documents/workspace/FAWNGrowerStationMap/war
 warSrcDir=war
 warSrcDirIsOutput=false
