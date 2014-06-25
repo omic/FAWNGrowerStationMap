@@ -39,6 +39,15 @@ function MyCntrl($scope) {
 	var checkboxTask; // globel
 	var stationName = [];
 	var remoteData = []; //global
+	
+	// use associative array as dictionary for remote parameters
+	// three categories: Remote Dry Bulb Temperature, Remote Wet Bulb Temperature, Remote Humidity
+	var remoteParamDict = new Array();
+	remoteParamDict["Remote Dry Bulb Temperature"] = new Array("remote_temperature_1_f_sample","Remote_temperature_2_f_sample");
+	remoteParamDict["Remote Wet Bulb Temperature"] = new Array();
+	remoteParamDict["Remote Humidity"] = new Array();
+	
+	
     /*
 	$scope.parameters = [ {
 		"id" : "dry",
@@ -457,6 +466,19 @@ function MyCntrl($scope) {
 	}
 	var displayWeatherInformation = function() {
 		var id = $scope.station.id;
+		document.getElementById("parameter").options[3].disabled=true;
+		document.getElementById("parameter").options[4].disabled=true;
+		document.getElementById("parameter").options[5].disabled=true;
+		
+		for (var key in remoteParamDict) {
+			for (var childKey in remoteParamDict[key])
+				if(document.getElementById(remoteParamDict[key][childKey])!=null) {
+					var element = document.getElementById(remoteParamDict[key][childKey]);
+					element.parentNode.removeChild(element);
+				}
+		}
+		
+		
 		if ($.browser.msie && window.XDomainRequest) {
 			// Use Microsoft XDR
 			var xdr = new XDomainRequest();
@@ -520,21 +542,25 @@ function MyCntrl($scope) {
 										$scope.currentStation[name] = 'NA';
 									}
 								}
-//								$("ul[class='stations']").text("testet");
 								
+								
+								//enable remote parameter options if the station has those values
 								for(var i=0; i < remoteData.length; i++) {
 									if(remoteData[i].station_id==id) {
+										document.getElementById("parameter").options[3].disabled=false;
+										document.getElementById("parameter").options[4].disabled=false;
+										document.getElementById("parameter").options[5].disabled=false;
+											
 										var field_name = remoteData[i].field_name;
 										var field_name_array = field_name.split(",");
-										
-										
-										for(var i=0; i<field_name_array.length; i++) {
-											var field_item = field_name_array[i];
-											//need modify (store parameters into array)
-											var add_list_item = '<li> '+field_item+': '+remoteData[i].['field_item']+' &degF </li></br>';
+																				
+										for(var j=0; j<field_name_array.length; j++) {
+											var field_item = field_name_array[j];
+											var field_value = remoteData[i][field_item];
+//											console.log(field_value);
+											var add_list_item = '<li id="'+field_item+'"> '+field_item+': '+field_value + ' &degF </li>';
 											$("ul[class='stations']").append($(add_list_item));
-											console.log(add_list_item);
-											
+											console.log(add_list_item);	
 										}
 											
 										break;
