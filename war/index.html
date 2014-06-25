@@ -113,6 +113,9 @@
     <option value="dry">Dry Bulb Temperature</option>
     <option value="wet">Wet Bulb Temperature</option>
     <option value="rainfall">Rainfall</option>
+    <option value="remote-dry" disabled>Remote Dry Bulb Temperature</option>
+    <option value="remote-wet" disabled>Remote Wet Bulb Temperature</option>
+    <option value="remote-humidity" disabled>Remote Humidity</option>
 </select>
 </div>
 <div id="noDataError" style="padding-top: 20px;float:left" >
@@ -155,9 +158,15 @@
           <li>
           Humidity: <span ng-bind="humidity"></span> %
         </li></br>
-         <li>
+<!--         <li>
+          remote temperature 1: <span ng-bind="remote_temperature_1"></span> &degF
+        </li></br>
+        <li>
+          Remote temperature 2: <span ng-bind="Remote_temperature_2"></span> &degF
+        </li></br>
+         <li> -->
           Date Time: <span ng-bind="dateTime"></span>
-        </li>        
+        </li></br>        
       </ul> 
       <span>*Since January 1st 2014</span>
 </div>

@@ -9,7 +9,10 @@ function MyCntrl($scope) {
 	var FAWN_STATION_URL = "http://fawn.ifas.ufl.edu/station/station.php?id=";
 	var FAWN_OBZ_URL = 'http://fawn.ifas.ufl.edu/controller.php/latestmapjson/';
 	var MADIS_OBZ_URL = 'http://fawn.ifas.ufl.edu/controller.php/nearbyNonFawn/all/';
-	var USER_OBZ_URL = 'http://testfawngrowerprojectmobile.appspot.com/controller/user_observed_obzs'
+	var USER_OBZ_URL = 'http://testfawngrowerprojectmobile.appspot.com/controller/user_observed_obzs';
+	var LATESTREMOTE_OBZ_URL = 'http://fdacswx.fawn.ifas.ufl.edu/index.php/read/latestremoteobz/format/json';
+	
+	
 	var fawnStnData = [];
 	var madisStnData = [];
 	var userStnData = [];
@@ -35,6 +38,7 @@ function MyCntrl($scope) {
 	var previousData = [];// globel
 	var checkboxTask; // globel
 	var stationName = [];
+	var remoteData = []; //global
     /*
 	$scope.parameters = [ {
 		"id" : "dry",
@@ -64,6 +68,8 @@ function MyCntrl($scope) {
 					stationNameToId[stnObj[i].station_name] = stnObj[i].id;
 					stationName[i] = stnObj[i].station_name;
 					var key = stnObj[i].grower_name;
+					
+					//insert station(id-name) pairs into grower[] if exists, key: grower_name
 					if (grower.hasOwnProperty(key)) {
 						grower[key][grower[key].length] = stnObj[i].id + "$$$"
 								+ stnObj[i].station_name;
@@ -74,6 +80,8 @@ function MyCntrl($scope) {
 						grower[key] = id;
 					}
 				}
+				
+				//keys: grower name
 				var keys = Object.keys(grower);
 				keys.sort(function(a, b) {
 					return (a[0] < b[0] ? -1 : (a[0] > b[0] ? 1 : 0));
@@ -173,6 +181,80 @@ function MyCntrl($scope) {
 	$scope.parameterChange = function() {
 		fetchData();
 	}
+	
+	var fetchRemoteData = function() {
+		// alert($scope.station.id);
+//		var url = 'http://test.fdacswx.fawn.ifas.ufl.edu/index.php/read/sevendaytimestamp/station_id/'
+//				+ $scope.station.id + '/format/json/';
+		// if in IE browser
+		if ($.browser.msie && window.XDomainRequest) {
+			// Use Microsoft XDR
+			var xdr = new XDomainRequest();
+			xdr.open("get", LATESTREMOTE_OBZ_URL);
+			xdr.onload = function() {
+				var JSON = $.parseJSON(xdr.responseText);
+				if (JSON == null || typeof (JSON) == 'undefined') {
+					// JSON = $.parseJSON(data.firstChild.textContent);
+					stnData = [];
+					
+					//***ATTENTION***
+					console.log("no latest remote data!");
+//					parseData(stnData);
+					
+				} else {
+					var stnData = JSON;
+					if (stnData != null) {
+						
+						remoteData = stnData;
+						console.log(remoteData);
+//						parseData(stnData);
+						// var test=graphchart.series[0].xData;
+					}
+				}
+//				if (!graphchart.get(id)) {
+//					addSeries(id, newTitle, seriesName);
+//				} else {
+//					updateSeries(id, newTitle, seriesName);
+//				}
+			};
+			xdr.onprogress = function() {
+			};
+			xdr.ontimeout = function() {
+			};
+			xdr.onerror = function() {
+			};
+			setTimeout(function() {
+				xdr.send();
+			}, 0);
+		} else {
+			$.getJSON(LATESTREMOTE_OBZ_URL, function(data) {
+				if (data != null) {
+					$("#noDataError").empty();
+					remoteData = data;
+					console.log(remoteData);
+//					parseData(stnData);
+				} else {
+					$("#noDataError").html("<label> Current No Data<label>")
+							.css("color", "red");
+					;
+					var stnData = [];
+					console.log("no latest remote data");
+//					parseData(stnData);
+				}
+
+//				if (!graphchart.get(id)) {
+//					addSeries(id, newTitle, seriesName);
+//				} else {
+//					updateSeries(id, newTitle, seriesName);
+//				}
+
+			});
+		}
+		
+	}
+	
+	
+	
 	var fetchData = function() {
 		// alert($scope.station.id);
 		var url = 'http://test.fdacswx.fawn.ifas.ufl.edu/index.php/read/sevendaytimestamp/station_id/'
@@ -438,6 +520,28 @@ function MyCntrl($scope) {
 										$scope.currentStation[name] = 'NA';
 									}
 								}
+//								$("ul[class='stations']").text("testet");
+								
+								for(var i=0; i < remoteData.length; i++) {
+									if(remoteData[i].station_id==id) {
+										var field_name = remoteData[i].field_name;
+										var field_name_array = field_name.split(",");
+										
+										
+										for(var i=0; i<field_name_array.length; i++) {
+											var field_item = field_name_array[i];
+											//need modify (store parameters into array)
+											var add_list_item = '<li> '+field_item+': '+remoteData[i].['field_item']+' &degF </li></br>';
+											$("ul[class='stations']").append($(add_list_item));
+											console.log(add_list_item);
+											
+										}
+											
+										break;
+									} 
+								}
+								
+								
 								$scope
 										.$apply(function() {
 											if ($scope.currentStation.fresh) {
@@ -784,6 +888,7 @@ function MyCntrl($scope) {
 				var href = FAWN_STATION_URL + stnObj.stnID;
 				window.location = href;
 			} else {
+				fetchRemoteData();
 				var ib = createInfoBox(stnObj)
 				/*
 				 * ib.open(map, this); // close previous information box if
