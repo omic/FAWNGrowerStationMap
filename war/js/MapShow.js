@@ -1,3 +1,8 @@
+//Note:Add remote parameters for grower dialogue
+//Test grower/station: S.Y. Hartt & Sons, Inc., Hartt Rd Site
+//null data on June 25 (also reflected on test database)
+
+
 var growerStnData = [];
 var geocoder;
 var map;
